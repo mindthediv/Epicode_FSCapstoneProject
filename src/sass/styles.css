@@ -1,0 +1,728 @@
+@import url("https://fonts.googleapis.com/css2?family=Robotot&display=swap");
+html,
+body {
+  height: 100vh;
+  background-color: white;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+html > div,
+body > div {
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.onTopLayer {
+  z-index: initial;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hoPoint:hover, .btnPmaker:hover {
+  cursor: pointer;
+}
+
+.masterModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  margin: auto !important;
+}
+
+.imgPreview {
+  width: 100%;
+}
+
+.btnInter {
+  font-size: 1.2em;
+  padding: 0.6em !important;
+  border: none !important;
+}
+.btnInter .fa {
+  box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.5019607843);
+  padding: 0.6em !important;
+  border-radius: 38%;
+}
+.btnInter .fa:hover {
+  box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.5019607843);
+}
+
+.interLike {
+  background-color: rgba(92, 193, 230, 0.1882352941) !important;
+  color: rgba(0, 0, 0, 0.5019607843) !important;
+}
+.interLike .fa {
+  background-color: rgba(92, 193, 230, 0.5019607843);
+}
+.interLike:hover {
+  background-color: #5cc1e6 !important;
+}
+
+.interComment {
+  background-color: rgba(116, 214, 74, 0.5019607843) !important;
+  color: rgba(0, 0, 0, 0.5019607843) !important;
+}
+.interComment .fa {
+  background-color: rgba(116, 214, 74, 0.5019607843);
+}
+.interComment:hover {
+  background-color: #74d64a !important;
+}
+
+.interMenu {
+  background-color: white !important;
+  color: rgba(0, 0, 0, 0.5019607843) !important;
+}
+.interMenu .fa {
+  background-color: rgba(0, 0, 0, 0.1882352941);
+}
+.interMenu:hover {
+  background-color: #ffda59 !important;
+}
+
+.btnPmaker {
+  padding: 0.6em !important;
+  font-size: 1.8em !important;
+  color: white;
+}
+
+.btnAddPostPic {
+  background-color: #5cc1e6;
+}
+
+.btnPostLoc {
+  background-color: #74d64a;
+}
+
+.btnPostSett {
+  background-color: #ffda59;
+  color: black;
+}
+
+.btnPostSub {
+  background-color: rgba(255, 255, 255, 0) !important;
+  color: #5cc1e6 !important;
+  border: solid 5px #5cc1e6 !important;
+  padding: 0.3em 0.5em !important;
+}
+
+header {
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.1882352941);
+}
+header #navbarApp {
+  background-color: #ffffff !important;
+  box-shadow: inset 0px 8px 24px 0px rgba(92, 193, 230, 0.1882352941);
+}
+
+#footerApp {
+  background-color: black;
+  color: white;
+}
+
+#homePage {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+}
+#homePage * {
+  margin: unset !important;
+  padding: auto !important;
+  scroll-behavior: smooth !important;
+}
+#homePage .homeJumbo {
+  background-image: url(../../public/assets/imgs/LagoDiNemi.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 90vh;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 16px 24px 16px rgba(0, 0, 0, 0.5019607843);
+}
+#homePage .homeJumbo .homeBrand {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5019607843), rgba(0, 0, 0, 0.1882352941), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941), rgba(0, 0, 0, 0.5019607843));
+  width: 100%;
+  min-height: 90vh;
+}
+#homePage .homeJumbo .homeBrand .homeTitle {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 5em;
+  display: inline-block;
+  line-height: 0.9em;
+  letter-spacing: -0.1em;
+}
+#homePage .homeJumbo .homeBrand .btnBox {
+  padding: 1.2em;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-left: 5em !important;
+}
+#homePage .homeJumbo .homeBrand .btnBox h2 {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0px 0px 16px #000000;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.8em !important;
+}
+#homePage .homeJumbo .homeBrand .btnBox :hover h2 {
+  transition: all 0.5s;
+  color: #ffffff;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1882352941);
+  box-shadow: 0px 0px 24px 1px #fffdd0;
+}
+#homePage .homeJumbo .homeBrand .btnBox a {
+  text-decoration: none;
+}
+#homePage .homeSec h2 {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  padding: 0.2em 0.8em !important;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0px 0px 16px #000000;
+}
+#homePage .homeSec p {
+  background-image: radial-gradient(#ffffff, #ffffff, #ffffff, rgba(255, 255, 255, 0.5019607843));
+  padding: 1em !important;
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+  font-size: large;
+}
+#homePage .homeSection {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#homePage .homeSection.discoverSection {
+  background-image: url("../../public/assets/imgs/ViaSacra.jpg");
+  padding: 3em 3em 3em 1.5em !important;
+}
+#homePage .communitySection {
+  background-image: url("../../public/assets/imgs/prodotti.jpg");
+  padding: 3em 1.5em 3em 1.5em !important;
+}
+#homePage .travelSection {
+  background-image: url("../../public/assets/imgs/Ariccia.jpg");
+  padding: 3em 1.5em 3em 3em !important;
+}
+#homePage .mapRow {
+  background-color: rgba(255, 255, 255, 0.1882352941);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+}
+#homePage .mapRow .mapFrame {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px 8px #fffdd0;
+}
+#homePage .homeCrAreas {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.5019607843), rgba(255, 255, 255, 0.5019607843), rgba(255, 255, 255, 0.5019607843), rgba(255, 255, 255, 0.1882352941));
+}
+#homePage .homeCrAreas .areaBoxDiv {
+  display: flex;
+  justify-content: center;
+}
+#homePage .homeCrAreas .areaBoxDiv .areaDiv {
+  padding: 1em !important;
+}
+#homePage .homeCrAreas .areaBoxDiv .areaDiv h4 {
+  text-align: center;
+  text-shadow: 0px 0px 16px black;
+}
+#homePage .homeCrAreas .crAreaBox {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px !important;
+  height: 150px !important;
+}
+#homePage .homeCrAreas .crAreaBox:hover {
+  cursor: pointer;
+}
+#homePage #albano {
+  background-image: url(../../public/assets/imgs/StemmiComunali/albano_laziale.png) !important;
+}
+#homePage #albano:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage #ariccia {
+  background-image: url(../../public/assets/imgs/StemmiComunali/ariccia.png) !important;
+}
+#homePage #ariccia:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage #castelGandolfo {
+  background-image: url(../../public/assets/imgs/StemmiComunali/castel_gandolfo.png) !important;
+}
+#homePage #castelGandolfo:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage #nemi {
+  background-image: url(../../public/assets/imgs/StemmiComunali/nemi.png) !important;
+}
+#homePage #nemi:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage #frascati {
+  background-image: url(../../public/assets/imgs/StemmiComunali/frascati.png) !important;
+}
+#homePage #frascati:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage #lariano {
+  background-image: url(../../public/assets/imgs/StemmiComunali/lariano.png) !important;
+}
+#homePage #lariano:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage #genzano {
+  background-image: url(../../public/assets/imgs/StemmiComunali/genzano_di_roma.png) !important;
+}
+#homePage #genzano:hover {
+  box-shadow: 0px 0px 16px 8px;
+  transition: all 0.4s;
+  border-radius: 30%;
+}
+#homePage .homePacks {
+  width: 100vw;
+}
+#homePage .homePacks .bgvid {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.registerForm {
+  font-size: larger;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  color: rgb(0, 0, 0);
+  padding: 2em !important;
+}
+.registerForm .btnSub {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  font-size: larger;
+  font-weight: 600;
+  text-shadow: 0px 0px 16px #fffdd0;
+  transition: all 0.3s ease-in-out;
+}
+.registerForm .btnSub:hover {
+  box-shadow: 0px 0px 16px 4px #fffdd0;
+}
+
+.loginForm {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  filter: grayscale(100%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginForm h3 {
+  text-shadow: 0px 0px 16px #000000;
+}
+.loginForm:hover {
+  filter: grayscale(0%);
+  transition: all 0.3s ease-in-out;
+}
+.loginForm.lfMod {
+  filter: none;
+}
+.loginForm .btnLogin {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  font-size: larger;
+  font-weight: 600;
+  text-shadow: 0px 0px 16px #fffdd0;
+  box-shadow: 0px 0px 16px 4px #fffdd0;
+  color: #000000;
+}
+
+#registerPage {
+  background-image: url(../../public/assets/imgs/Ariccia.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+}
+
+#loginPage {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#loginPage .bgForm {
+  background-color: rgba(0, 0, 0, 0.8039215686);
+  padding: 1em !important;
+}
+#loginPage .bgForm .btnLogin {
+  color: white;
+  background-image: none;
+  background-color: rgba(92, 193, 230, 0.5019607843);
+}
+#loginPage .bgForm .btnLogin:hover {
+  background-color: #5cc1e6;
+  transition: all 0.4s;
+  text-shadow: 0px 0px 16px 8px black !important;
+}
+#loginPage .row {
+  height: 50vh;
+}
+
+#profilePage {
+  position: relative;
+  top: -50px;
+}
+#profilePage .bgGrid {
+  background-color: rgba(0, 0, 0, 0.5019607843);
+}
+#profilePage .profileHead {
+  position: relative;
+}
+#profilePage .profileHead .profileBanner {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  bottom: -50px;
+  z-index: -1;
+}
+#profilePage .profileHead .underBanner {
+  padding-left: 2em !important;
+  background-image: linear-gradient(white, rgb(255, 255, 255), rgba(255, 255, 255, 0)), radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.5019607843);
+}
+#profilePage .profileHead .underBanner .profileImg {
+  max-width: 275px;
+  border-radius: 50%;
+  position: relative;
+  top: -30%;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  box-shadow: -8px 8px 24px 0px rgba(0, 0, 0, 0.1882352941);
+  background-position: center;
+  background-size: cover;
+}
+#profilePage .profileHead .underBanner .infoBox {
+  font-weight: 600;
+  font-size: larger;
+}
+#profilePage .profileHead .underBanner .textBox {
+  padding: 1em 1.2em !important;
+}
+#profilePage .profileHead .underBanner .profileBtnLine > * {
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.5019607843);
+  border-top-left-radius: 48%;
+  border-bottom-right-radius: 26%;
+  padding: 0.8em !important;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+#profilePage .profileHead .underBanner .profileBtnLine > *:hover {
+  box-shadow: inset 2px 4px 12px 0px rgba(0, 0, 0, 0.5019607843);
+  transition: all 0.4s;
+}
+#profilePage .profileHead .underBanner .btnProfileConf {
+  width: 48px;
+  height: 48px;
+  background-image: radial-gradient(#ffffff, #fffdd0, rgba(255, 255, 255, 0.5019607843));
+  color: rgb(24, 24, 24);
+  font-size: 2em;
+  border-radius: 8px;
+  box-shadow: 0px 0px 24px 4px #fffdd0;
+  background-color: transparent;
+  border: none;
+}
+#profilePage .profileGridPost {
+  width: 100;
+}
+#profilePage .profileGridPost .gridPostCol {
+  background-image: url("http://www.placekitten.com/800");
+  background-size: cover;
+  background-position: center;
+}
+#profilePage .profileGridPost .gridPostCol::before {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+#profilePage .profileGridPost .noPost {
+  background-color: rgba(255, 255, 255, 0.5019607843);
+}
+#profilePage .crExpBox {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+}
+#profilePage .crExpBox .xperience {
+  background-image: linear-gradient(white, rgb(255, 255, 255), rgba(255, 255, 255, 0)), radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+}
+#profilePage .crExpBox .xperience .xpImg {
+  width: 100%;
+}
+
+.postCard {
+  border: 1px solid #5cc1e6;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5019607843);
+}
+.postCard a {
+  text-decoration: none !important;
+  color: #000000;
+  font-size: 1.2em;
+  padding: 0.2em !important;
+}
+.postCard .userInfo {
+  background-image: linear-gradient(155deg, #ffffff, #ffffff, rgba(255, 255, 255, 0.5019607843), rgba(255, 255, 255, 0.5019607843), rgba(255, 255, 255, 0));
+  color: rgb(0, 0, 0);
+  position: absolute;
+}
+.postCard .userInfo .miniUserImg {
+  width: 48px;
+  height: 48px;
+}
+.postCard .userInfo .miniInfo {
+  line-height: 1em;
+  font-size: 0.9em;
+}
+.postCard .userInfo .miniInfo a {
+  text-decoration: none;
+}
+.postCard .userInfo .miniInfo .smallTxt {
+  font-size: 0.8em;
+}
+.postCard .postContent {
+  position: relative;
+}
+.postCard .postContent:hover .postText {
+  background-color: #ffffff;
+  transition: all 0.4s;
+}
+.postCard .postContent .postImgWrapper {
+  width: 100%;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(0, 0, 0);
+}
+.postCard .postContent .postText {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8039215686);
+  width: 100%;
+}
+.postCard .postContent .postText p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Numero di righe da visualizzare */
+  -webkit-box-orient: vertical;
+  overflow: scroll;
+  text-overflow: unset;
+  padding: 0.4em !important;
+  padding-top: 0.6em !important;
+  text-shadow: 0px 0px 6px white;
+  height: 60px;
+}
+.postCard .postContent .postText p:hover {
+  height: 160px;
+  transition: all 1s;
+}
+
+#feedPage .row {
+  justify-content: center;
+  border: none;
+}
+#feedPage .feedContacts,
+#feedPage .feedForYou,
+#feedPage .feedCrAreas {
+  border-radius: 8px;
+}
+#feedPage .feedContacts .postCol,
+#feedPage .feedForYou .postCol,
+#feedPage .feedCrAreas .postCol {
+  background-color: #ffffff;
+}
+#feedPage h2 {
+  color: #ffffff;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  padding: 0 1.5em !important;
+  text-shadow: 0px 0px 12px #000000;
+  margin: auto !important;
+  text-align: center;
+}
+#feedPage .postMaker .postTextArea {
+  resize: vertical;
+  width: 100%;
+  display: block;
+}
+
+.CrAreaHead {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: -2;
+}
+.CrAreaHead .profileBanner {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  bottom: -50px;
+  z-index: -1;
+}
+.CrAreaHead .underBanner {
+  padding-left: 2em !important;
+  background-image: linear-gradient(white, rgb(255, 255, 255), rgba(255, 255, 255, 0)), radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+}
+.CrAreaHead .underBanner .profileImg {
+  max-width: 275px;
+  border-radius: 50%;
+  position: relative;
+  top: -30%;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+  box-shadow: -8px 8px 24px 0px rgba(0, 0, 0, 0.1882352941);
+}
+.CrAreaHead .underBanner .infoBox {
+  font-weight: 600;
+  font-size: larger;
+}
+.CrAreaHead .underBanner .textBox {
+  padding: 1em 1.2em !important;
+}
+.CrAreaHead .underBanner .profileBtnLine > * {
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.5019607843);
+  border-top-left-radius: 48%;
+  border-bottom-right-radius: 26%;
+  padding: 0.8em !important;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+.CrAreaHead .underBanner .profileBtnLine > *:hover {
+  box-shadow: inset 2px 4px 12px 0px rgba(0, 0, 0, 0.5019607843);
+  transition: all 0.4s;
+}
+
+#profilePicModal {
+  background-color: black;
+}
+
+#profileSettings form {
+  background-color: black;
+  padding: 1em !important;
+  color: white;
+}
+#profileSettings form .form-label,
+#profileSettings form .form-control {
+  padding: 0.6em !important;
+}/*# sourceMappingURL=styles.css.map */
