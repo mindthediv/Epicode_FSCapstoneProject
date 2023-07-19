@@ -17,10 +17,8 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import { useRef } from "react";
 
-//Form che comunica con redux, i campi sono actions on change mentre
-// il submit 'dispatcha' il thunk per gestire l'asincono.
-
 const RegisterPage = () => {
+  const resetRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const reduxRegister = useSelector((state) => state.register);
@@ -29,7 +27,7 @@ const RegisterPage = () => {
     username: reduxRegister.user.username,
     password: reduxRegister.user.password,
   };
-  const resetRef = useRef();
+
   return (
     <div
       id="registerPage"
@@ -38,7 +36,6 @@ const RegisterPage = () => {
       <Container>
         <Row>
           {/* REGISTER FORM */}
-
           <Col className="registerForm">
             {/* ON SUBMIT */}
             <Form
@@ -140,21 +137,6 @@ const RegisterPage = () => {
                   }}
                 />
               </Form.Group>
-
-              {/* RICORDA LE CHECKBOX LATO SERVER */}
-              {/* <Form.Group className="" controlId="registerPolicy"> */}
-              {/* <Form.Check */}
-              {/* //    type="checkbox" */}
-              {/* //    label="Accetto i termini e le condizioni d'utilizzo" */}
-              {/* //  /> */}
-              {/* //</Form.Group> */}
-              {/* //<Form.Group className="" controlId="registerObserver"> */}
-              {/* //  <Form.Check */}
-              {/* //    type="checkbox" */}
-              {/* //    label="Desidero ricevere aggiornamenti e notizie da parte di We Are CR via email" */}
-              {/* //  /> */}
-              {/* //</Form.Group> */}
-
               <Form.Text className=" d-block mb-3">
                 Non temere, non condivideremo le tue informazioni con nessuno e
                 saranno protette con massima sicurezza.

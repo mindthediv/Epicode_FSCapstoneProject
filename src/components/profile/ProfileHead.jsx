@@ -1,30 +1,28 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { API_UPLOADS } from "../feed/PostMaker";
 import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import ProfileSettings from "./ProfileSettings";
-import ProfilePicsModal from "./ProfilePicsModal";
-import BackgroundPicModal from "./BackgroundPicModal";
+import EditProfileModal from "./EditProfileModal";
 
-const ProfileHead = (userImg) => {
+const ProfileHead = () => {
+  // REDUX
   const logged = useSelector((state) => state.logged.loggedUser);
   const isLogged = useSelector((state) => state.logged.isLogged);
+  // STATE
   const [pImg, setPImg] = useState(null);
   const [backImg, setBackImg] = useState(null);
-  const navigate = useNavigate();
+  // MODALI
   const [masterModal, setMasterModal] = useState(false);
   const handleMasterModal = () => setMasterModal(true);
   const closeMasterModal = () => setMasterModal(false);
-
+  // FETCH PER FOTO PROFILO
   const getProfilePic = async () => {
     try {
       const response = await fetch(
         API_UPLOADS + "/profile/" + logged.profileImg,
         {
           method: "GET",
-
           headers: {
             "Content-Type": "blob",
             Authorization: "Bearer " + logged.auth,
@@ -40,13 +38,13 @@ const ProfileHead = (userImg) => {
       console.log(e);
     }
   };
+  // FETCH PER FOTO BACKGROUND
   const getBackgroundPic = async () => {
     try {
       const response = await fetch(
         API_UPLOADS + "/background/" + logged.backgroundImg,
         {
           method: "GET",
-
           headers: {
             "Content-Type": "blob",
             Authorization: "Bearer " + logged.auth,
@@ -62,18 +60,20 @@ const ProfileHead = (userImg) => {
       console.log(e);
     }
   };
+
   useEffect(() => {
-    if (logged.auth) {
-      const thunk = async () => {
+    const handleEffect = async () => {
+      if (logged.auth) {
         getProfilePic();
         getBackgroundPic();
-      };
-      thunk();
-    }
+      }
+    };
+    handleEffect();
   }, []);
 
   return (
     <div className="profileHead">
+      {/* BACKGROUND ? URL BG : BG PLACEHOLDER */}
       {backImg != null ? (
         <div
           style={{
@@ -94,6 +94,7 @@ const ProfileHead = (userImg) => {
 
       <div className="d-flex underBanner">
         <div className="imgBox">
+          {/* FOTO PROFILO ? URL FP : FP PLACEHOLDER */}
           {pImg != null ? (
             <div
               className="profileImg "
@@ -103,7 +104,6 @@ const ProfileHead = (userImg) => {
                 width: 300 + "px",
               }}
             >
-              {/* MASTER MODAL ********************************** */}
               <Button className="btnProfileConf" onClick={handleMasterModal}>
                 <i className="fa fa-pencil"></i>
               </Button>
@@ -113,12 +113,11 @@ const ProfileHead = (userImg) => {
                 centered
                 className="masterModal"
               >
-                {" "}
                 <Modal.Header closeButton>
                   <Modal.Title>MODIFICA PROFILO</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <ProfilePicsModal />
+                  <EditProfileModal />
                 </Modal.Body>
               </Modal>
             </div>
@@ -133,8 +132,6 @@ const ProfileHead = (userImg) => {
                 border: "none",
               }}
             >
-              {/* MASTER MODAL ********************************** */}
-
               <Button className="btnProfileConf" onClick={handleMasterModal}>
                 <i className="fa fa-pencil"></i>
               </Button>
@@ -144,12 +141,11 @@ const ProfileHead = (userImg) => {
                 centered
                 className="masterModal"
               >
-                {" "}
                 <Modal.Header closeButton>
                   <Modal.Title>MODIFICA PROFILO</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <ProfilePicsModal />
+                  <EditProfileModal />
                 </Modal.Body>
               </Modal>
             </div>

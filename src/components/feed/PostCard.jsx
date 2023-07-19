@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { API_USERS, cacheUser } from "../../redux/actions/usersActions";
+import { API_USERS } from "../../redux/actions/usersActions";
 import { useEffect, useState } from "react";
 import { API_UPLOADS } from "./PostMaker";
 import { CACHE_USER } from "../../redux/actions/usersActions";
 import { Button, Form } from "react-bootstrap";
 
 const PostCard = (post) => {
-  const isLogged = useSelector((state) => state.logged.isLogged);
-  const logged = useSelector((state) => state.logged.loggedUser);
+  let p = post.post;
+  // REDUX
   const auth = useSelector((state) => state.logged.loggedUser.auth);
   const u = useSelector((state) => state.users.user);
   const dispatch = useDispatch();
-  let p = post.post;
+  //STATE
   const [imgState, setImgState] = useState(null);
   const [userState, setUserState] = useState(null);
   const [pImg, setPImg] = useState(null);
@@ -23,7 +22,6 @@ const PostCard = (post) => {
     try {
       const fileResp = await fetch(API_UPLOADS + "/" + p.filePath, {
         method: "GET",
-
         headers: {
           "Content-Type": "blob",
           Authorization: "Bearer " + auth,
@@ -38,7 +36,7 @@ const PostCard = (post) => {
     }
   };
 
-  //GET DELLO USERID
+  //OTTIENE LO USER DEL POST VIA PATHNAME SU "/users/{userId}"
   const getUserViaPath = async () => {
     try {
       let resp = await fetch(
@@ -59,13 +57,13 @@ const PostCard = (post) => {
         });
         return user;
       } else {
-        alert("Si è verificato un errore: fetchFailed");
+        alert("Errore nel caricamento dell'utente del post");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  // OTTIENE LO USER DEL POST VIA PROPS p.userId
   const getUserViaProp = async () => {
     try {
       let resp = await fetch(API_USERS + "/" + p.userId, {
@@ -83,12 +81,13 @@ const PostCard = (post) => {
         });
         return user;
       } else {
-        alert("Si è verificato un errore: fetchFailed");
+        alert("Errore nel caricamento dell'utente del post");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   const getProfilePic = async (picName) => {
     try {
       const response = await fetch(API_UPLOADS + "/profile/" + picName, {
@@ -107,7 +106,6 @@ const PostCard = (post) => {
     }
   };
 
-  let fileURL;
   useEffect(() => {
     if (p) {
       let handleEffect = async () => {
@@ -124,7 +122,7 @@ const PostCard = (post) => {
       };
       handleEffect();
     }
-  }, [window.location]);
+  }, []);
 
   useEffect(() => {
     if (userState != null) {
@@ -139,10 +137,13 @@ const PostCard = (post) => {
     <div className="postCard w-100">
       {imgState != null && (
         <div className="postContent">
+          {/* Se si è sul profilo personale non renderizza le userInfo del post */}
           {window.location.pathname == "/me" ? (
             <></>
           ) : (
+            // USERINFO
             <div className="d-flex userInfo align-items-center w-100 pb-1">
+              {/* foto profilo ? url fp : fp placeholder  */}
               {pImg != null ? (
                 <div>
                   <img
@@ -155,10 +156,11 @@ const PostCard = (post) => {
                   <img
                     className="miniUserImg rounded-circle p-1"
                     src="assets/imgs/placeHolders/userPlaceholder.png"
-                    alt="Person-placeholder - Person Placeholder@pngkey.com"
+                    alt="Person-placeholder"
                   />
                 </div>
               )}
+              {/* waiter */}
               {p && userState != null && (
                 <div>
                   <div className="miniInfo">
@@ -178,13 +180,14 @@ const PostCard = (post) => {
               )}
             </div>
           )}
+          {/* IMMAGINE */}
           <div
             className="postImgWrapper"
             style={{
               backgroundImage: "url(" + URL.createObjectURL(imgState) + ")",
             }}
           ></div>
-
+          {/* TESTO */}
           {p && (
             <div className="postText">
               <p className="">{p.text}</p>
@@ -192,6 +195,8 @@ const PostCard = (post) => {
           )}
         </div>
       )}
+
+      {/* INTERACTION BTN */}
       {window.location.pathname == "/me" ? (
         <></>
       ) : (
@@ -206,22 +211,12 @@ const PostCard = (post) => {
                 rows={2}
                 className="postCommentArea"
                 placeholder="Commenta..."
-                // onChange={(e) =>
-                //   setComment({
-                //     text: e.target.value,
-                //     file: postState.file,
-                //     userId: postState.userId,
-                //   })
-                // }
               />
             </Form.Group>
             <Button type="submit" className="btnInter interComment">
               <i className="fa fa-comments "></i>
             </Button>
           </Form>
-          {/* <Button className="btnInter interMenu">
-          <i className="fa fa-ellipsis-h "></i>
-        </Button> */}
         </div>
       )}
     </div>

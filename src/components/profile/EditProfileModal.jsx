@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import ProfilePicModal from "./ProfilePicModal";
 import BackgroundPicModal from "./BackgroundPicModal";
 
-const ProfilePicsModal = () => {
+const EditProfileModal = () => {
   const [showProfilePic, setShowProfilePic] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
   const closeProfilePic = () => setShowProfilePic(false);
@@ -18,7 +18,7 @@ const ProfilePicsModal = () => {
     <Container>
       <Row>
         <Col>
-          {/* MODAL PROFILE PIC ********************************** */}
+          {/* MODAL PROFILE PIC */}
           <Button className="btnProfileConf" onClick={handleshowProfilePic}>
             Cambia l'immagine profilo
           </Button>
@@ -39,7 +39,7 @@ const ProfilePicsModal = () => {
           {/* fine modal profilePic */}
         </Col>
       </Row>
-      {/* MODAL BACKGROUND *************************/}
+      {/* MODAL BACKGROUND */}
       <Row>
         <Col>
           <Button className="btnProfileConf" onClick={handleBackground}>
@@ -59,11 +59,10 @@ const ProfilePicsModal = () => {
               <BackgroundPicModal />
             </Modal.Body>
           </Modal>
-          {/* fine modal background */}
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default ProfilePicsModal;
+export default EditProfileModal;

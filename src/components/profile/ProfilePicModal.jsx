@@ -5,36 +5,23 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  handleEmail,
-  handleUsername,
-  putRegister,
-} from "../../redux/actions/registerActions";
-import { ToastContainer, toast } from "react-toastify";
-
+import { ToastContainer } from "react-toastify";
 import { API_UPLOADS } from "../feed/PostMaker";
-import { API_POSTS } from "../../redux/actions/postActions";
 import { API_USERS } from "../../redux/actions/usersActions";
-import {
-  ADD_PROFILE_PIC,
-  getProfilePic,
-} from "../../redux/actions/loggedActions";
+import { getProfilePic } from "../../redux/actions/loggedActions";
 
 const ProfilePicModal = () => {
-  const logged = useSelector((state) => state.logged.loggedUser);
-  const isLogged = useSelector((state) => state.logged.isLogged);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const reduxRegister = useSelector((state) => state.register.user);
   const resetRef = useRef();
-  const fileRef = useRef();
+  // REDUX
+  const logged = useSelector((state) => state.logged.loggedUser);
+  const dispatch = useDispatch();
+  // STATE
   const [settingState, setSettingState] = useState({
     file: new FormData(),
     userId: logged.id,
   });
 
-  //Upload img profilo, torna nello state.file l'UUID del file sul server.
+  //UPLOAD FOTO PROFILO
   const uploadFile = async () => {
     try {
       const response = await fetch(API_UPLOADS + "/profile", {
@@ -57,7 +44,7 @@ const ProfilePicModal = () => {
     }
   };
 
-  //dopo l'upload del file input, ne unisce il risultato per reinviare l'settingState definitivo (da poster a getter)
+  //PUT SULLO USER - user-profileImg
   const putSettings = async () => {
     const imgPic = await uploadFile();
     try {
@@ -81,7 +68,7 @@ const ProfilePicModal = () => {
     }
   };
 
-  //handle File
+  //FILE INPUT HANDLER
   const handleFile = (e) => {
     e.preventDefault();
     setSettingState((current) => {
@@ -92,13 +79,12 @@ const ProfilePicModal = () => {
     });
   };
 
-  //submit
+  // SUBMIT HANDLER
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = await putSettings();
     dispatch(getProfilePic(data.profileImg));
     return data;
-    resetRef.current.click();
   };
 
   return (
@@ -120,7 +106,7 @@ const ProfilePicModal = () => {
                 theme="light"
               />
 
-              {/* PROFILE IMG */}
+              {/* FILE INPUT */}
               <Form.Group controlId="formFileMultiple" className="mb-3">
                 <Form.Label>Immagine Profilo</Form.Label>
                 <Form.Control
@@ -129,7 +115,6 @@ const ProfilePicModal = () => {
                   onChange={(e) => handleFile(e)}
                 />
               </Form.Group>
-              <img src="" alt="" />
               {/* BUTTONS */}
               <div className="d-flex justify-content-between">
                 <Button

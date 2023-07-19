@@ -565,7 +565,6 @@ header {
 
 //FEED ---------------
 .postCard {
-  border: 1px solid $myPrime;
   border-radius: 8px;
   background-color: $myWhite50;
   a {
@@ -649,24 +648,19 @@ header {
 #feedPage {
   .row {
     justify-content: center;
-    // @include myBackground();
     border: none;
-    // background-color: $myBlack50;
   }
-  .feedContacts,
-  .feedForYou,
-  .feedCrAreas {
+  .feedContacts {
     .postCol {
       background-color: $myWhite;
     }
-    // background-color: $myWhite;
     border-radius: 8px;
   }
 
   h2 {
     color: $myWhite;
     @include myBackground();
-    // width: fit-content;
+
     padding: 0 1.5em !important;
     text-shadow: 0px 0px 12px $myBlack;
     margin: auto !important;

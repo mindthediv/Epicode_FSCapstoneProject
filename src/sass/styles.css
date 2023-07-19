@@ -560,7 +560,6 @@ header #navbarApp {
 }
 
 .postCard {
-  border: 1px solid #5cc1e6;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.5019607843);
 }
@@ -630,14 +629,10 @@ header #navbarApp {
   justify-content: center;
   border: none;
 }
-#feedPage .feedContacts,
-#feedPage .feedForYou,
-#feedPage .feedCrAreas {
+#feedPage .feedContacts {
   border-radius: 8px;
 }
-#feedPage .feedContacts .postCol,
-#feedPage .feedForYou .postCol,
-#feedPage .feedCrAreas .postCol {
+#feedPage .feedContacts .postCol {
   background-color: #ffffff;
 }
 #feedPage h2 {
