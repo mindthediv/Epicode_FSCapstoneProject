@@ -1,0 +1,29 @@
+22:15:44.294 [restartedMain] INFO  c.w.w.WeAreCrApplication - Starting WeAreCrApplication using Java 17.0.7 with PID 11184 (C:\Users\pagli\OneDrive\Desktop\FSCapstone\Epicode_FSCapstoneProject\backend\target\classes started by pagli in C:\Users\pagli\OneDrive\Desktop\FSCapstone\Epicode_FSCapstoneProject)
+22:15:44.306 [restartedMain] INFO  c.w.w.WeAreCrApplication - No active profile set, falling back to 1 default profile: "default"
+22:15:44.514 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:15:44.517 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:15:47.904 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+22:15:48.208 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 246 ms. Found 2 JPA repository interfaces.
+22:15:51.307 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+22:15:51.343 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:15:51.345 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
+22:15:51.622 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:15:51.624 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 7102 ms
+22:15:52.284 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+22:15:52.660 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.5.Final
+22:15:52.670 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+22:15:53.147 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+22:15:53.707 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+22:15:53.801 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:15:55.131 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@239617af
+22:15:55.136 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:15:56.167 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+22:15:58.526 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:15:58.659 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+22:16:01.150 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:16:01.539 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: ServletContext resource [/index.html]
+22:16:02.599 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@79229f82, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4670e815, org.springframework.security.web.context.SecurityContextHolderFilter@38ea1f34, org.springframework.security.web.header.HeaderWriterFilter@68d26888, org.springframework.web.filter.CorsFilter@68d8b100, org.springframework.security.web.authentication.logout.LogoutFilter@2eb3e8fc, com.wearecr.wearecrapplication.security.jwt.JwtAuthenticationFilter@43c2ce48, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@384bbf19, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@da1e5a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@303c4637, org.springframework.security.web.session.SessionManagementFilter@1db18a17, org.springframework.security.web.access.ExceptionTranslationFilter@5d041b58, org.springframework.security.web.access.intercept.AuthorizationFilter@1ac4a526]
+22:16:03.365 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:16:03.498 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+22:16:03.531 [restartedMain] INFO  c.w.w.WeAreCrApplication - Started WeAreCrApplication in 20.632 seconds (process running for 22.098)
+22:16:17.599 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
