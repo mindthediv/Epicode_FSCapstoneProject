@@ -93,69 +93,69 @@ const ProfileHead = () => {
       )}
 
       <div className="d-flex underBanner">
-        <div className="imgBox">
-          {/* FOTO PROFILO ? URL FP : FP PLACEHOLDER */}
-          {pImg != null ? (
-            <div
-              className="profileImg "
-              style={{
-                backgroundImage: "url(" + URL.createObjectURL(pImg) + ")",
-                height: 300 + "px",
-                width: 300 + "px",
-              }}
+        {/* <div className="imgBox"> */}
+        {/* FOTO PROFILO ? URL FP : FP PLACEHOLDER */}
+        {pImg != null ? (
+          <div
+            className="profileImg "
+            style={{
+              backgroundImage: "url(" + URL.createObjectURL(pImg) + ")",
+              height: 300 + "px",
+              width: 300 + "px",
+            }}
+          >
+            <Button className="btnProfileConf" onClick={handleMasterModal}>
+              <i className="fa fa-pencil"></i>
+            </Button>
+            <Modal
+              show={masterModal}
+              onHide={closeMasterModal}
+              centered
+              className="masterModal"
             >
-              <Button className="btnProfileConf" onClick={handleMasterModal}>
-                <i className="fa fa-pencil"></i>
-              </Button>
-              <Modal
-                show={masterModal}
-                onHide={closeMasterModal}
-                centered
-                className="masterModal"
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title>MODIFICA PROFILO</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <EditProfileModal />
-                </Modal.Body>
-              </Modal>
-            </div>
-          ) : (
-            <div
-              className="profileImg "
-              style={{
-                backgroundImage:
-                  "url('assets/imgs/placeholders/userPlaceholder.png')",
-                height: 300 + "px",
-                width: 300 + "px",
-                border: "none",
-              }}
+              <Modal.Header closeButton>
+                <Modal.Title>MODIFICA PROFILO</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <EditProfileModal />
+              </Modal.Body>
+            </Modal>
+          </div>
+        ) : (
+          <div
+            className="profileImg "
+            style={{
+              backgroundImage:
+                "url('assets/imgs/placeholders/userPlaceholder.png')",
+              height: 300 + "px",
+              width: 300 + "px",
+              border: "none",
+            }}
+          >
+            <Button className="btnProfileConf" onClick={handleMasterModal}>
+              <i className="fa fa-pencil"></i>
+            </Button>
+            <Modal
+              show={masterModal}
+              onHide={closeMasterModal}
+              centered
+              className="masterModal"
             >
-              <Button className="btnProfileConf" onClick={handleMasterModal}>
-                <i className="fa fa-pencil"></i>
-              </Button>
-              <Modal
-                show={masterModal}
-                onHide={closeMasterModal}
-                centered
-                className="masterModal"
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title>MODIFICA PROFILO</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <EditProfileModal />
-                </Modal.Body>
-              </Modal>
-            </div>
-          )}
-        </div>
+              <Modal.Header closeButton>
+                <Modal.Title>MODIFICA PROFILO</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <EditProfileModal />
+              </Modal.Body>
+            </Modal>
+          </div>
+        )}
+        {/* </div> */}
 
-        <div className="d-flex infoBox flex-column justify-content-between">
+        <div className="infoBox w-100">
           <div className="textBox">
-            <div className="d-flex justify-content-between">
-              <div>
+            <div className="upText ">
+              <div className="text-center">
                 {isLogged && <h2>{logged.username}</h2>}
                 {isLogged && (
                   <h5>{logged.firstName + " " + logged.lastName}</h5>

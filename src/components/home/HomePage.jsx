@@ -14,7 +14,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <Col className="homeSection discoverSection" xs={12} md={4} lg={4}>
+        <Col className="homeSection discoverSection" xs={12} md={4}>
           <HomeSec
             title="Scopri la bellezza"
             content="Esplora i luoghi, la cultura e le tradizoni delle meravigliose terre Castellane.
@@ -25,7 +25,7 @@ const Home = () => {
                 Festività, sagre, eventi, divertimento, cucina, relax ed avventura, un'esperienza tutta da scoprire!"
           />
         </Col>
-        <Col className="homeSection communitySection" xs={12} md={4} lg={4}>
+        <Col className="homeSection communitySection" xs={12} md={4}>
           <HomeSec
             title="Incontra la comunità"
             content="Coinvolgi e fatti coinvolgere. Accedi al sito ed entra a 
@@ -35,7 +35,7 @@ const Home = () => {
               Resta aggiornato sulle novità della zona, crea nuovi contatti ed esplora ogni giorno ciò che stai cercando!"
           />
         </Col>
-        <Col className="homeSection travelSection" xs={12} md={4} lg={4}>
+        <Col className="homeSection travelSection" xs={12} md={4}>
           <HomeSec
             title="Crea il tuo viaggio"
             content="Che tu sia da solo o in compagnia, i Castelli Romani saranno sempre
@@ -51,7 +51,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row className="justify-content-center mapRow">
-        <Col xs={10} className="d-flex justify-content-center p-2">
+        <Col xs={12} md={10} className="d-flex justify-content-center p-2">
           <iframe
             height="450"
             className="mapFrame d-block"

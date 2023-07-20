@@ -8,15 +8,15 @@ const ProfilePage = () => {
     <div className="bgProfile" id="profilePage">
       <Container fluid>
         <Row className="d-flex justify-content-center ">
-          <Col xs={10}>
+          <Col xs={12} lg={10}>
             <ProfileHead />
           </Col>
         </Row>
         <Row className="d-flex justify-content-center ">
-          <Col xs={7} className="bgGrid">
+          <Col xs={12} lg={7} className="bgGrid">
             <ProfilePostGrid />
           </Col>
-          <Col xs={3}>
+          <Col xs={12} lg={3}>
             <ProfileCrExp />
           </Col>
         </Row>

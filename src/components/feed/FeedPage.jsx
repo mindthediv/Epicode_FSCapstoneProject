@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllPosts } from "../../redux/actions/postActions";
 import FeedGrid from "./FeedGrid";
+import NavUI from "../navbar/NavUI";
 
 const FeedPage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,11 @@ const FeedPage = () => {
       <Row>
         <Col>
           <FeedGrid />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <NavUI />
         </Col>
       </Row>
     </Container>

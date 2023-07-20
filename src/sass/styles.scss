@@ -7,13 +7,13 @@ html,
 body {
   height: 100vh;
   // background-image: url(../../public/assets/imgs/LagoDiNemi.jpg);
-  background-color: white;
+  background-color: $myWhite;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   > div {
     backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: $myWhite;
   }
 }
 
@@ -65,51 +65,57 @@ body {
 }
 // SOME BUTTONS
 // underpost
-.btnInter {
-  font-size: 1.2em;
-  padding: 0.6em !important;
-  border: none !important;
 
-  .fa {
-    box-shadow: 0px 0px 12px 4px $myBlack50;
-    padding: 0.6em !important;
-    border-radius: 38%;
+.btnPost {
+  .btnInter {
+    font-size: 1.3em;
+    padding: 0.8em !important;
+    border: none !important;
+    color: $myBlack50 !important;
+    background-color: $myWhite50;
 
+    .far {
+      box-shadow: 2px -2px 2px 2px $myBlack25;
+      padding: 0.8em !important;
+      border-radius: 38%;
+      background-color: $myWhite;
+      &:hover {
+        box-shadow: inset 2px -3px 3px 2px $myBlack25;
+        color: $myWhite;
+        cursor: pointer;
+        transition: all 0.4s;
+      }
+    }
     &:hover {
-      box-shadow: inset 0px 0px 12px 4px $myBlack50;
+      background-color: $myWhite;
+    }
+  }
+  .interLike {
+    color: $myPrime !important;
+    .far {
+      &:hover {
+        background-color: $myPrime !important;
+      }
+    }
+  }
+  .interComment {
+    color: $myAux !important;
+    .far {
+      &:hover {
+        background-color: $myAux !important;
+      }
+    }
+  }
+  .interSave {
+    color: $myGolden !important;
+    .far {
+      &:hover {
+        background-color: $myGolden !important;
+      }
     }
   }
 }
-.interLike {
-  background-color: $myPrime25 !important;
-  color: $myBlack50 !important;
-  .fa {
-    background-color: $myPrime50;
-  }
-  &:hover {
-    background-color: $myPrime !important;
-  }
-}
-.interComment {
-  background-color: $myAux25 !important;
-  color: $myBlack50 !important;
-  .fa {
-    background-color: $myAux50;
-  }
-  &:hover {
-    background-color: $myAux !important;
-  }
-}
-.interMenu {
-  background-color: white !important;
-  color: $myBlack50 !important;
-  .fa {
-    background-color: $myBlack25;
-  }
-  &:hover {
-    background-color: $myGolden !important;
-  }
-}
+
 // postmaker
 .btnPmaker {
   padding: 0.6em !important;
@@ -245,15 +251,15 @@ header {
   }
   .homeSection.discoverSection {
     background-image: url("../../public/assets/imgs/ViaSacra.jpg");
-    padding: 3em 3em 3em 1.5em !important;
+    padding: 3em 1.5em !important;
   }
   .communitySection {
     background-image: url("../../public/assets/imgs/prodotti.jpg");
-    padding: 3em 1.5em 3em 1.5em !important;
+    padding: 3em 1.5em !important;
   }
   .travelSection {
     background-image: url("../../public/assets/imgs/Ariccia.jpg");
-    padding: 3em 1.5em 3em 3em !important;
+    padding: 3em 1.5em !important;
   }
   .mapRow {
     background-color: $myWhite25;
@@ -270,7 +276,6 @@ header {
   .homeCrAreas {
     display: flex;
     align-items: center;
-    flex-direction: column;
     color: white;
     background-image: radial-gradient(
       $myWhite50,
@@ -281,7 +286,7 @@ header {
     .areaBoxDiv {
       display: flex;
       justify-content: center;
-
+      flex-wrap: wrap;
       .areaDiv {
         padding: 1em !important;
         h4 {
@@ -477,10 +482,16 @@ header {
       z-index: -1;
     }
     .underBanner {
-      padding-left: 2em !important;
       @include myBgLight();
       border-radius: 24px;
       background-color: $myWhite50;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0px 1em !important;
+      @media (min-width: 768px) {
+        justify-content: start;
+        flex-wrap: nowrap;
+      }
       .profileImg {
         max-width: 275px;
         border-radius: 50%;
@@ -496,6 +507,16 @@ header {
       .infoBox {
         font-weight: 600;
         font-size: larger;
+        flex-wrap: wrap;
+      }
+
+      .upText {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        @media (min-width: 768px) {
+          justify-content: space-between;
+        }
       }
 
       .textBox {
@@ -565,8 +586,11 @@ header {
 
 //FEED ---------------
 .postCard {
-  border-radius: 8px;
-  background-color: $myWhite50;
+  border-top: 2px solid white;
+  margin: 0.8em auto !important;
+  background-color: $myWhite;
+  border-radius: 18px;
+  box-shadow: 2px 3px 4px 1px $myBlack25;
   a {
     text-decoration: none !important;
     color: $myBlack;
@@ -574,71 +598,79 @@ header {
     padding: 0.2em !important;
   }
   .userInfo {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     background-image: linear-gradient(
-      155deg,
-      $myWhite,
-      $myWhite,
-      $myWhite50,
-      $myWhite50,
-      rgba(255, 255, 255, 0)
-    );
+        155deg,
+        $myWhite,
+        $myWhite,
+        $myWhite50,
+        $myWhite50,
+        rgba(255, 255, 255, 0)
+      ),
+      linear-gradient(white, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     color: rgb(0, 0, 0);
     position: absolute;
-    .miniUserImg {
-      width: 48px;
-      height: 48px;
+  }
+  .miniUserImg {
+    width: 48px;
+    height: 48px;
+  }
+  .miniInfo {
+    line-height: 1em;
+    font-size: 0.9em;
+    a {
+      text-decoration: none;
     }
-    .miniInfo {
-      line-height: 1em;
-      font-size: 0.9em;
-      a {
-        text-decoration: none;
-      }
 
-      .smallTxt {
-        font-size: 0.8em;
-      }
+    .smallTxt {
+      font-size: 0.8em;
     }
   }
+  .postImgWrapper {
+    width: 100vw;
+    @media (min-width: 576px) {
+      width: 100%;
+    }
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(0, 0, 0);
+  }
+  .postText {
+    bottom: 0;
+    background-color: $myWhite75;
+    width: 100%;
+    border-top-right-radius: 48px;
+    border-top-left-radius: 12px;
 
-  .postContent {
-    position: relative;
-    &:hover {
-      .postText {
-        background-color: $myWhite;
-        transition: all 0.4s;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Numero di righe da visualizzare */
+      -webkit-box-orient: vertical;
+      overflow: scroll;
+      text-overflow: unset;
+
+      padding: 0.4em !important;
+      padding-top: 0.6em !important;
+      text-shadow: 0px 0px 6px white;
+      height: 60px;
+      &:hover {
+        // -webkit-line-clamp: 5; /* Numero di righe da visualizzare */
+        height: 160px;
+        transition: all 1s;
       }
     }
+    .postContent {
+      position: relative;
+      background-color: $myWhite;
+      border-radius: 24px;
 
-    .postImgWrapper {
-      width: 100%;
-      height: 400px;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-color: rgb(0, 0, 0);
-    }
-    .postText {
-      position: absolute;
-      bottom: 0;
-      background-color: $myWhite75;
-      width: 100%;
-
-      p {
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* Numero di righe da visualizzare */
-        -webkit-box-orient: vertical;
-        overflow: scroll;
-        text-overflow: unset;
-
-        padding: 0.4em !important;
-        padding-top: 0.6em !important;
-        text-shadow: 0px 0px 6px white;
-        height: 60px;
-        &:hover {
-          // -webkit-line-clamp: 5; /* Numero di righe da visualizzare */
-          height: 160px;
-          transition: all 1s;
+      &:hover {
+        .postText {
+          background-color: $myWhite;
+          transition: all 0.4s;
         }
       }
     }
@@ -649,22 +681,6 @@ header {
   .row {
     justify-content: center;
     border: none;
-  }
-  .feedContacts {
-    .postCol {
-      background-color: $myWhite;
-    }
-    border-radius: 8px;
-  }
-
-  h2 {
-    color: $myWhite;
-    @include myBackground();
-
-    padding: 0 1.5em !important;
-    text-shadow: 0px 0px 12px $myBlack;
-    margin: auto !important;
-    text-align: center;
   }
 
   .postMaker {
@@ -745,4 +761,22 @@ header {
       padding: 0.6em !important;
     }
   }
+}
+
+// NAV UI
+.navUi {
+  height: 80px;
+  background-color: $myWhite;
+  border-top: 2px solid white;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0px -4px 3px 2px $myBlack25;
+  .btnNavUi {
+    font-size: 1.6em;
+  }
+}
+#feedGrid {
+  overflow-y: scroll;
+  height: 100vh;
+  padding-bottom: 80px !important; //per via della navUi
 }

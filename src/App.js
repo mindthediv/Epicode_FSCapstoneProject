@@ -15,18 +15,12 @@ import "react-toastify/dist/ReactToastify.css";
 import CrAreaPage from "./components/crAreas/CrArea";
 import ProfileSettings from "./components/profile/ProfileSettings";
 import UserProfile from "./components/profile/users/UserProfile";
+import NavUI from "./components/navbar/NavUI";
 function App() {
   return (
     <BrowserRouter>
       <div className="App" id="App">
         <Container fluid>
-          <header className="sticky-top">
-            <Row>
-              <Col>
-                <NavbarApp />
-              </Col>
-            </Row>
-          </header>
           <main>
             <Row>
               <Col>
@@ -49,13 +43,6 @@ function App() {
               </Col>
             </Row>
           </main>
-          <footer>
-            <Row>
-              <Col>
-                <FooterApp />
-              </Col>
-            </Row>
-          </footer>
         </Container>
       </div>
     </BrowserRouter>

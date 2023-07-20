@@ -6,12 +6,11 @@ const FeedGrid = () => {
   const allPosts = useSelector((state) => state.posts.allPosts);
 
   return (
-    <Container fluid>
-      <h2>I TUOI CONTATTI</h2>
-      <Row className="w-100 ">
+    <Container fluid id="feedGrid">
+      <Row className="w-100 justify-content-column">
         {allPosts.length > 0 ? (
           allPosts.map((el, i) => (
-            <Col xs={12} md={4} lg={3}>
+            <Col xs={12} md={12} lg={3}>
               <PostCard key={el + i} post={el} />
             </Col>
           ))
