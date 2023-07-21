@@ -1,5 +1,7 @@
 package com.wearecr.wearecrapplication.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -33,6 +36,13 @@ public class UsersController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<UserDto> getUser(@PathVariable String id) throws JsonProcessingException {
         UserDto u = userService.getUser(id);
+        return ResponseEntity.ok(u);
+    }
+
+    @GetMapping()
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<List<UserDto>> getStartWith(@RequestParam String value) throws JsonProcessingException {
+        List<UserDto> u = userService.getStartWith(value);
         return ResponseEntity.ok(u);
     }
 

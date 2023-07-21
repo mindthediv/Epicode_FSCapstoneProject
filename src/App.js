@@ -16,6 +16,7 @@ import CrAreaPage from "./components/crAreas/CrArea";
 import ProfileSettings from "./components/profile/ProfileSettings";
 import UserProfile from "./components/profile/users/UserProfile";
 import NavUI from "./components/navbar/NavUI";
+import SearchPage from "./components/search/SearchPage";
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +34,7 @@ function App() {
                     path="/profileSettings"
                     element={<ProfileSettings />}
                   ></Route>
+                  <Route path="/search" element={<SearchPage />}></Route>
                   <Route path="/feed" element={<FeedPage />}></Route>
                   <Route path="/crArea/:area" element={<CrAreaPage />}></Route>
                   <Route

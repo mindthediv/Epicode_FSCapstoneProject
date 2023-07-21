@@ -38,34 +38,34 @@ const ProfileHead = () => {
       console.log(e);
     }
   };
-  // FETCH PER FOTO BACKGROUND
-  const getBackgroundPic = async () => {
-    try {
-      const response = await fetch(
-        API_UPLOADS + "/background/" + logged.backgroundImg,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "blob",
-            Authorization: "Bearer " + logged.auth,
-          },
-        }
-      );
-      if (response.ok) {
-        const blob = await response.blob();
-        setBackImg(blob);
-        console.log(blob);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // // FETCH PER FOTO BACKGROUND
+  // const getBackgroundPic = async () => {
+  // try {
+  // const response = await fetch(
+  // API_UPLOADS + "/background/" + logged.backgroundImg,
+  // {
+  // method: "GET",
+  // headers: {
+  // "Content-Type": "blob",
+  // Authorization: "Bearer " + logged.auth,
+  // },
+  // }
+  // );
+  // if (response.ok) {
+  // const blob = await response.blob();
+  // setBackImg(blob);
+  // console.log(blob);
+  // }
+  // } catch (e) {
+  // console.log(e);
+  // }
+  // };
 
   useEffect(() => {
     const handleEffect = async () => {
-      if (logged.auth) {
+      if (logged) {
         getProfilePic();
-        getBackgroundPic();
+        // getBackgroundPic();
       }
     };
     handleEffect();
@@ -73,25 +73,6 @@ const ProfileHead = () => {
 
   return (
     <div className="profileHead">
-      {/*BACKGROUND ? URL BG : BG PLACEHOLDER
-          {backImg != null ? ( 
-        // <div
-          // style={{
-            // backgroundImage: "url(" + URL.createObjectURL(backImg) + ")",
-            // height: 300 + "px",
-          // }}
-          // className="w-100 profileBanner"
-        // ></div>
-      // ) : (
-        // <div
-          // style={{
-            // backgroundImage: "url('assets/imgs/placeholders/artCover.jpg')",
-            // height: 300 + "px",
-          // }}
-          // className="w-100 profileBanner"
-        // ></div>
-          // )} */}
-
       <div className="d-flex banner p-4">
         {/* FOTO PROFILO ? URL FP : FP PLACEHOLDER */}
         {pImg != null ? (

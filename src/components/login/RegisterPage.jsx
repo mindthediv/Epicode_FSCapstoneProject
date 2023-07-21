@@ -16,6 +16,7 @@ import {
 } from "../../redux/actions/registerActions";
 import { ToastContainer, toast } from "react-toastify";
 import { useRef } from "react";
+import { logIn } from "../../redux/actions/loggedActions";
 
 const RegisterPage = () => {
   const resetRef = useRef();
@@ -50,7 +51,7 @@ const RegisterPage = () => {
                 onClose: () => navigate("/login"),
                 hideProgressBar: false,
                 closeOnClick: true,
-                pauseOnHover: true,
+                pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
                 theme: "light",

@@ -91,7 +91,8 @@ body > div {
 .interLike {
   color: #5cc1e6 !important;
 }
-.interLike .far:hover {
+.interLike .far:hover,
+.interLike .fa:hover {
   background-color: #5cc1e6 !important;
 }
 
@@ -556,6 +557,7 @@ header #navbarApp {
   border-top: 2px solid white;
   margin: 0.8em auto !important;
   background-color: #e3eaed;
+  background-image: linear-gradient(-135deg, rgba(0, 0, 0, 0.1), #e3eaed, #e3eaed);
   border-radius: 8px;
   box-shadow: 2px 4px 6px 3px rgba(0, 0, 0, 0.1882352941);
 }
@@ -599,7 +601,6 @@ header #navbarApp {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: rgb(0, 0, 0);
 }
 @media (min-width: 576px) {
   .postCard .postImgWrapper {
@@ -719,6 +720,7 @@ header #navbarApp {
 .navUi {
   height: 80px;
   background-color: #e3eaed;
+  background-image: linear-gradient(-135deg, rgba(0, 0, 0, 0.1882352941), #e3eaed, #e3eaed);
   border-top: 2px solid white;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
@@ -732,8 +734,26 @@ header #navbarApp {
   justify-content: center;
   margin: 0.2em !important;
 }
-.navUi .rnd {
+.navUi .rnd, .navUi .fa-plus,
+.navUi .fa-search {
   border-radius: 38%;
+}
+.navUi .fa-plus,
+.navUi .fa-search {
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 2px -4px 4px 2px rgba(0, 0, 0, 0.1882352941);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navUi .fa-search {
+  color: #e3eaed;
+  background-color: #5cc1e6;
+}
+.navUi .fa-plus {
+  color: rgb(231, 233, 234);
+  background-color: #71c74d;
 }
 
 #feedGrid {
@@ -750,10 +770,14 @@ header #navbarApp {
   border-bottom: solid 3px rgba(0, 0, 0, 0.25);
 }
 
+.my-wbg {
+  background-color: #e3eaed;
+}
+
 .mySoftBtn, #profilePage .profileHead .banner .profileBtnLine > *, .navUi > * {
   box-shadow: 2px -2px 2px 2px rgba(0, 0, 0, 0.1882352941);
-  border-left: 2px solid white;
-  border-bottom: 2px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
   border-radius: 38%;
   font-size: 1.6em;
 }
@@ -768,10 +792,23 @@ header #navbarApp {
   justify-self: center;
 }
 
+.vh100scroll {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .dropProfile {
   background-color: #e3eaed !important;
 }
 .dropProfile .dropdown-item {
   box-shadow: inset 0px 0px 24px rgba(0, 0, 0, 0.1882352941);
   border: 1px solid rgba(227, 234, 237, 0.1882352941);
+}
+
+#searchPage {
+  background-image: linear-gradient(#e3eaed, #e3eaed, rgba(255, 255, 255, 0)), radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
 }/*# sourceMappingURL=styles.css.map */

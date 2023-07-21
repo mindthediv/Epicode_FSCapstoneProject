@@ -29,7 +29,8 @@ public class Post {
     @Column(name = "file_path")
     private String filePath;
     private String text;
+    private String title;
     private LocalDate date;
-    @Column (name = "user_id")
+    @Column(name = "user_id")
     private Long userId;
 }

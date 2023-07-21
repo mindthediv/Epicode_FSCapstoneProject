@@ -1,11 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../redux/actions/postActions";
 import FeedGrid from "./FeedGrid";
 import NavUI from "../navbar/NavUI";
 
 const FeedPage = () => {
+  //REDUX
   const dispatch = useDispatch();
 
   useEffect(() => {

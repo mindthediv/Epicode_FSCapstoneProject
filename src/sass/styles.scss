@@ -97,7 +97,8 @@ body {
 }
 .interLike {
   color: $myPrime !important;
-  .far {
+  .far,
+  .fa {
     &:hover {
       background-color: $myPrime !important;
     }
@@ -560,6 +561,12 @@ header {
   border-top: 2px solid white;
   margin: 0.8em auto !important;
   background-color: $myWhite;
+  background-image: linear-gradient(
+    -135deg,
+    rgba(0, 0, 0, 0.1),
+    $myWhite,
+    $myWhite
+  );
   border-radius: 8px;
   box-shadow: 2px 4px 6px 3px $myBlack25;
 
@@ -616,7 +623,6 @@ header {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
   }
   .postText {
     width: 100%;
@@ -746,6 +752,7 @@ header {
 .navUi {
   height: 80px;
   background-color: $myWhite;
+  background-image: linear-gradient(-135deg, $myBlack25, $myWhite, $myWhite);
   border-top: 2px solid white;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
@@ -763,7 +770,26 @@ header {
   .rnd {
     border-radius: 38%;
   }
+  .fa-plus,
+  .fa-search {
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 2px -4px 4px 2px $myBlack25;
+    @extend .rnd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fa-search {
+    color: $myWhite;
+    background-color: $myPrime;
+  }
+  .fa-plus {
+    color: rgb(231, 233, 234);
+    background-color: #71c74d;
+  }
 }
+
 #feedGrid {
   overflow-y: scroll;
   height: 100vh;
@@ -772,11 +798,14 @@ header {
 .myBg {
   @include myBackground();
 }
+.my-wbg {
+  background-color: $myWhite;
+}
 
 .mySoftBtn {
   box-shadow: 2px -2px 2px 2px $myBlack25;
-  border-left: 2px solid white;
-  border-bottom: 2px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
   border-radius: 38%;
   font-size: 1.6em;
   @extend .hoPoint;
@@ -790,6 +819,10 @@ header {
   align-self: center;
   justify-self: center;
 }
+.vh100scroll {
+  height: 100vh;
+  overflow-y: scroll;
+}
 .dropProfile {
   background-color: $myWhite !important;
 
@@ -797,4 +830,7 @@ header {
     box-shadow: inset 0px 0px 24px $myBlack25;
     border: 1px solid $myWhite25;
   }
+}
+#searchPage {
+  @include myBgLightRev();
 }

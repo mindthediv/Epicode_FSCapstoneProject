@@ -1,5 +1,8 @@
 package com.wearecr.wearecrapplication.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,25 @@ public class UserService {
         udto.setUserId(String.valueOf(u.getId()));
         udto.setProfileImg(u.getProfileImg());
         return udto;
+    }
+
+    public List<UserDto> getStartWith(String username) {
+        List<User> userList = userRepo.findByUsernameStartingWith(username);
+        List<UserDto> dtoList = new ArrayList<UserDto>();
+
+        userList.forEach(u -> {
+            UserDto udto = new UserDto();
+            udto.setFirstName(u.getFirstName());
+            udto.setLastName(u.getLastName());
+            udto.setEmail(u.getEmail());
+            udto.setUsername(u.getUsername());
+            udto.setRoles(u.getRoles());
+            udto.setUserId(String.valueOf(u.getId()));
+            udto.setProfileImg(u.getProfileImg());
+            dtoList.add(udto);
+        });
+
+        return dtoList;
     }
 
     public UserDto putUser(String id, UserDto inDto) {

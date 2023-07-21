@@ -47,7 +47,9 @@ const NavUI = () => {
 
   useEffect(() => {
     const handleEffect = async () => {
-      getProfilePic();
+      if (logged) {
+        getProfilePic();
+      }
     };
     handleEffect();
   }, []);
@@ -59,7 +61,7 @@ const NavUI = () => {
         width={60}
         onClick={() => handleHome()}
       />
-      <span>
+      <span onClick={() => navigate("/search")}>
         <i className="fas fa-search"></i>
       </span>
       {/* ADD POST MODAL */}
@@ -100,7 +102,7 @@ const NavUI = () => {
             </Dropdown.Toggle>
           )}
           <Dropdown.Menu className="fs-3 text-center vw100 dropProfile">
-            <Dropdown.Item className="p-3" href="/settings">
+            <Dropdown.Item className="p-3" href="#">
               Impostazioni
             </Dropdown.Item>
             <Dropdown.Item

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,6 +77,13 @@ public class FeedController {
   @PreAuthorize("hasRole('ROLE_USER')")
   public ResponseEntity<Post> postAPost(@RequestBody PostDto dto) throws IOException {
     Post p = postService.savePost(dto);
+    return ResponseEntity.ok(p);
+  }
+
+  @PutMapping()
+  @PreAuthorize("hasRole('ROLE_USER')")
+  public ResponseEntity<Post> putPost(@RequestBody PostDto dto) throws IOException {
+    Post p = postService.putPost(dto.getPostId(), dto);
     return ResponseEntity.ok(p);
   }
 }

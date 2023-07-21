@@ -27,8 +27,8 @@ const ProfilePostGrid = () => {
       <Row className="d-flex row-cols-3">
         {loggedPosts.length > 0 ? (
           loggedPosts.map((el, i) => (
-            <Col xs={12} lg={4}>
-              <PostCard key={el + i} post={el} />
+            <Col xs={12} lg={4} className="px-1 ">
+              <PostCard key={el + i} post={el} className="profilePost" />
             </Col>
           ))
         ) : (

@@ -8,6 +8,7 @@ import lombok.Getter;
 public class PostDto {
     private String filePath;
     private String text;
+    private String title = "-";
     private Long userId;
     private long postId;
 }

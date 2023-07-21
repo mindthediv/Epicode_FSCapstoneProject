@@ -10,8 +10,8 @@ const FeedGrid = () => {
       <Row className="w-100 justify-content-column myBg">
         {allPosts.length > 0 ? (
           allPosts.map((el, i) => (
-            <Col xs={12} md={12} lg={3}>
-              <PostCard key={el + i} post={el} />
+            <Col xs={12} md={12} lg={3} className="px-2">
+              <PostCard key={el.id} post={el} />
             </Col>
           ))
         ) : (

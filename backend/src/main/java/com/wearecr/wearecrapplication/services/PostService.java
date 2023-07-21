@@ -10,9 +10,11 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.wearecr.wearecrapplication.DTOs.PostDto;
+import com.wearecr.wearecrapplication.DTOs.PostDto;
 import com.wearecr.wearecrapplication.models.Post;
 import com.wearecr.wearecrapplication.repositories.PostRepo;
 import com.wearecr.wearecrapplication.security.security_configurations.SecretCodeConvert;
+import com.wearecr.wearecrapplication.security.security_models.User;
 
 @Service
 public class PostService {
@@ -30,8 +32,20 @@ public class PostService {
         p.setFilePath(dto.getFilePath());
         p.setUserId(dto.getUserId());
         p.setId(dto.getPostId());
+        p.setTitle(dto.getTitle());
         postRepo.save(p);
         // Post savedP = postRepo.findById((long) 202).get();
+        return p;
+    }
+
+    public Post putPost(Long id, PostDto inDto) {
+        Post p = postRepo.findById(id).get();
+        p.setDate(LocalDate.now());
+        p.setFilePath(inDto.getFilePath());
+        p.setText(inDto.getText());
+        p.setTitle(inDto.getTitle());
+        postRepo.saveAndFlush(p);
+
         return p;
     }
 
