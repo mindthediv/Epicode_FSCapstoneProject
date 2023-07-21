@@ -7,7 +7,7 @@ const FeedGrid = () => {
 
   return (
     <Container fluid id="feedGrid">
-      <Row className="w-100 justify-content-column">
+      <Row className="w-100 justify-content-column myBg">
         {allPosts.length > 0 ? (
           allPosts.map((el, i) => (
             <Col xs={12} md={12} lg={3}>

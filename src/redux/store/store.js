@@ -22,7 +22,7 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2,
   // da implementare ipotetica logica di "ricordami" in cui se spuntato il log persisterà.
   //oppure logout automatico alla chiusura della sessione t/f
-  blacklist: ["register", "posts", "users"],
+  blacklist: ["register", "posts"],
 };
 
 const reducers = combineReducers({

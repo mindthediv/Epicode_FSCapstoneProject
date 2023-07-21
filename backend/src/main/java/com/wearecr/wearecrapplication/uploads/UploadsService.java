@@ -11,9 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UploadsService {
-    private String uploadsPath = "C:\\Users\\pagli\\OneDrive\\Desktop\\FSCapstone\\Epicode_FSCapstoneProject\\backend\\src\\main\\resources\\static\\files";
-    private String profileImgsPath = "C:\\Users\\pagli\\OneDrive\\Desktop\\FSCapstone\\Epicode_FSCapstoneProject\\backend\\src\\main\\resources\\static\\profileImgs";
-    private String backgroundsPath = "C:\\Users\\pagli\\OneDrive\\Desktop\\FSCapstone\\Epicode_FSCapstoneProject\\backend\\src\\main\\resources\\static\\backgrounds";
+    private String uploadsPath = "backend\\src\\main\\resources\\static\\files";
+    private String profileImgsPath = "backend\\src\\main\\resources\\static\\profileImgs";
+    private String backgroundsPath = "backend\\src\\main\\resources\\static\\backgrounds";
 
     public String downloadFile(MultipartFile file) {
         try {

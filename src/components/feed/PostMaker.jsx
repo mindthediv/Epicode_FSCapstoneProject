@@ -9,15 +9,18 @@ import { useNavigate } from "react-router-dom";
 export const API_UPLOADS = "http://localhost:8080/api/uploads";
 
 const PostMaker = () => {
+  const navigate = useNavigate();
+  //REDUX
   const reduxLogged = useSelector((state) => state.logged.loggedUser);
   const auth = reduxLogged.auth;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // STATE
   const [imageSrc, setImageSrc] = useState("");
   const [postState, setPostState] = useState({
     text: "",
     file: new FormData(),
     userId: reduxLogged.id,
+    title: "",
   });
 
   //SUB POST DELL'INPUT FILE (si implementerà nella post principale)
@@ -36,6 +39,7 @@ const PostMaker = () => {
           text: postState.text,
           file: fileSource,
           userId: postState.userId,
+          title: postState.title,
         });
         return fileSource;
       }
@@ -57,6 +61,7 @@ const PostMaker = () => {
           text: postState.text,
           filePath: postFile,
           userId: postState.userId,
+          title: postState.title,
         }),
       });
       if (response.ok) {
@@ -117,17 +122,37 @@ const PostMaker = () => {
     <div className="mt-2 bg-light postMaker p-2">
       {/* TEXT AREA */}
       <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-1">
+          <Form.Control
+            type="text"
+            placeholder="Titolo"
+            className="p-2"
+            onChange={(e) =>
+              setPostState({
+                text: postState.text,
+                file: postState.file,
+                userId: postState.userId,
+                title: e.target.value,
+              })
+            }
+          />
+        </Form.Group>
+        <div>
+          {/* IMG PREVIEW */}
+          <img src={imageSrc} alt="" ref={imgBox} className="imgPreview" />
+        </div>
         <Form.Group className="mb-1" controlId="postTextInput">
           <Form.Control
             as="textarea"
             rows={5}
-            className="postTextArea"
+            className="postTextArea p-2"
             placeholder="Scrivi qualcosa..."
             onChange={(e) =>
               setPostState({
                 text: e.target.value,
                 file: postState.file,
                 userId: postState.userId,
+                title: postState.title,
               })
             }
           />
@@ -144,10 +169,7 @@ const PostMaker = () => {
           pauseOnHover
           theme="light"
         />
-        <div>
-          {/* IMG PREVIEW */}
-          <img src={imageSrc} alt="" ref={imgBox} className="imgPreview" />
-        </div>
+
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <Form.Control

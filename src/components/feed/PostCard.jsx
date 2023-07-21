@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { API_USERS } from "../../redux/actions/usersActions";
+import { API_USERS, cacheUser } from "../../redux/actions/usersActions";
 import { useEffect, useState } from "react";
 import { API_UPLOADS } from "./PostMaker";
 import { CACHE_USER } from "../../redux/actions/usersActions";
@@ -8,17 +8,19 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const PostCard = (post) => {
   let p = post.post;
+  const navigate = useNavigate();
   // REDUX
   const auth = useSelector((state) => state.logged.loggedUser.auth);
+  const loggedState = useSelector((state) => state.logged);
   const u = useSelector((state) => state.users.user);
   const dispatch = useDispatch();
   //STATE
-  const [imgState, setImgState] = useState(null);
+  const [postImg, setPostImg] = useState(null);
   const [userState, setUserState] = useState(null);
-  const [pImg, setPImg] = useState(null);
+  const [profileImg, setProfileImg] = useState(null);
 
-  //SUB GET SULL'ENDPOINT DEL FILE UPLOADATO
-  const getURLFile = async () => {
+  //OTTIENE LA POST IMG
+  const getPostImg = async () => {
     try {
       const fileResp = await fetch(API_UPLOADS + "/" + p.filePath, {
         method: "GET",
@@ -29,13 +31,12 @@ const PostCard = (post) => {
       });
       if (fileResp.ok) {
         const blob = await fileResp.blob();
-        setImgState(blob);
+        setPostImg(blob);
       }
     } catch (e) {
       console.log(e);
     }
   };
-
   //OTTIENE LO USER DEL POST VIA PATHNAME SU "/users/{userId}"
   const getUserViaPath = async () => {
     try {
@@ -87,7 +88,7 @@ const PostCard = (post) => {
       console.log(error);
     }
   };
-
+  //OTTIENE LA PROFILEIMG
   const getProfilePic = async (picName) => {
     try {
       const response = await fetch(API_UPLOADS + "/profile/" + picName, {
@@ -99,11 +100,18 @@ const PostCard = (post) => {
       });
       if (response.ok) {
         const blob = await response.blob();
-        setPImg(blob);
+        setProfileImg(blob);
       }
     } catch (e) {
       console.log(e);
     }
+  };
+
+  // USER LINK HANDLER
+  const userLink = async () => {
+    let u = await getUserViaProp(p.userId);
+    dispatch(cacheUser(u));
+    navigate("/users/" + p.userId);
   };
 
   useEffect(() => {
@@ -117,7 +125,7 @@ const PostCard = (post) => {
           setUserState(usr);
         }
         if (p.filePath) {
-          getURLFile();
+          getPostImg();
         }
       };
       handleEffect();
@@ -127,21 +135,21 @@ const PostCard = (post) => {
   useEffect(() => {
     if (userState != null) {
       let handleEffect = async () => {
-        await getProfilePic(userState.profileImg);
+        getProfilePic(userState.profileImg);
       };
       handleEffect();
     }
   }, [userState]);
 
   return (
-    <Container className="postCard">
-      <Row className="align-items-center justify-content-between pt-2">
+    <Container className="postCard px-2">
+      <Row className="align-items-center justify-content-between p-2 pb-0 mt-2">
         <Col xs={2}>
           {/* foto profilo ? url fp : fp placeholder  */}
-          {pImg != null ? (
+          {profileImg != null ? (
             <img
               className="miniUserImg rounded-circle"
-              src={URL.createObjectURL(pImg)}
+              src={URL.createObjectURL(profileImg)}
             />
           ) : (
             <img
@@ -156,11 +164,15 @@ const PostCard = (post) => {
           {p && userState != null && (
             <div className="miniInfo">
               <div className="d-flex align-items-center justify-content-between">
-                <Link to={"/users/" + p.userId}>
-                  <span className="d-block">{userState.username}</span>
-                </Link>
+                <span
+                  className="d-block userLink my-2"
+                  onClick={() => userLink()}
+                >
+                  {userState.username}
+                </span>
                 <span className="smallTxt me-2">{p.date}</span>
               </div>
+
               <span className="smallTxt">
                 <i className="fas fa-map-marker-alt me-2"></i>LOCATION
               </span>
@@ -170,17 +182,19 @@ const PostCard = (post) => {
       </Row>
       <Row>
         <Col>
-          <h2 className="text-center py-2">Titolo Post</h2>
+          <h2 className="text-center p-3 text-uppercase m-auto fs-1 text-bold">
+            Titolo Post molto importante
+          </h2>
         </Col>
       </Row>
       <Row>
         <Col>
           {/* IMMAGINE */}
-          {imgState != null && (
+          {postImg != null && (
             <div
-              className="postImgWrapper"
+              className="postImgWrapper "
               style={{
-                backgroundImage: "url(" + URL.createObjectURL(imgState) + ")",
+                backgroundImage: "url(" + URL.createObjectURL(postImg) + ")",
               }}
             ></div>
           )}
@@ -190,8 +204,8 @@ const PostCard = (post) => {
         <Col>
           {/* TESTO */}
           {p && (
-            <div className="postText px-5">
-              <p>{p.text}</p>
+            <div className="postText px-1">
+              <p className="fs-5">{p.text}</p>
             </div>
           )}
         </Col>
@@ -210,9 +224,15 @@ const PostCard = (post) => {
                 <span className="btnInter interComment">
                   <i className="far fa-comments "></i>
                 </span>
-                <span className="btnInter interSave">
-                  <i className="far fa-bookmark "></i>
-                </span>
+                {loggedState.loggedUser.id != p.userId ? (
+                  <span className="btnInter interSave">
+                    <i className="far fa-bookmark "></i>
+                  </span>
+                ) : (
+                  <span className="btnInter interSave">
+                    <i class="far farfa  fa-edit"></i>
+                  </span>
+                )}
               </div>
             </div>
           )}

@@ -1,18 +1,17 @@
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { API_UPLOADS } from "../feed/PostMaker";
+import { API_UPLOADS } from "../../feed/PostMaker";
 import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import EditProfileModal from "./EditProfileModal";
+import EditProfileModal from "../EditProfileModal";
 
-const ProfileHead = () => {
+const UserProfileHead = ({ user }) => {
   // REDUX
   const logged = useSelector((state) => state.logged.loggedUser);
   const isLogged = useSelector((state) => state.logged.isLogged);
   // STATE
   const [pImg, setPImg] = useState(null);
-  const [backImg, setBackImg] = useState(null);
-  // MODALI
+  // MODAL
   const [masterModal, setMasterModal] = useState(false);
   const handleMasterModal = () => setMasterModal(true);
   const closeMasterModal = () => setMasterModal(false);
@@ -20,7 +19,7 @@ const ProfileHead = () => {
   const getProfilePic = async () => {
     try {
       const response = await fetch(
-        API_UPLOADS + "/profile/" + logged.profileImg,
+        API_UPLOADS + "/profile/" + user.profileImg,
         {
           method: "GET",
           headers: {
@@ -38,60 +37,16 @@ const ProfileHead = () => {
       console.log(e);
     }
   };
-  // FETCH PER FOTO BACKGROUND
-  const getBackgroundPic = async () => {
-    try {
-      const response = await fetch(
-        API_UPLOADS + "/background/" + logged.backgroundImg,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "blob",
-            Authorization: "Bearer " + logged.auth,
-          },
-        }
-      );
-      if (response.ok) {
-        const blob = await response.blob();
-        setBackImg(blob);
-        console.log(blob);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   useEffect(() => {
     const handleEffect = async () => {
-      if (logged.auth) {
-        getProfilePic();
-        getBackgroundPic();
-      }
+      getProfilePic();
     };
     handleEffect();
   }, []);
 
   return (
     <div className="profileHead">
-      {/*BACKGROUND ? URL BG : BG PLACEHOLDER
-          {backImg != null ? ( 
-        // <div
-          // style={{
-            // backgroundImage: "url(" + URL.createObjectURL(backImg) + ")",
-            // height: 300 + "px",
-          // }}
-          // className="w-100 profileBanner"
-        // ></div>
-      // ) : (
-        // <div
-          // style={{
-            // backgroundImage: "url('assets/imgs/placeholders/artCover.jpg')",
-            // height: 300 + "px",
-          // }}
-          // className="w-100 profileBanner"
-        // ></div>
-          // )} */}
-
       <div className="d-flex banner p-4">
         {/* FOTO PROFILO ? URL FP : FP PLACEHOLDER */}
         {pImg != null ? (
@@ -103,22 +58,26 @@ const ProfileHead = () => {
               width: 300 + "px",
             }}
           >
-            <Button className="btnProfileConf" onClick={handleMasterModal}>
-              <i className="fa fa-pencil"></i>
-            </Button>
-            <Modal
-              show={masterModal}
-              onHide={closeMasterModal}
-              centered
-              className="masterModal"
-            >
-              <Modal.Header closeButton>
-                <Modal.Title>MODIFICA PROFILO</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <EditProfileModal />
-              </Modal.Body>
-            </Modal>
+            {window.location.pathname.includes("/users/") && (
+              <>
+                <Button className="btnProfileConf" onClick={handleMasterModal}>
+                  <i className="fa fa-pencil"></i>
+                </Button>
+                <Modal
+                  show={masterModal}
+                  onHide={closeMasterModal}
+                  centered
+                  className="masterModal"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>MODIFICA PROFILO</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <EditProfileModal />
+                  </Modal.Body>
+                </Modal>
+              </>
+            )}
           </div>
         ) : (
           <div
@@ -131,22 +90,26 @@ const ProfileHead = () => {
               border: "none",
             }}
           >
-            <Button className="btnProfileConf" onClick={handleMasterModal}>
-              <i className="fa fa-pencil"></i>
-            </Button>
-            <Modal
-              show={masterModal}
-              onHide={closeMasterModal}
-              centered
-              className="masterModal"
-            >
-              <Modal.Header closeButton>
-                <Modal.Title>MODIFICA PROFILO</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <EditProfileModal />
-              </Modal.Body>
-            </Modal>
+            {window.location.pathname.includes("/users/") && (
+              <>
+                <Button className="btnProfileConf" onClick={handleMasterModal}>
+                  <i className="fa fa-pencil"></i>
+                </Button>
+                <Modal
+                  show={masterModal}
+                  onHide={closeMasterModal}
+                  centered
+                  className="masterModal"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>MODIFICA PROFILO</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <EditProfileModal />
+                  </Modal.Body>
+                </Modal>
+              </>
+            )}
           </div>
         )}
 
@@ -154,10 +117,8 @@ const ProfileHead = () => {
           <div className="textBox">
             <div className="upText ">
               <div className="text-center mb-3">
-                {isLogged && <h2>{logged.username}</h2>}
-                {isLogged && (
-                  <h5>{logged.firstName + " " + logged.lastName}</h5>
-                )}
+                {user && <h2>{user.username}</h2>}
+                {user && <h5>{user.firstName + " " + user.lastName}</h5>}
                 <span className="d-block">
                   <i className="fas fa-map-marker-alt me-2"></i>LUOGO
                 </span>
@@ -187,4 +148,4 @@ const ProfileHead = () => {
   );
 };
 
-export default ProfileHead;
+export default UserProfileHead;

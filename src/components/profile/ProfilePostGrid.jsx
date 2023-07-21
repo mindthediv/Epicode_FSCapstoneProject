@@ -23,13 +23,11 @@ const ProfilePostGrid = () => {
   }, []);
 
   return (
-    <Container fluid className="profileGridPost">
+    <Container fluid>
       <Row className="d-flex row-cols-3">
-        {/* mobile da progettare */}
-
         {loggedPosts.length > 0 ? (
           loggedPosts.map((el, i) => (
-            <Col className="postCol" xs={12} lg={4}>
+            <Col xs={12} lg={4}>
               <PostCard key={el + i} post={el} />
             </Col>
           ))

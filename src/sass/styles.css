@@ -2,7 +2,7 @@
 html,
 body {
   height: 100vh;
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,7 +11,7 @@ html > div,
 body > div {
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
 }
 
 * {
@@ -40,7 +40,7 @@ body > div {
   display: none !important;
 }
 
-.hoPoint:hover, .btnPmaker:hover {
+.hoPoint:hover, .mySoftBtn:hover, #profilePage .profileHead .banner .profileBtnLine > :hover, .navUi > :hover, .btnPmaker:hover {
   cursor: pointer;
 }
 
@@ -58,45 +58,60 @@ body > div {
   width: 100%;
 }
 
-.btnPost .btnInter {
+.btnInter {
   font-size: 1.3em;
   padding: 0.8em !important;
   border: none !important;
   color: rgba(0, 0, 0, 0.5019607843) !important;
-  background-color: e0e7e980;
+  background-color: rgba(227, 234, 237, 0.5019607843);
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
 }
-.btnPost .btnInter .far {
+.btnInter .far,
+.btnInter .fa {
   box-shadow: 2px -2px 2px 2px rgba(0, 0, 0, 0.1882352941);
   padding: 0.8em !important;
   border-radius: 38%;
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transition: all 0.4s;
 }
-.btnPost .btnInter .far:hover {
+.btnInter .far:hover,
+.btnInter .fa:hover {
   box-shadow: inset 2px -3px 3px 2px rgba(0, 0, 0, 0.1882352941);
-  color: #e0e7e9;
+  color: #e3eaed;
   cursor: pointer;
   transition: all 0.4s;
 }
-.btnPost .btnInter:hover {
-  background-color: #e0e7e9;
+.btnInter:hover {
+  background-color: #e3eaed;
 }
-.btnPost .interLike {
+
+.interLike {
   color: #5cc1e6 !important;
 }
-.btnPost .interLike .far:hover {
+.interLike .far:hover {
   background-color: #5cc1e6 !important;
 }
-.btnPost .interComment {
+
+.interComment {
   color: #74d64a !important;
 }
-.btnPost .interComment .far:hover {
+.interComment .far:hover {
   background-color: #74d64a !important;
 }
-.btnPost .interSave {
-  color: #ffda59 !important;
+
+.interSave {
+  color: rgba(0, 0, 0, 0.1882352941) !important;
 }
-.btnPost .interSave .far:hover {
+.interSave .far:hover,
+.interSave .fa:hover {
   background-color: #ffda59 !important;
+  color: rgba(0, 0, 0, 0.5019607843);
+}
+.interSave .farfa {
+  color: rgba(0, 0, 0, 0.5019607843);
 }
 
 .btnPmaker {
@@ -129,7 +144,7 @@ header {
   box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.1882352941);
 }
 header #navbarApp {
-  background-color: #e0e7e9 !important;
+  background-color: #e3eaed !important;
   box-shadow: inset 0px 8px 24px 0px rgba(92, 193, 230, 0.1882352941);
 }
 
@@ -184,13 +199,13 @@ header #navbarApp {
   padding-left: 5em !important;
 }
 #homePage .homeJumbo .homeBrand .btnBox h2 {
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
   border-bottom: solid 3px rgba(0, 0, 0, 0.25);
   font-weight: 600;
-  color: #e0e7e9;
+  color: #e3eaed;
   text-shadow: 0px 0px 16px #000000;
   width: -moz-fit-content;
   width: fit-content;
@@ -198,30 +213,33 @@ header #navbarApp {
 }
 #homePage .homeJumbo .homeBrand .btnBox :hover h2 {
   transition: all 0.5s;
-  color: #e0e7e9;
+  color: #e3eaed;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1882352941);
   box-shadow: 0px 0px 24px 1px #fffdd0;
 }
 #homePage .homeJumbo .homeBrand .btnBox a {
   text-decoration: none;
 }
+#homePage .homeSec {
+  background-color: #e3eaed;
+}
+#homePage .homeSec .secImg {
+  width: 100%;
+  margin: auto !important;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1882352941);
+}
 #homePage .homeSec h2 {
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
-  border-top: solid 3px rgba(255, 255, 255, 0.25);
-  border-left: solid 3px rgba(0, 0, 0, 0.25);
-  border-right: solid 3px rgba(255, 255, 255, 0.25);
-  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
   padding: 0.2em 0.8em !important;
   text-align: center;
   font-weight: 600;
   color: white;
-  text-shadow: 0px 0px 16px #000000;
+  text-shadow: 0px 0px 8px #000000;
+  background-color: rgba(0, 0, 0, 0.5019607843);
 }
 #homePage .homeSec p {
-  background-image: radial-gradient(#e0e7e9, #e0e7e9, #e0e7e9, e0e7e980);
+  background-image: radial-gradient(#e3eaed, #e3eaed, #e3eaed, rgba(227, 234, 237, 0.5019607843));
   padding: 1em !important;
-  min-height: 300px;
-  max-height: 300px;
   overflow-y: scroll;
   font-size: large;
 }
@@ -230,21 +248,9 @@ header #navbarApp {
   background-size: cover;
   background-repeat: no-repeat;
 }
-#homePage .homeSection.discoverSection {
-  background-image: url("../../public/assets/imgs/ViaSacra.jpg");
-  padding: 3em 1.5em !important;
-}
-#homePage .communitySection {
-  background-image: url("../../public/assets/imgs/prodotti.jpg");
-  padding: 3em 1.5em !important;
-}
-#homePage .travelSection {
-  background-image: url("../../public/assets/imgs/Ariccia.jpg");
-  padding: 3em 1.5em !important;
-}
 #homePage .mapRow {
-  background-color: e0e7e930;
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-color: rgba(227, 234, 237, 0.1882352941);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -260,7 +266,7 @@ header #navbarApp {
   display: flex;
   align-items: center;
   color: white;
-  background-image: radial-gradient(e0e7e980, e0e7e980, e0e7e980, e0e7e930);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.1882352941));
 }
 #homePage .homeCrAreas .areaBoxDiv {
   display: flex;
@@ -352,18 +358,20 @@ header #navbarApp {
 }
 
 .registerForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: larger;
   background-color: rgba(255, 255, 255, 0.8);
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
   border-bottom: solid 3px rgba(0, 0, 0, 0.25);
   color: rgb(0, 0, 0);
-  padding: 2em !important;
 }
 .registerForm .btnSub {
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -378,7 +386,7 @@ header #navbarApp {
 }
 
 .loginForm {
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -402,7 +410,7 @@ header #navbarApp {
   filter: none;
 }
 .loginForm .btnLogin {
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -414,16 +422,22 @@ header #navbarApp {
   color: #000000;
 }
 
-#registerPage {
-  background-image: url(../../public/assets/imgs/Ariccia.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 90vh;
+.registerForm,
+.loginForm {
+  border-radius: 18px;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1882352941);
+}
+@media (min-width: 768px) {
+  .registerForm,
+  .loginForm {
+    height: 400px;
+  }
 }
 
+#registerPage .row {
+  height: 100vh;
+}
 #loginPage {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -442,52 +456,45 @@ header #navbarApp {
   transition: all 0.4s;
   text-shadow: 0px 0px 16px 8px black !important;
 }
-#loginPage .row {
-  height: 50vh;
-}
 
 #profilePage {
-  position: relative;
   top: -50px;
+  height: 100vh;
+  overflow-y: scroll;
+  padding-bottom: 80px !important;
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
 }
 #profilePage .bgGrid {
-  background-color: rgba(0, 0, 0, 0.5019607843);
+  background-color: rgba(0, 0, 0, 0.1882352941);
+  border-radius: 18px;
 }
-#profilePage .profileHead {
-  position: relative;
-}
-#profilePage .profileHead .profileBanner {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  bottom: -50px;
-  z-index: -1;
-}
-#profilePage .profileHead .underBanner {
-  background-image: linear-gradient(white, rgb(255, 255, 255), rgba(255, 255, 255, 0)), radial-gradient(e0e7e930, e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
+#profilePage .profileHead .banner {
+  background-image: linear-gradient(rgba(255, 255, 255, 0), #e3eaed, #e3eaed), radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
   border-bottom: solid 3px rgba(0, 0, 0, 0.25);
   border-radius: 24px;
-  background-color: e0e7e980;
+  background-color: rgba(227, 234, 237, 0.5019607843);
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0px 1em !important;
 }
 @media (min-width: 768px) {
-  #profilePage .profileHead .underBanner {
+  #profilePage .profileHead .banner {
     justify-content: start;
     flex-wrap: nowrap;
   }
 }
-#profilePage .profileHead .underBanner .profileImg {
+#profilePage .profileHead .banner .profileImg {
   max-width: 275px;
   border-radius: 50%;
   position: relative;
   top: -30%;
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -496,41 +503,47 @@ header #navbarApp {
   background-position: center;
   background-size: cover;
 }
-#profilePage .profileHead .underBanner .infoBox {
+#profilePage .profileHead .banner .infoBox {
   font-weight: 600;
   font-size: larger;
   flex-wrap: wrap;
 }
-#profilePage .profileHead .underBanner .upText {
+#profilePage .profileHead .banner .upText {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
-  #profilePage .profileHead .underBanner .upText {
+  #profilePage .profileHead .banner .upText {
     justify-content: space-between;
   }
 }
-#profilePage .profileHead .underBanner .textBox {
+#profilePage .profileHead .banner .textBox {
   padding: 1em 1.2em !important;
 }
-#profilePage .profileHead .underBanner .profileBtnLine > * {
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.5019607843);
-  border-top-left-radius: 48%;
-  border-bottom-right-radius: 26%;
-  padding: 0.8em !important;
-  background-color: #e0e7e9;
-  position: relative;
-  z-index: 1;
+#profilePage .profileHead .banner .profileBtnLine {
+  margin: auto !important;
+  width: 100%;
 }
-#profilePage .profileHead .underBanner .profileBtnLine > *:hover {
+@media (min-width: 768px) {
+  #profilePage .profileHead .banner .profileBtnLine {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+#profilePage .profileHead .banner .profileBtnLine > * {
+  padding: 0.5em !important;
+  background-color: #e3eaed;
+  margin: 0 0.4em !important;
+}
+#profilePage .profileHead .banner .profileBtnLine > *:hover {
   box-shadow: inset 2px 4px 12px 0px rgba(0, 0, 0, 0.5019607843);
   transition: all 0.4s;
 }
-#profilePage .profileHead .underBanner .btnProfileConf {
+#profilePage .profileHead .banner .btnProfileConf {
   width: 48px;
   height: 48px;
-  background-image: radial-gradient(#e0e7e9, #fffdd0, e0e7e980);
+  background-image: radial-gradient(#e3eaed, #fffdd0, rgba(227, 234, 237, 0.5019607843));
   color: rgb(24, 24, 24);
   font-size: 2em;
   border-radius: 8px;
@@ -538,46 +551,20 @@ header #navbarApp {
   background-color: transparent;
   border: none;
 }
-#profilePage .profileGridPost {
-  width: 100;
-}
-#profilePage .profileGridPost .gridPostCol {
-  background-image: url("http://www.placekitten.com/800");
-  background-size: cover;
-  background-position: center;
-}
-#profilePage .profileGridPost .gridPostCol::before {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-#profilePage .profileGridPost .noPost {
-  background-color: e0e7e980;
-}
-#profilePage .crExpBox {
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
-  border-top: solid 3px rgba(255, 255, 255, 0.25);
-  border-left: solid 3px rgba(0, 0, 0, 0.25);
-  border-right: solid 3px rgba(255, 255, 255, 0.25);
-  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
-}
-#profilePage .crExpBox .xperience {
-  background-image: linear-gradient(white, rgb(255, 255, 255), rgba(255, 255, 255, 0)), radial-gradient(e0e7e930, e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
-  border-top: solid 3px rgba(255, 255, 255, 0.25);
-  border-left: solid 3px rgba(0, 0, 0, 0.25);
-  border-right: solid 3px rgba(255, 255, 255, 0.25);
-  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
-}
-#profilePage .crExpBox .xperience .xpImg {
-  width: 100%;
-}
 
 .postCard {
   border-top: 2px solid white;
   margin: 0.8em auto !important;
-  background-color: #e0e7e9;
-  border-radius: 18px;
-  box-shadow: 2px 3px 4px 1px rgba(0, 0, 0, 0.1882352941);
+  background-color: #e3eaed;
+  border-radius: 8px;
+  box-shadow: 2px 4px 6px 3px rgba(0, 0, 0, 0.1882352941);
+}
+.postCard .inShad {
+  box-shadow: inset 0px 0px 8px 4px rgba(0, 0, 0, 0.1882352941);
+  width: -moz-fit-content;
+  width: fit-content;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
 }
 .postCard a {
   text-decoration: none !important;
@@ -588,13 +575,13 @@ header #navbarApp {
 .postCard .userInfo {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-image: linear-gradient(155deg, #e0e7e9, #e0e7e9, e0e7e980, e0e7e980, rgba(255, 255, 255, 0)), linear-gradient(white, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(155deg, #e3eaed, #e3eaed, rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.5019607843), rgba(255, 255, 255, 0)), linear-gradient(white, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   color: rgb(0, 0, 0);
   position: absolute;
 }
 .postCard .miniUserImg {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
 }
 .postCard .miniInfo {
   line-height: 1em;
@@ -607,7 +594,7 @@ header #navbarApp {
   font-size: 0.8em;
 }
 .postCard .postImgWrapper {
-  width: 100vw;
+  width: 100%;
   height: 400px;
   background-position: center;
   background-size: cover;
@@ -620,8 +607,6 @@ header #navbarApp {
   }
 }
 .postCard .postText {
-  bottom: 0;
-  background-color: e0e7e9cd;
   width: 100%;
   border-top-right-radius: 48px;
   border-top-left-radius: 12px;
@@ -635,19 +620,20 @@ header #navbarApp {
   padding: 0.4em !important;
   padding-top: 0.6em !important;
   text-shadow: 0px 0px 6px white;
-  height: 60px;
+  height: 80px;
+  transition: all 0.4s;
 }
 .postCard .postText p:hover {
   height: 160px;
-  transition: all 1s;
+  transition: all 0.6s;
 }
 .postCard .postText .postContent {
   position: relative;
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
   border-radius: 24px;
 }
 .postCard .postText .postContent:hover .postText {
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
   transition: all 0.4s;
 }
 
@@ -676,7 +662,7 @@ header #navbarApp {
 }
 .CrAreaHead .underBanner {
   padding-left: 2em !important;
-  background-image: linear-gradient(white, rgb(255, 255, 255), rgba(255, 255, 255, 0)), radial-gradient(e0e7e930, e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
+  background-image: linear-gradient(rgba(255, 255, 255, 0), #e3eaed, #e3eaed), radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1882352941));
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -688,7 +674,7 @@ header #navbarApp {
   border-radius: 50%;
   position: relative;
   top: -30%;
-  background-image: radial-gradient(e0e7e930, rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
   border-right: solid 3px rgba(255, 255, 255, 0.25);
@@ -707,7 +693,7 @@ header #navbarApp {
   border-top-left-radius: 48%;
   border-bottom-right-radius: 26%;
   padding: 0.8em !important;
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
   position: relative;
   z-index: 1;
 }
@@ -732,18 +718,60 @@ header #navbarApp {
 
 .navUi {
   height: 80px;
-  background-color: #e0e7e9;
+  background-color: #e3eaed;
   border-top: 2px solid white;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   box-shadow: 0px -4px 3px 2px rgba(0, 0, 0, 0.1882352941);
 }
-.navUi .btnNavUi {
-  font-size: 1.6em;
+.navUi > * {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2em !important;
+}
+.navUi .rnd {
+  border-radius: 38%;
 }
 
 #feedGrid {
   overflow-y: scroll;
   height: 100vh;
   padding-bottom: 80px !important;
+}
+
+.myBg {
+  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(0, 0, 0, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
+  border-top: solid 3px rgba(255, 255, 255, 0.25);
+  border-left: solid 3px rgba(0, 0, 0, 0.25);
+  border-right: solid 3px rgba(255, 255, 255, 0.25);
+  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
+}
+
+.mySoftBtn, #profilePage .profileHead .banner .profileBtnLine > *, .navUi > * {
+  box-shadow: 2px -2px 2px 2px rgba(0, 0, 0, 0.1882352941);
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  border-radius: 38%;
+  font-size: 1.6em;
+}
+
+.userLink {
+  font-weight: bold;
+}
+
+.vw100 {
+  width: 100vw;
+  align-self: center;
+  justify-self: center;
+}
+
+.dropProfile {
+  background-color: #e3eaed !important;
+}
+.dropProfile .dropdown-item {
+  box-shadow: inset 0px 0px 24px rgba(0, 0, 0, 0.1882352941);
+  border: 1px solid rgba(227, 234, 237, 0.1882352941);
 }/*# sourceMappingURL=styles.css.map */

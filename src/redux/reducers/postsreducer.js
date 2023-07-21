@@ -1,8 +1,14 @@
-import { GET_POSTS, ADD_POSTS, GET_LOGGED_POSTS } from "../actions/postActions";
+import {
+  GET_POSTS,
+  ADD_POSTS,
+  GET_LOGGED_POSTS,
+  GET_USER_POSTS,
+} from "../actions/postActions";
 
 const postsState = {
   allPosts: [],
   loggedPosts: [],
+  userPosts: [],
 };
 
 export const postsReducer = (state = postsState, action) => {
@@ -16,6 +22,11 @@ export const postsReducer = (state = postsState, action) => {
       return {
         ...state,
         loggedPosts: action.payload,
+      };
+    case GET_USER_POSTS:
+      return {
+        ...state,
+        userPosts: action.payload,
       };
     default:
       return state;

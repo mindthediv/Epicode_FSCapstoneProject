@@ -7,7 +7,7 @@ import {
 } from "../actions/loggedActions";
 
 const LoggedState = {
-  isLogged: null,
+  isLogged: false,
   loggedUser: {
     id: null,
     firstName: "",

@@ -9,9 +9,7 @@
     font-weight: 600;
     color: $myWhite;
     text-shadow: 0px 0px 16px $myBlack;
-    // box-shadow: 0px 0px 16px 2px $myBlack50;
     width: fit-content;
-    // backdrop-filter: blur(4px);
     padding: 0.8em !important;
   }
 
@@ -21,18 +19,6 @@
       color: $myWhite;
       text-shadow: 0px 0px 8px $myBlack25;
       box-shadow: 0px 0px 24px 1px $myLux;
-
-      // background-image: //radial-gradient($myAux25, $myPrime50),
-      //   linear-gradient(
-      //   45deg,
-      //   rgba(255, 255, 255, 0) 0% 16%,
-      //   $myAux 16% 44%,
-      //   rgba(255, 255, 255, 0) 44% 50%,
-      //   $myPrime 50% 75%,
-      //   rgba(255, 255, 255, 0) 75% 79%,
-      //   $myGolden 79% 98%,
-      //   rgba(255, 255, 255, 0) 98% 100%
-      // );
     }
   }
 }
@@ -57,11 +43,7 @@
 }
 
 @mixin myBgLight {
-  background-image: linear-gradient(
-      white,
-      rgb(255, 255, 255),
-      rgba(255, 255, 255, 0)
-    ),
+  background-image: linear-gradient(rgba(255, 255, 255, 0), $myWhite, $myWhite),
     radial-gradient($myWhite25, $myWhite25, $myBlack25),
     linear-gradient(
       45deg,

@@ -19,8 +19,10 @@ import { useRef } from "react";
 
 const RegisterPage = () => {
   const resetRef = useRef();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  //REDUX
+  const dispatch = useDispatch();
+
   const reduxRegister = useSelector((state) => state.register);
 
   const loginDto = {
@@ -29,151 +31,79 @@ const RegisterPage = () => {
   };
 
   return (
-    <div
+    <Container
+      fluid
       id="registerPage"
-      className="d-flex justify-content-center align-items-center"
+      className="d-flex justify-content-center align-items-center p-4 "
     >
-      <Container>
-        <Row>
-          {/* REGISTER FORM */}
-          <Col className="registerForm">
-            {/* ON SUBMIT */}
-            <Form
-              onSubmit={(e) => {
-                e.preventDefault();
-                dispatch(postRegister(reduxRegister.user));
-                toast.success("Utente registrato con successo! ", {
-                  position: "top-center",
-                  autoClose: 500,
-                  onClose: () => navigate("/login"),
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                });
-                resetRef.current.click();
-              }}
-            >
-              <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-              {/* FIRSTNAME */}
-              <div className="d-flex justify-content-between">
-                <Form.Group
-                  id="loginFirstName"
-                  className="mb-3 midSize w-50 me-4"
-                  controlId="registerFirstName"
-                >
-                  <Form.Label>Nome</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Nome"
-                    onChange={(e) => {
-                      dispatch(handleFirstName(e.target.value));
-                    }}
-                  />
-                </Form.Group>
-                {/* LASTNAME */}
-                <Form.Group
-                  className="mb-3  w-50 "
-                  controlId="registerLastName"
-                >
-                  <Form.Label>Cognome</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Cognome"
-                    onChange={(e) => {
-                      dispatch(handleLastName(e.target.value));
-                    }}
-                  />
-                </Form.Group>
-              </div>
-              {/* USERNAME */}
-              <div className="d-flex justify-content-between">
-                <Form.Group
-                  className="mb-3 w-50 me-4"
-                  controlId="registerUsername"
-                >
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    onChange={(e) => {
-                      dispatch(handleUsername(e.target.value));
-                    }}
-                  />
-                </Form.Group>
-                {/* EMAIL */}
-                <Form.Group className="mb-3 w-50 " controlId="registerEmail">
-                  <Form.Label>Indirizzo email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Email"
-                    onChange={(e) => {
-                      dispatch(handleEmail(e.target.value));
-                    }}
-                  />
-                </Form.Group>
-              </div>
-              {/* PASSWORD */}
-              <Form.Group className="mb-3 w-50" controlId="registerPassword">
-                <Form.Label>Password</Form.Label>
+      <Row className="d-flex align-items-center">
+        {/* REGISTER FORM */}
+        <Col className="registerForm p-4">
+          {/* ON SUBMIT */}
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(postRegister(reduxRegister.user));
+              toast.success("Utente registrato con successo! ", {
+                position: "top-center",
+                autoClose: 500,
+                onClose: () => navigate("/login"),
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+              resetRef.current.click();
+            }}
+          >
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            {/* FIRSTNAME */}
+            <div className="d-flex justify-content-between">
+              <Form.Group
+                id="loginFirstName"
+                className="mb-3 midSize w-50 me-4"
+                controlId="registerFirstName"
+              >
+                <Form.Label>Nome</Form.Label>
                 <Form.Control
-                  type="password"
-                  placeholder="Password"
+                  type="text"
+                  placeholder="Nome"
                   onChange={(e) => {
-                    dispatch(handlePassword(e.target.value));
+                    dispatch(handleFirstName(e.target.value));
                   }}
                 />
               </Form.Group>
-              <Form.Text className=" d-block mb-3">
-                Non temere, non condivideremo le tue informazioni con nessuno e
-                saranno protette con massima sicurezza.
-              </Form.Text>
-              {/* BUTTONS */}
-              <div className="d-flex justify-content-between">
-                <Button
-                  variant="dark-outline border  border-dark"
-                  className=" p-3 mb-3"
-                  type="reset"
-                  ref={resetRef}
-                >
-                  Resetta i campi
-                </Button>
-
-                <Button
-                  variant="light"
-                  className=" btnSub p-3 mb-3 me-2"
-                  type="submit"
-                >
-                  Iscriviti!
-                </Button>
-              </div>
-            </Form>
-          </Col>
-          {/* LOGIN FORM */}
-          <Col className="loginForm">
-            <h3>Già iscritto? ;{")"}</h3>
-            <Form
-              className="d-flex flex-column justify-content-center align-items-center"
-              onSubmit={(e) => {
-                e.preventDefault();
-                dispatch(postLogin(loginDto));
-                navigate("/me");
-              }}
-            >
-              <Form.Group className="mb-3 w-100 me-4" controlId="loginUsername">
+              {/* LASTNAME */}
+              <Form.Group className="mb-3  w-50 " controlId="registerLastName">
+                <Form.Label>Cognome</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Cognome"
+                  onChange={(e) => {
+                    dispatch(handleLastName(e.target.value));
+                  }}
+                />
+              </Form.Group>
+            </div>
+            {/* USERNAME */}
+            <div className="d-flex justify-content-between">
+              <Form.Group
+                className="mb-3 w-50 me-4"
+                controlId="registerUsername"
+              >
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   type="text"
@@ -183,29 +113,97 @@ const RegisterPage = () => {
                   }}
                 />
               </Form.Group>
-
-              <Form.Group className="mb-3 w-100" controlId="loginPassword">
-                <Form.Label>Password</Form.Label>
+              {/* EMAIL */}
+              <Form.Group className="mb-3 w-50 " controlId="registerEmail">
+                <Form.Label>Indirizzo email</Form.Label>
                 <Form.Control
-                  type="password"
-                  placeholder="Password"
+                  type="email"
+                  placeholder="Email"
                   onChange={(e) => {
-                    dispatch(handlePassword(e.target.value));
+                    dispatch(handleEmail(e.target.value));
                   }}
                 />
               </Form.Group>
+            </div>
+            {/* PASSWORD */}
+            <Form.Group className="mb-3 w-50" controlId="registerPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  dispatch(handlePassword(e.target.value));
+                }}
+              />
+            </Form.Group>
+            <Form.Text className="small d-block mb-3">
+              Non temere, non condivideremo le tue informazioni con nessuno e
+              saranno protette con massima sicurezza.
+            </Form.Text>
+            {/* BUTTONS */}
+            <div className="d-flex justify-content-between">
               <Button
-                variant="transparent"
-                className="p-3 px-4 mb-3 btnLogin"
+                variant="dark-outline border  border-dark"
+                className=" p-3 mb-3"
+                type="reset"
+                ref={resetRef}
+              >
+                Resetta i campi
+              </Button>
+
+              <Button
+                variant="light"
+                className=" btnSub p-3 mb-3 me-2"
                 type="submit"
               >
-                Accedi!
+                Iscriviti!
               </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+            </div>
+          </Form>
+        </Col>
+        {/* LOGIN FORM */}
+        <Col className="loginForm p-4">
+          <h3>Già iscritto? ;{")"}</h3>
+          <Form
+            className="d-flex flex-column justify-content-center align-items-center"
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(postLogin(loginDto));
+              navigate("/me");
+            }}
+          >
+            <Form.Group className="mb-3 w-100 me-4" controlId="loginUsername">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Username"
+                onChange={(e) => {
+                  dispatch(handleUsername(e.target.value));
+                }}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3 w-100" controlId="loginPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  dispatch(handlePassword(e.target.value));
+                }}
+              />
+            </Form.Group>
+            <Button
+              variant="transparent"
+              className="p-3 px-4 mb-3 btnLogin"
+              type="submit"
+            >
+              Accedi!
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -66,53 +66,62 @@ body {
 // SOME BUTTONS
 // underpost
 
-.btnPost {
-  .btnInter {
-    font-size: 1.3em;
-    padding: 0.8em !important;
-    border: none !important;
-    color: $myBlack50 !important;
-    background-color: $myWhite50;
+.btnInter {
+  font-size: 1.3em;
+  padding: 0.8em !important;
+  border: none !important;
+  color: $myBlack50 !important;
+  background-color: $myWhite50;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
 
-    .far {
-      box-shadow: 2px -2px 2px 2px $myBlack25;
-      padding: 0.8em !important;
-      border-radius: 38%;
-      background-color: $myWhite;
-      &:hover {
-        box-shadow: inset 2px -3px 3px 2px $myBlack25;
-        color: $myWhite;
-        cursor: pointer;
-        transition: all 0.4s;
-      }
-    }
+  .far,
+  .fa {
+    box-shadow: 2px -2px 2px 2px $myBlack25;
+    padding: 0.8em !important;
+    border-radius: 38%;
+    background-color: $myWhite;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transition: all 0.4s;
     &:hover {
-      background-color: $myWhite;
+      box-shadow: inset 2px -3px 3px 2px $myBlack25;
+      color: $myWhite;
+      cursor: pointer;
+      transition: all 0.4s;
     }
   }
-  .interLike {
-    color: $myPrime !important;
-    .far {
-      &:hover {
-        background-color: $myPrime !important;
-      }
+  &:hover {
+    background-color: $myWhite;
+  }
+}
+.interLike {
+  color: $myPrime !important;
+  .far {
+    &:hover {
+      background-color: $myPrime !important;
     }
   }
-  .interComment {
-    color: $myAux !important;
-    .far {
-      &:hover {
-        background-color: $myAux !important;
-      }
+}
+.interComment {
+  color: $myAux !important;
+  .far {
+    &:hover {
+      background-color: $myAux !important;
     }
   }
-  .interSave {
-    color: $myGolden !important;
-    .far {
-      &:hover {
-        background-color: $myGolden !important;
-      }
+}
+.interSave {
+  color: $myBlack25 !important;
+  .far,
+  .fa {
+    &:hover {
+      background-color: $myGolden !important;
+      color: $myBlack50;
     }
+  }
+  .farfa {
+    color: $myBlack50;
   }
 }
 
@@ -220,15 +229,20 @@ header {
   }
 
   .homeSec {
+    background-color: $myWhite;
+    .secImg {
+      width: 100%;
+      margin: auto !important;
+      border-radius: 12px;
+      box-shadow: 0px 2px 4px 2px $myBlack25;
+    }
     h2 {
-      @include myBackground();
       padding: 0.2em 0.8em !important;
-      // border-top-left-radius: 2em;
-      // border-top-right-radius: 2em;
       text-align: center;
       font-weight: 600;
       color: white;
-      text-shadow: 0px 0px 16px $myBlack;
+      text-shadow: 0px 0px 8px $myBlack;
+      background-color: $myBlack50;
     }
     p {
       background-image: radial-gradient(
@@ -237,30 +251,19 @@ header {
         $myWhite,
         $myWhite50
       );
+
       padding: 1em !important;
-      min-height: 300px;
-      max-height: 300px;
       overflow-y: scroll;
       font-size: large;
     }
   }
+
   .homeSection {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
-  .homeSection.discoverSection {
-    background-image: url("../../public/assets/imgs/ViaSacra.jpg");
-    padding: 3em 1.5em !important;
-  }
-  .communitySection {
-    background-image: url("../../public/assets/imgs/prodotti.jpg");
-    padding: 3em 1.5em !important;
-  }
-  .travelSection {
-    background-image: url("../../public/assets/imgs/Ariccia.jpg");
-    padding: 3em 1.5em !important;
-  }
+
   .mapRow {
     background-color: $myWhite25;
     @include myBackground();
@@ -378,11 +381,13 @@ header {
 
 //REGISTER/LOGIN-------------
 .registerForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: larger;
   background-color: rgba(255, 255, 255, 0.8);
   @include myBackground();
   color: rgb(0, 0, 0);
-  padding: 2em !important;
   .btnSub {
     @include myBackground();
     font-size: larger;
@@ -429,15 +434,23 @@ header {
   }
 }
 
+.registerForm,
+.loginForm {
+  @media (min-width: 768px) {
+    height: 400px;
+  }
+  border-radius: 18px;
+  box-shadow: 0px 0px 8px 2px $myBlack25;
+}
+
 #registerPage {
-  background-image: url(../../public/assets/imgs/Ariccia.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 90vh;
+  .row {
+    height: 100vh;
+    .registerForm {
+    }
+  }
 }
 #loginPage {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -456,38 +469,26 @@ header {
       }
     }
   }
-  .row {
-    height: 50vh;
-  }
 }
 //PROFILE PAGE---------------
 
 #profilePage {
-  position: relative;
   top: -50px;
+  height: 100vh;
+  overflow-y: scroll;
+  padding-bottom: 80px !important;
+  @include myBackground();
   .bgGrid {
-    background-color: $myBlack50;
+    background-color: $myBlack25;
+    border-radius: 18px;
   }
   .profileHead {
-    // background-color: rgba(255, 255, 255, 0.5);
-    position: relative;
-
-    // z-index: -2;
-    .profileBanner {
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      position: relative;
-      bottom: -50px;
-      z-index: -1;
-    }
-    .underBanner {
+    .banner {
       @include myBgLight();
       border-radius: 24px;
       background-color: $myWhite50;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 0px 1em !important;
       @media (min-width: 768px) {
         justify-content: start;
         flex-wrap: nowrap;
@@ -498,12 +499,10 @@ header {
         position: relative;
         top: -30%;
         @include myBackground();
-        // border: 4px solid rgba(255, 255, 255, 0);
         box-shadow: -8px 8px 24px 0px $myBlack25;
         background-position: center;
         background-size: cover;
       }
-
       .infoBox {
         font-weight: 600;
         font-size: larger;
@@ -524,14 +523,16 @@ header {
       }
 
       .profileBtnLine {
+        margin: auto !important;
+        width: 100%;
+        @media (min-width: 768px) {
+          width: fit-content;
+        }
         & > * {
-          box-shadow: 2px 2px 4px 1px $myBlack50;
-          border-top-left-radius: 48%;
-          border-bottom-right-radius: 26%;
-          padding: 0.8em !important;
+          @extend .mySoftBtn;
+          padding: 0.5em !important;
           background-color: $myWhite;
-          position: relative;
-          z-index: 1;
+          margin: 0 0.4em !important ;
           &:hover {
             box-shadow: inset 2px 4px 12px 0px $myBlack50;
             transition: all 0.4s;
@@ -552,36 +553,6 @@ header {
       }
     }
   }
-
-  .profileGridPost {
-    width: 100;
-
-    .gridPostCol {
-      background-image: url("http://www.placekitten.com/800");
-      background-size: cover;
-      background-position: center;
-
-      &::before {
-        content: "";
-        display: block;
-        padding-bottom: 100%; // Imposta l'altezza del div in base alla larghezza
-      }
-    }
-    .noPost {
-      background-color: $myWhite50;
-    }
-  }
-
-  .crExpBox {
-    @include myBackground();
-
-    .xperience {
-      @include myBgLight();
-      .xpImg {
-        width: 100%;
-      }
-    }
-  }
 }
 
 //FEED ---------------
@@ -589,8 +560,16 @@ header {
   border-top: 2px solid white;
   margin: 0.8em auto !important;
   background-color: $myWhite;
-  border-radius: 18px;
-  box-shadow: 2px 3px 4px 1px $myBlack25;
+  border-radius: 8px;
+  box-shadow: 2px 4px 6px 3px $myBlack25;
+
+  .inShad {
+    box-shadow: inset 0px 0px 8px 4px $myBlack25;
+    width: fit-content;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+  }
+
   a {
     text-decoration: none !important;
     color: $myBlack;
@@ -613,8 +592,8 @@ header {
     position: absolute;
   }
   .miniUserImg {
-    width: 48px;
-    height: 48px;
+    width: 54px;
+    height: 54px;
   }
   .miniInfo {
     line-height: 1em;
@@ -628,7 +607,8 @@ header {
     }
   }
   .postImgWrapper {
-    width: 100vw;
+    // width: 100vw;
+    width: 100%;
     @media (min-width: 576px) {
       width: 100%;
     }
@@ -639,8 +619,6 @@ header {
     background-color: rgb(0, 0, 0);
   }
   .postText {
-    bottom: 0;
-    background-color: $myWhite75;
     width: 100%;
     border-top-right-radius: 48px;
     border-top-left-radius: 12px;
@@ -655,11 +633,12 @@ header {
       padding: 0.4em !important;
       padding-top: 0.6em !important;
       text-shadow: 0px 0px 6px white;
-      height: 60px;
+      height: 80px;
+      transition: all 0.4s;
       &:hover {
         // -webkit-line-clamp: 5; /* Numero di righe da visualizzare */
         height: 160px;
-        transition: all 1s;
+        transition: all 0.6s;
       }
     }
     .postContent {
@@ -771,12 +750,51 @@ header {
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   box-shadow: 0px -4px 3px 2px $myBlack25;
-  .btnNavUi {
-    font-size: 1.6em;
+
+  & > * {
+    @extend .mySoftBtn;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.2em !important;
+  }
+  .rnd {
+    border-radius: 38%;
   }
 }
 #feedGrid {
   overflow-y: scroll;
   height: 100vh;
   padding-bottom: 80px !important; //per via della navUi
+}
+.myBg {
+  @include myBackground();
+}
+
+.mySoftBtn {
+  box-shadow: 2px -2px 2px 2px $myBlack25;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  border-radius: 38%;
+  font-size: 1.6em;
+  @extend .hoPoint;
+}
+
+.userLink {
+  font-weight: bold;
+}
+.vw100 {
+  width: 100vw;
+  align-self: center;
+  justify-self: center;
+}
+.dropProfile {
+  background-color: $myWhite !important;
+
+  .dropdown-item {
+    box-shadow: inset 0px 0px 24px $myBlack25;
+    border: 1px solid $myWhite25;
+  }
 }
