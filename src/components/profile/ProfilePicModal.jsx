@@ -11,11 +11,11 @@ import { API_USERS } from "../../redux/actions/usersActions";
 import { getProfilePic } from "../../redux/actions/loggedActions";
 
 const ProfilePicModal = () => {
-  const resetRef = useRef();
   // REDUX
   const logged = useSelector((state) => state.logged.loggedUser);
   const dispatch = useDispatch();
   // STATE
+  const [imageSrc, setImageSrc] = useState("");
   const [settingState, setSettingState] = useState({
     file: new FormData(),
     userId: logged.id,
@@ -75,6 +75,16 @@ const ProfilePicModal = () => {
       current.file.delete("file");
       current.file.append("file", e.target.files[0]);
       console.log(current.file.get("file"));
+      // IMAGE PREVIEW
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          setImageSrc(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+      //
       return current;
     });
   };
@@ -88,11 +98,14 @@ const ProfilePicModal = () => {
   };
 
   return (
-    <Container fluid id="profilePicModal">
+    <Container fluid className="my-bbg">
       <Row className="justify-content-center w-100">
         {logged.username && (
           <Col xs={12} md={8} className=" m-auto">
-            <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form
+              onSubmit={(e) => handleSubmit(e)}
+              className="d-flex flex-column align-items-center"
+            >
               <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -107,32 +120,25 @@ const ProfilePicModal = () => {
               />
 
               {/* FILE INPUT */}
-              <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Label>Immagine Profilo</Form.Label>
+              <Form.Group controlId="formFileMultiple" className="m-3 p-2">
                 <Form.Control
                   type="file"
                   multiple
                   onChange={(e) => handleFile(e)}
                 />
               </Form.Group>
-              {/* BUTTONS */}
-              <div className="d-flex justify-content-between">
-                <Button
-                  variant="light"
-                  className=" p-3 mb-3"
-                  type="reset"
-                  ref={resetRef}
-                >
-                  Annulla Modifiche
-                </Button>
+              {/* IMG PREVIEW */}
 
-                <Button
-                  variant="warning"
-                  className=" btnSub p-3 mb-3 me-2"
-                  type="submit"
-                >
-                  Salva Modifiche
-                </Button>
+              <img
+                src={imageSrc}
+                className="rounded-circle m-auto shadow"
+                width={200}
+              />
+
+              <div className="d-flex justify-content-end w-100 m-3">
+                <span className=" btnInterDark m-3" type="submit">
+                  <i className="far fa-save btnConfirm"></i>
+                </span>
               </div>
             </Form>
           </Col>

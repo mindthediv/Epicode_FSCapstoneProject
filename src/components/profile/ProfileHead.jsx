@@ -38,28 +38,6 @@ const ProfileHead = () => {
       console.log(e);
     }
   };
-  // // FETCH PER FOTO BACKGROUND
-  // const getBackgroundPic = async () => {
-  // try {
-  // const response = await fetch(
-  // API_UPLOADS + "/background/" + logged.backgroundImg,
-  // {
-  // method: "GET",
-  // headers: {
-  // "Content-Type": "blob",
-  // Authorization: "Bearer " + logged.auth,
-  // },
-  // }
-  // );
-  // if (response.ok) {
-  // const blob = await response.blob();
-  // setBackImg(blob);
-  // console.log(blob);
-  // }
-  // } catch (e) {
-  // console.log(e);
-  // }
-  // };
 
   useEffect(() => {
     const handleEffect = async () => {
@@ -87,12 +65,7 @@ const ProfileHead = () => {
             <Button className="btnProfileConf" onClick={handleMasterModal}>
               <i className="fa fa-pencil"></i>
             </Button>
-            <Modal
-              show={masterModal}
-              onHide={closeMasterModal}
-              centered
-              className="masterModal"
-            >
+            <Modal show={masterModal} onHide={closeMasterModal} centered>
               <Modal.Header closeButton>
                 <Modal.Title>MODIFICA PROFILO</Modal.Title>
               </Modal.Header>
@@ -119,7 +92,7 @@ const ProfileHead = () => {
               show={masterModal}
               onHide={closeMasterModal}
               centered
-              className="masterModal"
+              className="d-flex justify-content-center align-items-center"
             >
               <Modal.Header closeButton>
                 <Modal.Title>MODIFICA PROFILO</Modal.Title>

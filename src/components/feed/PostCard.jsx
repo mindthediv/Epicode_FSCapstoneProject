@@ -8,6 +8,7 @@ import { Col, Container, Row, Spinner } from "react-bootstrap";
 import PostMaker from "./PostMaker";
 import { Modal } from "react-bootstrap";
 import PostPutter from "./PostPutter";
+import { putLike } from "../../redux/actions/postActions";
 
 const PostCard = (post) => {
   let p = post.post;
@@ -119,6 +120,11 @@ const PostCard = (post) => {
     let u = await getUserViaProp(p.userId);
     dispatch(cacheUser(u));
     navigate("/users/" + p.userId);
+  };
+
+  // LIKES HANDLER
+  const handleLike = async () => {
+    dispatch(putLike(p.id));
   };
 
   useEffect(() => {
@@ -277,7 +283,10 @@ const PostCard = (post) => {
           ) : (
             <div className="btnPost">
               <div className="w-100 d-flex justify-content-center">
-                <span className="btnInter interLike ">
+                <span
+                  className="btnInter interLike"
+                  onClick={() => handleLike()}
+                >
                   <i className="far fa-heart"></i>
                 </span>
                 <span className="btnInter interComment">

@@ -190,3 +190,27 @@ export const postAPost = (postDto) => {
     }
   };
 };
+
+//LIKES PUT
+export const putLike = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await fetch(API_POSTS + "/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + getState().logged.loggedUser.auth,
+        },
+        body: JSON.stringify({
+          lk: getState().logged.loggedUser.id,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

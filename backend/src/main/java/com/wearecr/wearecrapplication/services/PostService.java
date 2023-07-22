@@ -49,6 +49,13 @@ public class PostService {
         return p;
     }
 
+    public Post putLike(Long id, PostDto inDto) {
+        Post p = postRepo.findById(id).get();
+        p.getLikes().add(inDto.getLk());
+        postRepo.saveAndFlush(p);
+        return p;
+    }
+
     public List<Post> getAllPosts() throws IOException {
         List<Post> set = postRepo.findAll();
         return set;

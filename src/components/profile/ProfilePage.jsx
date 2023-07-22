@@ -1,7 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileHead from "./ProfileHead";
 import ProfilePostGrid from "./ProfilePostGrid";
-import ProfileCrExp from "./ProfileCrExp";
 import NavUI from "../navbar/NavUI";
 
 const ProfilePage = () => {

@@ -98,4 +98,11 @@ public class FeedController {
     Post p = postService.putPost(dto.getPostId(), dto);
     return ResponseEntity.ok(p);
   }
+
+  @PutMapping("/{postId}")
+  @PreAuthorize("hasRole('ROLE_USER')")
+  public ResponseEntity<Post> putLike(@RequestBody PostDto dto, @PathVariable long postId) throws IOException {
+    Post p = postService.putLike(postId, dto);
+    return ResponseEntity.ok(p);
+  }
 }

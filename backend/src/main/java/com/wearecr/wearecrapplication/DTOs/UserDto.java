@@ -25,5 +25,8 @@ public class UserDto {
     private Set<EnumeratedRoles> roles;
     private String userId;
     private String backgroundImg = "client-placeholder";
+    private long[] follower;
+    private long[] followed;
+    private long[] savedPosts;
 
 }

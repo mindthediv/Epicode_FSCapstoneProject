@@ -89,6 +89,7 @@ const PostMaker = () => {
         };
         reader.readAsDataURL(file);
       }
+      //
       return current;
     });
   };
@@ -115,7 +116,6 @@ const PostMaker = () => {
   };
 
   // ref
-  const imgBox = useRef();
   const fileInput = useRef();
 
   return (
@@ -139,7 +139,7 @@ const PostMaker = () => {
         </Form.Group>
         <div>
           {/* IMG PREVIEW */}
-          <img src={imageSrc} alt="" ref={imgBox} className="imgPreview" />
+          <img src={imageSrc} alt="" className="imgPreview" />
         </div>
         <Form.Group className="mb-1" controlId="postTextInput">
           <Form.Control

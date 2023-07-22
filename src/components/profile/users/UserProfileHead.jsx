@@ -57,28 +57,7 @@ const UserProfileHead = ({ user }) => {
               height: 300 + "px",
               width: 300 + "px",
             }}
-          >
-            {window.location.pathname.includes("/users/") && (
-              <>
-                <Button className="btnProfileConf" onClick={handleMasterModal}>
-                  <i className="fa fa-pencil"></i>
-                </Button>
-                <Modal
-                  show={masterModal}
-                  onHide={closeMasterModal}
-                  centered
-                  className="masterModal"
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>MODIFICA PROFILO</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <EditProfileModal />
-                  </Modal.Body>
-                </Modal>
-              </>
-            )}
-          </div>
+          ></div>
         ) : (
           <div
             className="profileImg me-4 "
@@ -89,28 +68,7 @@ const UserProfileHead = ({ user }) => {
               width: 300 + "px",
               border: "none",
             }}
-          >
-            {window.location.pathname.includes("/users/") && (
-              <>
-                <Button className="btnProfileConf" onClick={handleMasterModal}>
-                  <i className="fa fa-pencil"></i>
-                </Button>
-                <Modal
-                  show={masterModal}
-                  onHide={closeMasterModal}
-                  centered
-                  className="masterModal"
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>MODIFICA PROFILO</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <EditProfileModal />
-                  </Modal.Body>
-                </Modal>
-              </>
-            )}
-          </div>
+          ></div>
         )}
 
         <div className="infoBox w-100">

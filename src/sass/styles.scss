@@ -66,6 +66,33 @@ body {
 // SOME BUTTONS
 // underpost
 
+.btnInterDark {
+  font-size: 1.4em;
+  padding: 0.8em;
+  border: none;
+  color: $myWhite;
+
+  border-left: 2px solid $myBlack25;
+  border-bottom: 2px solid $myBlack25;
+
+  .far,
+  .fa {
+    box-shadow: 2px -2px 2px 2px $myBlack25;
+    padding: 0.8em !important;
+    border-radius: 38%;
+    border-left: 3px solid $myBlack25;
+    border-bottom: 3px solid $myBlack25;
+    transition: all 0.4s;
+    &:hover {
+      box-shadow: inset 2px -3px 3px 2px $myBlack25;
+      color: $myBlack50;
+      cursor: pointer;
+      transition: all 0.4s;
+    }
+  }
+  &:hover {
+  }
+}
 .btnInter {
   font-size: 1.3em;
   padding: 0.8em !important;
@@ -124,6 +151,18 @@ body {
   .farfa {
     color: $myBlack50;
   }
+}
+
+.btnConfirm {
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 2px -4px 4px 2px $myWhite25;
+  @extend .rnd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $myBlack50;
+  background-color: $myGolden !important;
 }
 
 // postmaker
@@ -800,6 +839,9 @@ header {
 }
 .my-wbg {
   background-color: $myWhite;
+}
+.my-bbg {
+  background-color: $myBlack;
 }
 
 .mySoftBtn {
