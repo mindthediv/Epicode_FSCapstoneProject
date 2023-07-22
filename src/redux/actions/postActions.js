@@ -7,6 +7,7 @@ export const ADD_POSTS = "ADD_POSTS";
 export const GET_LOGGED_POSTS = "GET_LOGGED_POSTS";
 export const GET_USER_POSTS = "GET_USER_POSTS";
 export const TRANSFILE = "TRANSFILE";
+export const GET_LIKES = "GET_LIKES";
 
 // export const ADD_POST_TEXT = "ADD_POST_TEXT";
 

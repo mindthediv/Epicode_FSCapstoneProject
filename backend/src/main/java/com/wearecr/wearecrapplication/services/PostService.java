@@ -51,7 +51,13 @@ public class PostService {
 
     public Post putLike(Long id, PostDto inDto) {
         Post p = postRepo.findById(id).get();
-        p.getLikes().add(inDto.getLk());
+        List<Long> pLikes = p.getLikes();
+        if (pLikes.contains(inDto.getLk())) {
+            pLikes.remove(inDto.getLk());
+        } else {
+            pLikes.add(inDto.getLk());
+        }
+
         postRepo.saveAndFlush(p);
         return p;
     }
@@ -69,5 +75,11 @@ public class PostService {
     public void deletePost(long id) throws IOException {
         Post p = postRepo.findById(id).get();
         postRepo.delete(p);
+    }
+
+    public List<Long> getLikes(long id) {
+        Post p = postRepo.findById(id).get();
+
+        return p.getLikes();
     }
 }

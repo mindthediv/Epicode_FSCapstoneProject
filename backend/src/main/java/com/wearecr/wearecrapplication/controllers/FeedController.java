@@ -62,7 +62,7 @@ public class FeedController {
 
   @GetMapping("/{userId}")
   @PreAuthorize("hasRole('ROLE_USER')")
-  public ResponseEntity<List<Post>> getPostById(@PathVariable long userId) throws JsonProcessingException {
+  public ResponseEntity<List<Post>> getPostByUserId(@PathVariable long userId) throws JsonProcessingException {
     List<Post> set;
     try {
       set = postService.getAllPostsByUserId(userId);
@@ -71,6 +71,16 @@ public class FeedController {
       e.printStackTrace();
     }
     return null;
+
+  }
+
+  @GetMapping("/likes/{postId}")
+  @PreAuthorize("hasRole('ROLE_USER')")
+  public ResponseEntity<List<Long>> getPostLikes(@PathVariable long postId) throws JsonProcessingException {
+    List<Long> postLikes;
+
+    postLikes = postService.getLikes(postId);
+    return ResponseEntity.ok(postLikes);
 
   }
 

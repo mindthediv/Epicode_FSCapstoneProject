@@ -82,6 +82,7 @@ body > div {
   cursor: pointer;
   transition: all 0.4s;
 }
+
 .btnInter {
   font-size: 1.3em;
   padding: 0.8em !important;
@@ -96,7 +97,6 @@ body > div {
   box-shadow: 2px -2px 2px 2px rgba(14, 17, 17, 0.1882352941);
   padding: 0.8em !important;
   border-radius: 38%;
-  background-color: #e3eaed;
   border-left: 2px solid white;
   border-bottom: 2px solid white;
   transition: all 0.4s;
@@ -104,36 +104,29 @@ body > div {
 .btnInter .far:hover,
 .btnInter .fa:hover {
   box-shadow: inset 2px -3px 3px 2px rgba(14, 17, 17, 0.1882352941);
-  color: #e3eaed;
   cursor: pointer;
   transition: all 0.4s;
-}
-.btnInter:hover {
-  background-color: #e3eaed;
 }
 
 .interLike {
   color: #5cc1e6 !important;
 }
-.interLike .far:hover,
-.interLike .fa:hover {
+
+.hoLike .fa,
+.hoLike .far {
   background-color: #5cc1e6 !important;
+  color: #e3eaed !important;
+  box-shadow: inset 2px -3px 3px 2px rgba(14, 17, 17, 0.1882352941);
+  cursor: pointer;
+  transition: all 0.4s;
 }
 
 .interComment {
   color: #74d64a !important;
 }
-.interComment .far:hover {
-  background-color: #74d64a !important;
-}
 
 .interSave {
   color: rgba(14, 17, 17, 0.1882352941) !important;
-}
-.interSave .far:hover,
-.interSave .fa:hover {
-  background-color: #ffda59 !important;
-  color: rgba(14, 17, 17, 0.5019607843);
 }
 .interSave .farfa {
   color: rgba(14, 17, 17, 0.5019607843);

@@ -3,12 +3,14 @@ import {
   ADD_POSTS,
   GET_LOGGED_POSTS,
   GET_USER_POSTS,
+  GET_LIKES,
 } from "../actions/postActions";
 
 const postsState = {
   allPosts: [],
   loggedPosts: [],
   userPosts: [],
+  postLikes: [],
 };
 
 export const postsReducer = (state = postsState, action) => {
@@ -27,6 +29,11 @@ export const postsReducer = (state = postsState, action) => {
       return {
         ...state,
         userPosts: action.payload,
+      };
+    case GET_LIKES:
+      return {
+        ...state,
+        postLikes: action.payload,
       };
     default:
       return state;

@@ -1,27 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { API_USERS, cacheUser } from "../../redux/actions/usersActions";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { API_UPLOADS } from "./PostMaker";
 import { CACHE_USER } from "../../redux/actions/usersActions";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import PostMaker from "./PostMaker";
 import { Modal } from "react-bootstrap";
 import PostPutter from "./PostPutter";
-import { putLike } from "../../redux/actions/postActions";
+import { getLikes, putLike } from "../../redux/actions/postActions";
+import { API_POSTS } from "../../redux/actions/postActions";
 
 const PostCard = (post) => {
   let p = post.post;
   const navigate = useNavigate();
+  const likeBtn = useRef();
   // REDUX
   const logged = useSelector((state) => state.logged.loggedUser);
   const loggedState = useSelector((state) => state.logged);
   const u = useSelector((state) => state.users.user);
+  // const likes = useSelector((state) => state.posts.postLikes);
   const dispatch = useDispatch();
   //STATE
   const [postImg, setPostImg] = useState(null);
   const [userState, setUserState] = useState(null);
   const [profileImg, setProfileImg] = useState(null);
+  const [likes, setLikes] = useState([]);
   // MODAL
   const [masterModal, setMasterModal] = useState(false);
   const handleMasterModal = () => setMasterModal(true);
@@ -96,6 +100,7 @@ const PostCard = (post) => {
       console.log(error);
     }
   };
+
   //OTTIENE LA PROFILEIMG
   const getProfilePic = async (picName) => {
     try {
@@ -115,6 +120,27 @@ const PostCard = (post) => {
     }
   };
 
+  //GET POST LIKES
+  const getLikes = async () => {
+    try {
+      const response = await fetch(API_POSTS + "/likes/" + p.id, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + logged.auth,
+        },
+      });
+
+      if (response.ok) {
+        const postLikes = await response.json();
+        setLikes(postLikes);
+      } else {
+        console.log("Errore nel caricare i like");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // USER LINK HANDLER
   const userLink = async () => {
     let u = await getUserViaProp(p.userId);
@@ -124,9 +150,17 @@ const PostCard = (post) => {
 
   // LIKES HANDLER
   const handleLike = async () => {
+    getLikes();
     dispatch(putLike(p.id));
+
+    if (likeBtn.current) {
+      likes.includes(logged.id)
+        ? likeBtn.current.classList.add("hoLike")
+        : likeBtn.current.classList.remove("hoLike");
+    }
   };
 
+  // INIT FX
   useEffect(() => {
     if (p) {
       let handleEffect = async () => {
@@ -146,7 +180,7 @@ const PostCard = (post) => {
       handleEffect();
     }
   }, []);
-
+  // PRFOILE PIC FX
   useEffect(() => {
     if (userState != null) {
       let handleEffect = async () => {
@@ -155,6 +189,15 @@ const PostCard = (post) => {
       handleEffect();
     }
   }, [userState]);
+
+  // LIKE BTNS IF LIKED FX
+  useEffect(() => {
+    if (likeBtn.current) {
+      p.likes.includes(logged.id)
+        ? likeBtn.current.classList.add("hoLike")
+        : likeBtn.current.classList.remove("hoLike");
+    }
+  }, []);
 
   return (
     <Container className="postCard ">
@@ -286,6 +329,7 @@ const PostCard = (post) => {
                 <span
                   className="btnInter interLike"
                   onClick={() => handleLike()}
+                  ref={likeBtn}
                 >
                   <i className="far fa-heart"></i>
                 </span>
