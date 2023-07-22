@@ -11,7 +11,7 @@ const FeedGrid = () => {
         {allPosts.length > 0 ? (
           allPosts.map((el, i) => (
             <Col xs={12} md={12} lg={3} className="px-2">
-              <PostCard key={el.id} post={el} />
+              <PostCard key={i} post={el} />
             </Col>
           ))
         ) : (

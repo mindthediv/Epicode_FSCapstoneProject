@@ -47,6 +47,39 @@ export const getAllPosts = () => {
     }
   };
 };
+//DELETE POST
+export const deletePost = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await fetch(API_POSTS + "/" + id, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + getState().logged.loggedUser.auth,
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        toast.error(
+          "fetchFailed: Sembra essersi verificato un errore, attendi un istante e prova a ricaricare la pagina.",
+          {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 //GET LOGGED USER POST
 export const getLoggedPosts = (id) => {
   return async (dispatch, getState) => {

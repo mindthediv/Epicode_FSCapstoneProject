@@ -80,6 +80,7 @@ const RegisterPage = () => {
               >
                 <Form.Label>Nome</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Nome"
                   onChange={(e) => {
@@ -91,6 +92,7 @@ const RegisterPage = () => {
               <Form.Group className="mb-3  w-50 " controlId="registerLastName">
                 <Form.Label>Cognome</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Cognome"
                   onChange={(e) => {
@@ -107,6 +109,7 @@ const RegisterPage = () => {
               >
                 <Form.Label>Username</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Username"
                   onChange={(e) => {
@@ -118,6 +121,7 @@ const RegisterPage = () => {
               <Form.Group className="mb-3 w-50 " controlId="registerEmail">
                 <Form.Label>Indirizzo email</Form.Label>
                 <Form.Control
+                  required
                   type="email"
                   placeholder="Email"
                   onChange={(e) => {
@@ -130,6 +134,7 @@ const RegisterPage = () => {
             <Form.Group className="mb-3 w-50" controlId="registerPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                required
                 type="password"
                 placeholder="Password"
                 onChange={(e) => {
@@ -144,7 +149,7 @@ const RegisterPage = () => {
             {/* BUTTONS */}
             <div className="d-flex justify-content-between">
               <Button
-                variant="dark-outline border  border-dark"
+                variant="secondary-outline border  border-secondary"
                 className=" p-3 mb-3"
                 type="reset"
                 ref={resetRef}
@@ -176,6 +181,7 @@ const RegisterPage = () => {
             <Form.Group className="mb-3 w-100 me-4" controlId="loginUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
+                required
                 type="text"
                 placeholder="Username"
                 onChange={(e) => {
@@ -187,6 +193,7 @@ const RegisterPage = () => {
             <Form.Group className="mb-3 w-100" controlId="loginPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                required
                 type="password"
                 placeholder="Password"
                 onChange={(e) => {

@@ -28,7 +28,7 @@ const ProfilePostGrid = () => {
         {loggedPosts.length > 0 ? (
           loggedPosts.map((el, i) => (
             <Col xs={12} lg={4} className="px-1 ">
-              <PostCard key={el + i} post={el} className="profilePost" />
+              <PostCard key={el.id} post={el} className="profilePost" />
             </Col>
           ))
         ) : (

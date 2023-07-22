@@ -9,7 +9,7 @@ const SearchPage = () => {
   // REDUX
   const logged = useSelector((state) => state.logged);
   // STATE
-  const [srcState, setSrcState] = useState([]);
+  const [searchState, setSearchState] = useState([]);
 
   //  OTTIENE LO USER CHE INIZIA CON Il DIGITATO (onChange)
   const getUserbyStart = async (value) => {
@@ -38,7 +38,7 @@ const SearchPage = () => {
   const handleChange = async (u) => {
     if (logged.loggedUser.auth) {
       let data = await getUserbyStart(u);
-      setSrcState(data);
+      setSearchState(data);
     }
   };
 
@@ -58,8 +58,8 @@ const SearchPage = () => {
         </Col>
       </Row>
       <Row className="flex-column">
-        {srcState &&
-          srcState.map((el, i) => {
+        {searchState &&
+          searchState.map((el, i) => {
             return (
               <Col>
                 <UserLabel user={el} />

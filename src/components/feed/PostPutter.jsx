@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts } from "../../redux/actions/postActions";
+import { deletePost, getAllPosts } from "../../redux/actions/postActions";
 import { API_POSTS } from "../../redux/actions/postActions";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "react-bootstrap";
 
 export const API_UPLOADS = "http://localhost:8080/api/uploads";
 
@@ -22,6 +23,10 @@ const PostPutter = ({ post }) => {
     userId: reduxLogged.id,
     title: post.title,
   });
+  // MODAL
+  const [masterModal, setMasterModal] = useState(false);
+  const handleMasterModal = () => setMasterModal(true);
+  const closeMasterModal = () => setMasterModal(false);
 
   //SUB POST DELL'INPUT FILE (si implementerà nella post principale)
   const uploadFile = async () => {
@@ -115,6 +120,11 @@ const PostPutter = ({ post }) => {
     }
   };
 
+  // HANDLER DELETE
+  const handleDelete = async (id) => {
+    dispatch(deletePost(id));
+  };
+
   // ref
   const imgBox = useRef();
   const fileInput = useRef();
@@ -182,7 +192,7 @@ const PostPutter = ({ post }) => {
               className="hidden"
               ref={fileInput}
             />
-            {/* SPAN-BUTTONS X PICTURE, LOCATION, SETTINGS */}
+            {/* SPAN-BUTTONS - PICTURE, LOCATION, SETTINGS, DELETE */}
             <span
               className="btnAddPostPic btnPmaker"
               onClick={() => fileInput.current.click()}
@@ -197,6 +207,39 @@ const PostPutter = ({ post }) => {
             <span className="btnPmaker btnPostSett">
               <i className="fa fa-ellipsis-h"></i>
             </span>
+
+            <span
+              className="btnPmaker bg-danger text-dark"
+              onClick={handleMasterModal}
+            >
+              <i className="fa fa-trash"></i>
+            </span>
+            <Modal
+              show={masterModal}
+              onHide={closeMasterModal}
+              centered
+              className="masterModal"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title className="text-center">
+                  Eliminare il post?
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body className="d-flex flex-column align-items-center p-3">
+                <small className="text-muted m-2">
+                  Non sarà più possibile recuperarlo
+                </small>
+                <div>
+                  <Button
+                    variant="warning"
+                    className="px-3 py-2 m-2"
+                    onClick={() => handleDelete(post.id)}
+                  >
+                    Elimina
+                  </Button>
+                </div>
+              </Modal.Body>
+            </Modal>
           </div>
           <div className="d-flex align-items-coneter">
             {/* SUBMIT BUTTON */}

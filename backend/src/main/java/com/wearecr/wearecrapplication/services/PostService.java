@@ -58,4 +58,9 @@ public class PostService {
         List<Post> set = postRepo.findByUserId(id);
         return set;
     }
+
+    public void deletePost(long id) throws IOException {
+        Post p = postRepo.findById(id).get();
+        postRepo.delete(p);
+    }
 }

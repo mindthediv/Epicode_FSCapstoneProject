@@ -256,7 +256,7 @@ const PostCard = (post) => {
                     className="btnInter interSave"
                     onClick={handleMasterModal}
                   >
-                    <i class="far farfa  fa-edit"></i>
+                    <i className="far farfa  fa-edit"></i>
                   </span>
                   <Modal
                     show={masterModal}
@@ -293,7 +293,7 @@ const PostCard = (post) => {
                       className="btnInter interSave"
                       onClick={handleMasterModal}
                     >
-                      <i class="far farfa  fa-edit"></i>
+                      <i className="far farfa  fa-edit"></i>
                     </span>
                     <Modal
                       show={masterModal}
