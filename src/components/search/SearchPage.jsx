@@ -43,7 +43,7 @@ const SearchPage = () => {
   };
 
   return (
-    <Container id="searchPage" className="vh100scroll">
+    <Container fluid id="searchPage" className="vh100scroll">
       <Row>
         <Col>
           <Form className="p-3">

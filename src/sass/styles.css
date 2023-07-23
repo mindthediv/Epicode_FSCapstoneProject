@@ -40,7 +40,7 @@ body > div {
   display: none !important;
 }
 
-.hoPoint:hover, .mySoftBtn:hover, #profilePage .profileHead .banner .profileBtnLine > :hover, .navUi > :hover, .btnPmaker:hover {
+.hoPoint:hover, .mySoftBtn:hover, .navUi > :hover, .btnPmaker:hover {
   cursor: pointer;
 }
 
@@ -74,6 +74,7 @@ body > div {
   border-left: 3px solid rgba(14, 17, 17, 0.1882352941);
   border-bottom: 3px solid rgba(14, 17, 17, 0.1882352941);
   transition: all 0.4s;
+  background-color: #e3eaed !important;
 }
 .btnInterDark .far:hover,
 .btnInterDark .fa:hover {
@@ -88,7 +89,6 @@ body > div {
   padding: 0.8em !important;
   border: none !important;
   color: rgba(14, 17, 17, 0.5019607843) !important;
-  background-color: rgba(227, 234, 237, 0.5019607843);
   border-left: 2px solid white;
   border-bottom: 2px solid white;
 }
@@ -560,14 +560,9 @@ header #navbarApp {
     width: fit-content;
   }
 }
-#profilePage .profileHead .banner .profileBtnLine > * {
-  padding: 0.5em !important;
+#profilePage .profileHead .banner .profileBtnLine .fa,
+#profilePage .profileHead .banner .profileBtnLine .far {
   background-color: #e3eaed;
-  margin: 0 0.4em !important;
-}
-#profilePage .profileHead .banner .profileBtnLine > *:hover {
-  box-shadow: inset 2px 4px 12px 0px rgba(14, 17, 17, 0.5019607843);
-  transition: all 0.4s;
 }
 #profilePage .profileHead .banner .btnProfileConf {
   width: 48px;
@@ -806,7 +801,7 @@ header #navbarApp {
   background-color: #0e1111;
 }
 
-.mySoftBtn, #profilePage .profileHead .banner .profileBtnLine > *, .navUi > * {
+.mySoftBtn, .navUi > * {
   box-shadow: 2px -2px 2px 2px rgba(14, 17, 17, 0.1882352941);
   border-left: 1px solid white;
   border-bottom: 1px solid white;

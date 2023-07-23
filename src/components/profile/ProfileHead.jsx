@@ -116,16 +116,32 @@ const ProfileHead = () => {
                   <i className="fas fa-map-marker-alt me-2"></i>LUOGO
                 </span>
               </div>
+              <div>
+                {logged.follower != null ? (
+                  <span className="text-muted small">
+                    follower: {logged.follower.length}{" "}
+                  </span>
+                ) : (
+                  <span className="text-muted small">follower: 0 </span>
+                )}
+                {logged.followed != null ? (
+                  <span className="text-muted small">
+                    followed: {logged.followed.length}{" "}
+                  </span>
+                ) : (
+                  <span className="text-muted small">followed: 0 </span>
+                )}
+              </div>
               <div className="profileBtnLine d-flex me-5 justify-content-evenly ">
-                <span className="m-auto">
-                  <i className="fa fa-user-plus "></i>
+                <span className="btnInter interLike ">
+                  <i className="fa fa-user-plus"></i>
                 </span>
-                <span className="m-auto">
+                <span className=" btnInter interComment">
                   <i className="fa fa-comment "></i>
                 </span>
-                <span className="m-auto">
+                {/* <span className="btnInter interSave">
                   <i className="fa fa-ellipsis-h "></i>
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

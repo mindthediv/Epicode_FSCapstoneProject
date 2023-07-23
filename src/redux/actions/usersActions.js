@@ -28,3 +28,27 @@ export const cacheUser = (id) => {
     }
   };
 };
+
+//FOLLOW PUT
+export const putFollow = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await fetch(API_USERS + "/follow/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + getState().logged.loggedUser.auth,
+        },
+        body: JSON.stringify({
+          payFollow: getState().logged.loggedUser.id,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

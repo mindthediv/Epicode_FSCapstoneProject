@@ -1,20 +1,19 @@
 import { Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_UPLOADS } from "../../feed/PostMaker";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import EditProfileModal from "../EditProfileModal";
+import { API_USERS, putFollow } from "../../../redux/actions/usersActions";
 
 const UserProfileHead = ({ user }) => {
   // REDUX
   const logged = useSelector((state) => state.logged.loggedUser);
   const isLogged = useSelector((state) => state.logged.isLogged);
+  const dispatch = useDispatch();
   // STATE
   const [pImg, setPImg] = useState(null);
-  // MODAL
-  const [masterModal, setMasterModal] = useState(false);
-  const handleMasterModal = () => setMasterModal(true);
-  const closeMasterModal = () => setMasterModal(false);
+  const [follower, setFollower] = useState([]);
   // FETCH PER FOTO PROFILO
   const getProfilePic = async () => {
     try {
@@ -38,11 +37,53 @@ const UserProfileHead = ({ user }) => {
     }
   };
 
+  //GET Follower
+  const getFollower = async () => {
+    try {
+      const response = await fetch(API_USERS + "/follow/" + user.userId, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + logged.auth,
+        },
+      });
+
+      if (response.ok) {
+        const follow = await response.json();
+        setFollower(follow);
+      } else {
+        console.log("Errore nel caricare i follower");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // LIKES HANDLER
+  const hFollow = async () => {
+    getFollower();
+    dispatch(putFollow(user.userId));
+    if (followBtn.current) {
+      follower.includes(logged.id)
+        ? followBtn.current.classList.add("hoLike")
+        : followBtn.current.classList.remove("hoLike");
+    }
+  };
+
   useEffect(() => {
     const handleEffect = async () => {
       getProfilePic();
     };
     handleEffect();
+  }, []);
+
+  const followBtn = useRef();
+  // FOLLOW  FX
+  useEffect(() => {
+    if (followBtn.current) {
+      follower.includes(logged.id)
+        ? followBtn.current.classList.add("hoLike")
+        : followBtn.current.classList.remove("hoLike");
+    }
   }, []);
 
   return (
@@ -81,14 +122,34 @@ const UserProfileHead = ({ user }) => {
                   <i className="fas fa-map-marker-alt me-2"></i>LUOGO
                 </span>
               </div>
+              <div>
+                {logged.follower != null ? (
+                  <span className="text-muted small">
+                    follower: {user.follower.length}{" "}
+                  </span>
+                ) : (
+                  <span className="text-muted small">follower: 0 </span>
+                )}
+                {logged.followed != null ? (
+                  <span className="text-muted small">
+                    followed: {user.followed.length}{" "}
+                  </span>
+                ) : (
+                  <span className="text-muted small">followed: 0 </span>
+                )}
+              </div>
               <div className="profileBtnLine d-flex me-5 justify-content-evenly ">
-                <span className="m-auto">
-                  <i className="fa fa-user-plus "></i>
+                <span
+                  className="btnInter interLike "
+                  ref={followBtn}
+                  onClick={() => hFollow()}
+                >
+                  <i className="fa fa-user-plus"></i>
                 </span>
-                <span className="m-auto">
+                <span className=" btnInter interComment">
                   <i className="fa fa-comment "></i>
                 </span>
-                <span className="m-auto">
+                <span className="btnInter interSave">
                   <i className="fa fa-ellipsis-h "></i>
                 </span>
               </div>

@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wearecr.wearecrapplication.DTOs.PostDto;
 import com.wearecr.wearecrapplication.DTOs.UserDto;
+import com.wearecr.wearecrapplication.models.Post;
 import com.wearecr.wearecrapplication.security.security_models.User;
 import com.wearecr.wearecrapplication.security.security_repositories.UserRepo;
 
@@ -90,5 +92,28 @@ public class UserService {
         outDto.setBackgroundImg(u.getBackgroundImg());
         outDto.setRoles(u.getRoles());
         return outDto;
+    }
+
+    public List<Long> getUserFollower(Long id) {
+        User u = userRepo.findById(id).get();
+        return u.getFollower();
+    }
+
+    public User putFollow(Long id, UserDto inDto) {
+        User u = userRepo.findById(id).get();
+        User l = userRepo.findById(inDto.getPayFollow()).get();
+        List<Long> uFollowers = u.getFollower();
+        if (uFollowers.contains(inDto.getPayFollow())) {
+            uFollowers.remove(inDto.getPayFollow());
+            l.getFollowed().remove(id);
+            userRepo.saveAndFlush(l);
+        } else {
+            uFollowers.add(inDto.getPayFollow());
+            l.getFollowed().add(id);
+            userRepo.saveAndFlush(l);
+        }
+
+        userRepo.saveAndFlush(u);
+        return u;
     }
 }

@@ -62,29 +62,6 @@ export const postRegister = (user) => {
   };
 };
 
-// export const putRegister = (user) => {
-//   return async (dispatch, getState) => {
-//     try {
-//       let response = await fetch(API_AUTH + "/register", {
-//         method: "PUT",
-//         body: JSON.stringify(user),
-//         headers: {
-//           "Content-type": "application/json; charset=UTF-8",
-//         },
-//       });
-//       if (response.ok) {
-//         let newUser = await response.json();
-//         console.log(newUser);
-//         toastBean();
-//       } else {
-//         alert("fetch failed");
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
-
 //toastifier
 const toastBean = () => {
   toast.success("Modifiche effettuate con successo! ", {

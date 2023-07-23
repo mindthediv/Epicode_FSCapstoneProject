@@ -1,5 +1,6 @@
 package com.wearecr.wearecrapplication.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wearecr.wearecrapplication.DTOs.UserDto;
 import com.wearecr.wearecrapplication.security.exceptions.MyAPIException;
 import com.wearecr.wearecrapplication.security.security_models.User;
@@ -69,4 +69,23 @@ public class UsersController {
         UserDto outDto = userService.putBackgroundPic(inDto.getUserId(), inDto);
         return ResponseEntity.ok(outDto);
     }
+
+    // GET FOLLOWER USER
+    @GetMapping("/follow/{userId}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<List<Long>> getUserFollower(@PathVariable String userId) throws JsonProcessingException {
+        List<Long> userFollower;
+        userFollower = userService.getUserFollower(Long.parseLong(userId));
+        return ResponseEntity.ok(userFollower);
+
+    }
+
+    // PUT FOLLOWER
+    @PutMapping("/follow/{userId}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<User> putFollow(@RequestBody UserDto dto, @PathVariable String userId) throws IOException {
+        User u = userService.putFollow(Long.parseLong(userId), dto);
+        return ResponseEntity.ok(u);
+    }
+
 }
