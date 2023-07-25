@@ -8,12 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wearecr.wearecrapplication.DTOs.UserDto;
 import com.wearecr.wearecrapplication.security.exceptions.MyAPIException;
 import com.wearecr.wearecrapplication.security.security_DTOs.JWTAuthResponse;
 import com.wearecr.wearecrapplication.security.security_DTOs.LoginDto;
@@ -57,8 +55,6 @@ public class AuthController {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
-  
 
     @GetMapping("/all")
     public List<User> getAllUsers() {

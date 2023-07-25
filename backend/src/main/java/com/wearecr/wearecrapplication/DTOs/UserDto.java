@@ -24,9 +24,10 @@ public class UserDto {
     private String profileImg = "client-placeholder";
     private Set<EnumeratedRoles> roles;
     private String userId;
-    private String backgroundImg = "client-placeholder";
+
     private List<Long> follower;
     private List<Long> followed;
     private List<Long> savedPosts;
     private Long payFollow;
+    private String bio;
 }

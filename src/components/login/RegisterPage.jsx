@@ -16,19 +16,17 @@ import {
 } from "../../redux/actions/registerActions";
 import { ToastContainer, toast } from "react-toastify";
 import { useRef } from "react";
-import { logIn } from "../../redux/actions/loggedActions";
 
 const RegisterPage = () => {
   const resetRef = useRef();
   const navigate = useNavigate();
   //REDUX
   const dispatch = useDispatch();
-
-  const reduxRegister = useSelector((state) => state.register);
+  const register = useSelector((state) => state.register);
 
   const loginDto = {
-    username: reduxRegister.user.username,
-    password: reduxRegister.user.password,
+    username: register.user.username,
+    password: register.user.password,
   };
 
   return (
@@ -44,7 +42,7 @@ const RegisterPage = () => {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(postRegister(reduxRegister.user));
+              dispatch(postRegister(register.user));
               toast.success("Utente registrato con successo! ", {
                 position: "top-center",
                 autoClose: 500,

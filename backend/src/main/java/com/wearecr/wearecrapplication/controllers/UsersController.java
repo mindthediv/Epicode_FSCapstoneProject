@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wearecr.wearecrapplication.DTOs.UserDto;
 import com.wearecr.wearecrapplication.security.exceptions.MyAPIException;
 import com.wearecr.wearecrapplication.security.security_models.User;
-import com.wearecr.wearecrapplication.security.security_repositories.UserRepo;
 import com.wearecr.wearecrapplication.services.UserService;
 
 @RestController
@@ -29,9 +30,8 @@ public class UsersController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRepo userRepo;
 
+    // GET USER
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<UserDto> getUser(@PathVariable String id) throws JsonProcessingException {
@@ -39,6 +39,20 @@ public class UsersController {
         return ResponseEntity.ok(u);
     }
 
+    // DELETE USER
+    @DeleteMapping("/{userId}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<String> deleteUser(@PathVariable long userId) throws JsonProcessingException {
+        try {
+            userService.deleteUser(userId);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ObjectMapper om = new ObjectMapper();
+        return ResponseEntity.ok(om.writeValueAsString("Utente eliminato"));
+    }
+
+    // GET USER STARTS WITH
     @GetMapping()
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<UserDto>> getStartWith(@RequestParam String value) throws JsonProcessingException {
@@ -46,7 +60,7 @@ public class UsersController {
         return ResponseEntity.ok(u);
     }
 
-    // PUT USERS
+    // UPDATE USER
     @PutMapping()
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<UserDto> putUser(@RequestBody UserDto inDto) throws MyAPIException {
@@ -54,7 +68,7 @@ public class UsersController {
         return ResponseEntity.ok(outDto);
     }
 
-    // PUT USERS
+    // UPDATE PROFILE PIC
     @PutMapping("/profilePic")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<UserDto> putProfilePic(@RequestBody UserDto inDto) throws MyAPIException {
@@ -62,15 +76,7 @@ public class UsersController {
         return ResponseEntity.ok(outDto);
     }
 
-    // PUT USERS
-    @PutMapping("/backgroundPic")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<UserDto> putBackgroundPic(@RequestBody UserDto inDto) throws MyAPIException {
-        UserDto outDto = userService.putBackgroundPic(inDto.getUserId(), inDto);
-        return ResponseEntity.ok(outDto);
-    }
-
-    // GET FOLLOWER USER
+    // GET USER FOLLOWER
     @GetMapping("/follow/{userId}")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<Long>> getUserFollower(@PathVariable String userId) throws JsonProcessingException {
@@ -80,7 +86,7 @@ public class UsersController {
 
     }
 
-    // PUT FOLLOWER
+    // PUT FOLLOW
     @PutMapping("/follow/{userId}")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<User> putFollow(@RequestBody UserDto dto, @PathVariable String userId) throws IOException {

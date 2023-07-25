@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import EditProfileModal from "../EditProfileModal";
 import { API_USERS, putFollow } from "../../../redux/actions/usersActions";
+import { getLogged } from "../../../redux/actions/loggedActions";
 
 const UserProfileHead = ({ user }) => {
   // REDUX
@@ -50,6 +51,7 @@ const UserProfileHead = ({ user }) => {
       if (response.ok) {
         const follow = await response.json();
         setFollower(follow);
+        return follow;
       } else {
         console.log("Errore nel caricare i follower");
       }
@@ -60,8 +62,11 @@ const UserProfileHead = ({ user }) => {
 
   // LIKES HANDLER
   const hFollow = async () => {
-    getFollower();
-    dispatch(putFollow(user.userId));
+    if (user.userId) {
+      let flw = await getFollower();
+      setFollower(flw);
+      dispatch(putFollow(user.userId));
+    }
     if (followBtn.current) {
       follower.includes(logged.id)
         ? followBtn.current.classList.add("hoLike")
@@ -77,8 +82,14 @@ const UserProfileHead = ({ user }) => {
   }, []);
 
   const followBtn = useRef();
-  // FOLLOW  FX
   useEffect(() => {
+    const hFx = async () => {
+      if (user.userId) {
+        let flw = await getFollower();
+        setFollower(flw);
+      }
+    };
+    hFx();
     if (followBtn.current) {
       follower.includes(logged.id)
         ? followBtn.current.classList.add("hoLike")
@@ -118,19 +129,19 @@ const UserProfileHead = ({ user }) => {
               <div className="text-center mb-3">
                 {user && <h2>{user.username}</h2>}
                 {user && <h5>{user.firstName + " " + user.lastName}</h5>}
-                <span className="d-block">
+                {/* <span className="d-block">
                   <i className="fas fa-map-marker-alt me-2"></i>LUOGO
-                </span>
+                </span> */}
               </div>
               <div>
-                {logged.follower != null ? (
+                {user.follower != null ? (
                   <span className="text-muted small">
                     follower: {user.follower.length}{" "}
                   </span>
                 ) : (
                   <span className="text-muted small">follower: 0 </span>
                 )}
-                {logged.followed != null ? (
+                {user.followed != null ? (
                   <span className="text-muted small">
                     followed: {user.followed.length}{" "}
                   </span>
@@ -138,29 +149,28 @@ const UserProfileHead = ({ user }) => {
                   <span className="text-muted small">followed: 0 </span>
                 )}
               </div>
-              <div className="profileBtnLine d-flex me-5 justify-content-evenly ">
-                <span
-                  className="btnInter interLike "
-                  ref={followBtn}
-                  onClick={() => hFollow()}
-                >
-                  <i className="fa fa-user-plus"></i>
-                </span>
-                <span className=" btnInter interComment">
-                  <i className="fa fa-comment "></i>
-                </span>
-                <span className="btnInter interSave">
-                  <i className="fa fa-ellipsis-h "></i>
-                </span>
-              </div>
+              {user.userId == logged.id ? (
+                <></>
+              ) : (
+                <div className="profileBtnLine d-flex me-5 justify-content-evenly ">
+                  <span
+                    className="btnInter interLike "
+                    ref={followBtn}
+                    onClick={() => hFollow()}
+                  >
+                    <i className="fa fa-user-plus"></i>
+                  </span>
+                  <span className=" btnInter interComment">
+                    <i className="fa fa-comment "></i>
+                  </span>
+                  <span className="btnInter interSave">
+                    <i className="fa fa-ellipsis-h "></i>
+                  </span>
+                </div>
+              )}
             </div>
           </div>
-          <p>
-            BIO: Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Accusamus voluptates eveniet, iure reprehenderit possimus rerum
-            exercitationem numquam provident officia sit commodi odit libero
-            amet officiis sunt corporis tenetur nobis doloribus?
-          </p>
+          {user.bio && <p>{user.bio}</p>}
         </div>
       </div>
     </div>

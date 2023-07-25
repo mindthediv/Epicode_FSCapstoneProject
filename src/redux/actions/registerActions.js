@@ -1,6 +1,7 @@
 import { async } from "q";
 import { fillCredentials, logIn } from "./loggedActions";
 import { toast } from "react-toastify";
+import { API_USERS, cacheUser } from "./usersActions";
 
 const API_AUTH = "http://localhost:8080/api/auth";
 
@@ -54,7 +55,7 @@ export const postRegister = (user) => {
         let newUser = await response.json();
         console.log(newUser);
       } else {
-        alert("fetch failed");
+        console.log("fetch failed");
       }
     } catch (error) {
       console.log(error);
@@ -89,9 +90,10 @@ export const postLogin = (user) => {
       if (response.ok) {
         let newUser = await response.json();
         dispatch(fillCredentials(newUser));
+
         dispatch(logIn());
       } else {
-        alert("fetch failed");
+        console.log("fetch failed");
       }
     } catch (error) {
       console.log(error);

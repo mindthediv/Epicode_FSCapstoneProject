@@ -84,12 +84,12 @@ body {
     border-bottom: 3px solid $myBlack25;
     transition: all 0.4s;
     background-color: $myWhite !important;
-    &:hover {
-      box-shadow: inset 2px -3px 3px 2px $myBlack25;
-      color: $myBlack50;
-      cursor: pointer;
-      transition: all 0.4s;
-    }
+    // &:hover {
+    //   box-shadow: inset 2px -3px 3px 2px $myBlack25;
+    //   color: $myBlack50;
+    //   cursor: pointer;
+    //   transition: all 0.4s;
+    // }
   }
 }
 .btnInter {
@@ -100,7 +100,7 @@ body {
   // background-color: $myWhite50;
   border-left: 2px solid white;
   border-bottom: 2px solid white;
-
+  @extend .hoPoint;
   .far,
   .fa {
     box-shadow: 2px -2px 2px 2px $myBlack25;
@@ -110,12 +110,12 @@ body {
     border-left: 2px solid white;
     border-bottom: 2px solid white;
     transition: all 0.4s;
-    &:hover {
-      box-shadow: inset 2px -3px 3px 2px $myBlack25;
+    // &:hover {
+    //   box-shadow: inset 2px -3px 3px 2px $myBlack25;
 
-      cursor: pointer;
-      transition: all 0.4s;
-    }
+    //   cursor: pointer;
+    //   transition: all 0.4s;
+    // }
   }
 }
 .interLike {
@@ -473,16 +473,22 @@ header {
 }
 
 #registerPage {
+  background-image: url(../../public/assets/imgs/LagoDiNemi.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   .row {
     height: 100vh;
-    .registerForm {
-    }
   }
 }
 #loginPage {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url(../../public/assets/imgs/LagoDiNemi.jpg);
+  backdrop-filter: blur(8px);
   .bgForm {
     background-color: $myBlack75;
     padding: 1em !important;
@@ -825,6 +831,9 @@ header {
 }
 .my-bbg {
   background-color: $myBlack;
+}
+.my-gbg {
+  background-color: $myBlack25;
 }
 
 .mySoftBtn {

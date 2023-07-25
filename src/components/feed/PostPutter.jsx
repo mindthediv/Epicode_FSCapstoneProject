@@ -103,21 +103,20 @@ const PostPutter = ({ post }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let posted = false;
-    posted = await putPost();
-    if (posted) {
-      dispatch(getAllPosts());
-      toast.success("Post Modificato!", {
-        position: "top-center",
-        autoClose: 3000,
-        onClose: () => navigate("/feed"),
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+    putPost();
+
+    dispatch(getAllPosts());
+    toast.success("Post Modificato!", {
+      position: "top-center",
+      autoClose: 3000,
+      onClose: () => window.location.reload(),
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   // HANDLER DELETE
@@ -170,18 +169,6 @@ const PostPutter = ({ post }) => {
             value={postState.text}
           />
         </Form.Group>
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
 
         <div className="d-flex justify-content-between align-items-center">
           <div>
@@ -237,6 +224,18 @@ const PostPutter = ({ post }) => {
                   >
                     Elimina
                   </Button>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                  />
                 </div>
               </Modal.Body>
             </Modal>

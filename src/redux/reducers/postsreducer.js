@@ -18,17 +18,29 @@ export const postsReducer = (state = postsState, action) => {
     case GET_POSTS:
       return {
         ...state,
-        allPosts: action.payload,
+        allPosts: action.payload.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        }),
       };
     case GET_LOGGED_POSTS:
       return {
         ...state,
-        loggedPosts: action.payload,
+        loggedPosts: action.payload.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        }),
       };
     case GET_USER_POSTS:
       return {
         ...state,
-        userPosts: action.payload,
+        userPosts: action.payload.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        }),
       };
     case GET_LIKES:
       return {

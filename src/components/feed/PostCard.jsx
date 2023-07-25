@@ -70,7 +70,7 @@ const PostCard = (post) => {
         });
         return user;
       } else {
-        alert("Errore nel caricamento dell'utente del post");
+        console.log("Errore nel caricamento dell'utente del post");
       }
     } catch (error) {
       console.log(error);
@@ -94,7 +94,7 @@ const PostCard = (post) => {
         });
         return user;
       } else {
-        alert("Errore nel caricamento dell'utente del post");
+        console.log("Errore nel caricamento dell'utente del post");
       }
     } catch (error) {
       console.log(error);
@@ -199,6 +199,8 @@ const PostCard = (post) => {
     }
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <Container className="postCard ">
       {window.location.pathname == "/me" ? (
@@ -213,9 +215,18 @@ const PostCard = (post) => {
                 src={URL.createObjectURL(profileImg)}
               />
             ) : (
-              <div className="miniUserImg rounded-circle">
-                <Spinner></Spinner>
-              </div>
+              <>
+                {u.profileImg != "client-placeholder" ? (
+                  <div className="miniUserImg rounded-circle">
+                    <Spinner></Spinner>
+                  </div>
+                ) : (
+                  <img
+                    className="miniUserImg rounded-circle"
+                    src="assets/imgs/placeholders/userPlaceholder.png"
+                  />
+                )}
+              </>
             )}
           </Col>
           <Col xs={10}>

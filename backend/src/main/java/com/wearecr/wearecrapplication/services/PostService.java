@@ -1,20 +1,13 @@
 package com.wearecr.wearecrapplication.services;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.wearecr.wearecrapplication.DTOs.PostDto;
-import com.wearecr.wearecrapplication.DTOs.PostDto;
 import com.wearecr.wearecrapplication.models.Post;
 import com.wearecr.wearecrapplication.repositories.PostRepo;
-import com.wearecr.wearecrapplication.security.security_configurations.SecretCodeConvert;
-import com.wearecr.wearecrapplication.security.security_models.User;
 
 @Service
 public class PostService {
@@ -25,6 +18,7 @@ public class PostService {
         this.postRepo = postRepo;
     }
 
+    // SAVE POST
     public Post savePost(PostDto dto) throws IOException {
         Post p = new Post();
         p.setText(dto.getText());
@@ -34,10 +28,10 @@ public class PostService {
         p.setId(dto.getPostId());
         p.setTitle(dto.getTitle());
         postRepo.save(p);
-        // Post savedP = postRepo.findById((long) 202).get();
         return p;
     }
 
+    // UPDATE POST
     public Post putPost(Long id, PostDto inDto) {
         Post p = postRepo.findById(id).get();
         p.setDate(LocalDate.now());
@@ -49,6 +43,25 @@ public class PostService {
         return p;
     }
 
+    // DELETE POST
+    public void deletePost(long id) throws IOException {
+        Post p = postRepo.findById(id).get();
+        postRepo.delete(p);
+    }
+
+    // GET ALL
+    public List<Post> getAllPosts() throws IOException {
+        List<Post> set = postRepo.findAll();
+        return set;
+    }
+
+    // GET ALL BY USERID
+    public List<Post> getAllPostsByUserId(Long id) throws IOException {
+        List<Post> set = postRepo.findByUserId(id);
+        return set;
+    }
+
+    // PUT LIKE
     public Post putLike(Long id, PostDto inDto) {
         Post p = postRepo.findById(id).get();
         List<Long> pLikes = p.getLikes();
@@ -62,21 +75,7 @@ public class PostService {
         return p;
     }
 
-    public List<Post> getAllPosts() throws IOException {
-        List<Post> set = postRepo.findAll();
-        return set;
-    }
-
-    public List<Post> getAllPostsByUserId(Long id) throws IOException {
-        List<Post> set = postRepo.findByUserId(id);
-        return set;
-    }
-
-    public void deletePost(long id) throws IOException {
-        Post p = postRepo.findById(id).get();
-        postRepo.delete(p);
-    }
-
+    // GET POST LIKES
     public List<Long> getLikes(long id) {
         Post p = postRepo.findById(id).get();
 

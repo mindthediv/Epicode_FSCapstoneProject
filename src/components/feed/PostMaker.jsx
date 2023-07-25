@@ -98,21 +98,20 @@ const PostMaker = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let posted = false;
-    posted = await postAPost();
-    if (posted) {
-      dispatch(getAllPosts());
-      toast.success("Nuovo Post Creato!", {
-        position: "top-center",
-        autoClose: 3000,
-        onClose: () => navigate("/feed"),
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+    await postAPost();
+
+    dispatch(getAllPosts());
+    toast.success("Nuovo Post Creato!", {
+      position: "top-center",
+      autoClose: 3000,
+      onClose: () => window.location.reload(),
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   // ref

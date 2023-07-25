@@ -6,7 +6,7 @@ import { getLoggedPosts } from "../../redux/actions/postActions";
 import Modal from "react-bootstrap/Modal";
 import PostMaker from "../feed/PostMaker";
 
-const ProfilePostGrid = () => {
+const ProfilePostGrid = ({ user }) => {
   // REDUX
   const loggedPosts = useSelector((state) => state.posts.loggedPosts);
   const logged = useSelector((state) => state.logged.loggedUser);
@@ -17,10 +17,11 @@ const ProfilePostGrid = () => {
   const closeMasterModal = () => setMasterModal(false);
 
   useEffect(() => {
-    if (logged) {
-      dispatch(getLoggedPosts(logged.id));
+    if (user) {
+      dispatch(getLoggedPosts(user.id));
     }
-  }, []);
+  }, [user]);
+  useEffect(() => {}, [loggedPosts]);
 
   return (
     <Container fluid>

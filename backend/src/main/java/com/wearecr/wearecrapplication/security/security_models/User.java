@@ -47,12 +47,11 @@ public class User {
   private String auth = null;
   @Column(name = "profile_img")
   private String profileImg = "client-placeholder";
-  @Column(name = "background_img")
-  private String backgroundImg = "client-placeholder";
   private List<Long> follower = new ArrayList<Long>();
   private List<Long> followed = new ArrayList<Long>();
   @Column(name = "saved_posts")
   private List<Long> savedPosts = new ArrayList<Long>();
+  private String bio;
 
   @Override
   public String toString() {

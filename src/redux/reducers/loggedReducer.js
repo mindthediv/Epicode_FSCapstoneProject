@@ -3,7 +3,6 @@ import {
   LOG_OUT,
   FILL_CREDENTIALS,
   ADD_PROFILE_PIC,
-  ADD_BACKGROUND_PIC,
 } from "../actions/loggedActions";
 
 const LoggedState = {
@@ -40,11 +39,6 @@ export const loggedReducer = (state = LoggedState, action) => {
       return {
         ...state,
         loggedUser: { ...state.loggedUser, profileImg: action.payload },
-      };
-    case ADD_BACKGROUND_PIC:
-      return {
-        ...state,
-        loggedUser: { ...state.loggedUser, backgroundImg: action.payload },
       };
 
     default:

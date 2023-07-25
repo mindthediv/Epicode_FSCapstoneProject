@@ -46,7 +46,7 @@ const SearchPage = () => {
     <Container fluid id="searchPage" className="vh100scroll">
       <Row>
         <Col>
-          <Form className="p-3">
+          <Form className="p-3 myBg rounded">
             <Form.Control
               type="text"
               id="searchInput"

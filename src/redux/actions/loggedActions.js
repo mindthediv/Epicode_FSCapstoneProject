@@ -1,4 +1,4 @@
-const API_AUTH = "http://localhost:8080/api/auth";
+import { API_USERS } from "./usersActions";
 
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
@@ -34,5 +34,31 @@ export const getBackgroundPic = (fileName) => {
   return {
     type: ADD_BACKGROUND_PIC,
     payload: fileName,
+  };
+};
+export const getLogged = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      let resp = await fetch(API_USERS + "/" + id, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + getState().logged.loggedUser.auth,
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      if (resp.ok) {
+        let user = await resp.json();
+
+        dispatch({
+          type: FILL_CREDENTIALS,
+          payload: user,
+        });
+        return user;
+      } else {
+        console.log("Errore nel caricare l'utente loggato");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

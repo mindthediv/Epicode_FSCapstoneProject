@@ -26,14 +26,14 @@ export const getAllPosts = () => {
 
         dispatch({
           type: GET_POSTS,
-          payload: postsData.slice(0, 100).reverse(),
+          payload: postsData,
         });
       } else {
         toast.error(
           "fetchFailed: Sembra essersi verificato un errore, attendi un istante e prova a ricaricare la pagina.",
           {
             position: "top-center",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -60,13 +60,24 @@ export const deletePost = (id) => {
       });
       if (response.ok) {
         const data = await response.json();
+        toast.success("Post eliminato", {
+          position: "top-center",
+          autoClose: 2000,
+          onClose: () => window.location.reload(),
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         return data;
       } else {
         toast.error(
-          "fetchFailed: Sembra essersi verificato un errore, attendi un istante e prova a ricaricare la pagina.",
+          "Sembra essersi verificato un errore, attendi un istante e prova a ricaricare la pagina.",
           {
             position: "top-center",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

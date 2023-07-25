@@ -1,7 +1,6 @@
 package com.wearecr.wearecrapplication.controllers;
 
 import java.io.IOException;
-import java.util.Set;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wearecr.wearecrapplication.DTOs.PostDto;
 import com.wearecr.wearecrapplication.models.Post;
-import com.wearecr.wearecrapplication.repositories.PostRepo;
 import com.wearecr.wearecrapplication.services.PostService;
 
 @RestController
@@ -32,6 +30,36 @@ public class FeedController {
   @Autowired
   private PostService postService;
 
+  // CREATE POST
+  @PostMapping()
+  @PreAuthorize("hasRole('ROLE_USER')")
+  public ResponseEntity<Post> postAPost(@RequestBody PostDto dto) throws IOException {
+    Post p = postService.savePost(dto);
+    return ResponseEntity.ok(p);
+  }
+
+  // UPDATE POST
+  @PutMapping()
+  @PreAuthorize("hasRole('ROLE_USER')")
+  public ResponseEntity<Post> putPost(@RequestBody PostDto dto) throws IOException {
+    Post p = postService.putPost(dto.getPostId(), dto);
+    return ResponseEntity.ok(p);
+  }
+
+  // DELETE POST
+  @DeleteMapping("/{postId}")
+  @PreAuthorize("hasRole('ROLE_USER')")
+  public ResponseEntity<String> deletePost(@PathVariable long postId) throws JsonProcessingException {
+    try {
+      postService.deletePost(postId);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    ObjectMapper om = new ObjectMapper();
+    return ResponseEntity.ok(om.writeValueAsString("Post Eliminato"));
+  }
+
+  // GET ALL
   @GetMapping()
   @PreAuthorize("hasRole('ROLE_USER')")
   public ResponseEntity<List<Post>> getAllPosts() throws JsonProcessingException {
@@ -46,6 +74,7 @@ public class FeedController {
 
   }
 
+  // GET ALL BY LOGGED USER
   @PostMapping("/me")
   @PreAuthorize("hasRole('ROLE_USER')")
   public ResponseEntity<List<Post>> getLoggedPosts(@RequestBody long id) throws JsonProcessingException {
@@ -60,6 +89,7 @@ public class FeedController {
 
   }
 
+  // GET ALL BY USERID
   @GetMapping("/{userId}")
   @PreAuthorize("hasRole('ROLE_USER')")
   public ResponseEntity<List<Post>> getPostByUserId(@PathVariable long userId) throws JsonProcessingException {
@@ -74,6 +104,7 @@ public class FeedController {
 
   }
 
+  // GET POST LIKES
   @GetMapping("/likes/{postId}")
   @PreAuthorize("hasRole('ROLE_USER')")
   public ResponseEntity<List<Long>> getPostLikes(@PathVariable long postId) throws JsonProcessingException {
@@ -84,31 +115,7 @@ public class FeedController {
 
   }
 
-  @DeleteMapping("/{postId}")
-  @PreAuthorize("hasRole('ROLE_USER')")
-  public ResponseEntity<String> deletePost(@PathVariable long postId) throws JsonProcessingException {
-    try {
-      postService.deletePost(postId);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return ResponseEntity.ok("Post Eliminato");
-  }
-
-  @PostMapping()
-  @PreAuthorize("hasRole('ROLE_USER')")
-  public ResponseEntity<Post> postAPost(@RequestBody PostDto dto) throws IOException {
-    Post p = postService.savePost(dto);
-    return ResponseEntity.ok(p);
-  }
-
-  @PutMapping()
-  @PreAuthorize("hasRole('ROLE_USER')")
-  public ResponseEntity<Post> putPost(@RequestBody PostDto dto) throws IOException {
-    Post p = postService.putPost(dto.getPostId(), dto);
-    return ResponseEntity.ok(p);
-  }
-
+  // PUT LIKE
   @PutMapping("/{postId}")
   @PreAuthorize("hasRole('ROLE_USER')")
   public ResponseEntity<Post> putLike(@RequestBody PostDto dto, @PathVariable long postId) throws IOException {

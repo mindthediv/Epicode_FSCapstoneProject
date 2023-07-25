@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef } from "react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { API_UPLOADS } from "../feed/PostMaker";
 import { API_USERS } from "../../redux/actions/usersActions";
 import { getProfilePic } from "../../redux/actions/loggedActions";
@@ -94,6 +94,17 @@ const ProfilePicModal = () => {
     e.preventDefault();
     let data = await putSettings();
     dispatch(getProfilePic(data.profileImg));
+    toast.success("Immagine profilo modificata con successo!", {
+      position: "top-center",
+      autoClose: 3000,
+      onClose: () => window.location.reload(),
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     return data;
   };
 
@@ -106,19 +117,6 @@ const ProfilePicModal = () => {
               onSubmit={(e) => handleSubmit(e)}
               className="d-flex flex-column align-items-center"
             >
-              <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-
               {/* FILE INPUT */}
               <Form.Group controlId="formFileMultiple" className="m-3 p-2">
                 <Form.Control
@@ -129,16 +127,24 @@ const ProfilePicModal = () => {
               </Form.Group>
               {/* IMG PREVIEW */}
 
-              <img
-                src={imageSrc}
-                className="rounded-circle m-auto shadow"
-                width={200}
-              />
+              <img src={imageSrc} className=" m-auto shadow" width={200} />
 
               <div className="d-flex justify-content-end w-100 m-3">
-                <span className=" btnInterDark m-3" type="submit">
+                <span className=" btnInterDark m-3" onClick={handleSubmit}>
                   <i className="far fa-save btnConfirm"></i>
                 </span>
+                <ToastContainer
+                  position="top-center"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
               </div>
             </Form>
           </Col>
