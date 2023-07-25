@@ -5,15 +5,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home/HomePage";
-import NavbarApp from "./components/navbar/NavbarApp";
-import FooterApp from "./components/footer/FooterApp";
+
 import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/login/RegisterPage";
 import FeedPage from "./components/feed/FeedPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import "react-toastify/dist/ReactToastify.css";
-import CrAreaPage from "./components/crAreas/CrArea";
-import ProfileSettings from "./components/profile/ProfileSettings";
+
 import UserProfile from "./components/profile/users/UserProfile";
 import NavUI from "./components/navbar/NavUI";
 import SearchPage from "./components/search/SearchPage";
@@ -30,13 +28,9 @@ function App() {
                   <Route path="/register" element={<RegisterPage />}></Route>
                   <Route path="/login" element={<LoginPage />}></Route>
                   <Route path="/me" element={<ProfilePage />}></Route>
-                  <Route
-                    path="/profileSettings"
-                    element={<ProfileSettings />}
-                  ></Route>
+
                   <Route path="/search" element={<SearchPage />}></Route>
                   <Route path="/feed" element={<FeedPage />}></Route>
-                  <Route path="/crArea/:area" element={<CrAreaPage />}></Route>
                   <Route
                     path="/users/:userId"
                     element={<UserProfile />}

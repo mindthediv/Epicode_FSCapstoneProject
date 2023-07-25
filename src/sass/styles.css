@@ -33,15 +33,35 @@ body > div {
 }
 
 .onTopLayer {
-  z-index: initial;
+  z-index: 100;
 }
 
 .hidden {
   display: none !important;
 }
 
-.hoPoint:hover, .mySoftBtn:hover, .navUi > :hover, .btnPmaker:hover, .btnInter:hover {
+.hoPoint:hover, .btnPmaker:hover, .btnInter:hover, .mySoftBtn:hover, .navUi > :hover {
   cursor: pointer;
+}
+
+.vw100 {
+  width: 100vw;
+  align-self: center;
+  justify-self: center;
+}
+
+.vh100scroll {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.imgPreview {
+  width: 100%;
+}
+
+.spinner-border {
+  color: #5cc1e6;
+  border: #5cc1e6;
 }
 
 .masterModal {
@@ -54,8 +74,12 @@ body > div {
   margin: auto !important;
 }
 
-.imgPreview {
-  width: 100%;
+.mySoftBtn, .navUi > * {
+  box-shadow: 2px -2px 2px 2px rgba(14, 17, 17, 0.1882352941);
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  border-radius: 38%;
+  font-size: 1.6em;
 }
 
 .btnInterDark {
@@ -156,19 +180,6 @@ body > div {
   padding: 0.3em 0.5em !important;
 }
 
-header {
-  box-shadow: 0px 8px 24px 0px rgba(14, 17, 17, 0.1882352941);
-}
-header #navbarApp {
-  background-color: #e3eaed !important;
-  box-shadow: inset 0px 8px 24px 0px rgba(92, 193, 230, 0.1882352941);
-}
-
-#footerApp {
-  background-color: black;
-  color: white;
-}
-
 #homePage {
   width: 100vw;
   height: 100vh;
@@ -246,23 +257,14 @@ header #navbarApp {
   box-shadow: 0px 2px 4px 2px rgba(14, 17, 17, 0.1882352941);
 }
 #homePage .homeSec h2 {
-  padding: 0.2em 0.8em !important;
-  text-align: center;
   font-weight: 600;
-  color: white;
   text-shadow: 0px 0px 8px #0e1111;
   background-color: rgba(14, 17, 17, 0.5019607843);
 }
 #homePage .homeSec p {
   background-image: radial-gradient(#e3eaed, #e3eaed, #e3eaed, rgba(227, 234, 237, 0.5019607843));
-  padding: 1em !important;
   overflow-y: scroll;
   font-size: large;
-}
-#homePage .homeSection {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 #homePage .mapRow {
   background-color: rgba(227, 234, 237, 0.1882352941);
@@ -279,9 +281,6 @@ header #navbarApp {
   box-shadow: 0px 0px 24px 8px #fffdd0;
 }
 #homePage .homeCrAreas {
-  display: flex;
-  align-items: center;
-  color: white;
   background-image: radial-gradient(rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.1882352941));
 }
 #homePage .homeCrAreas .areaBoxDiv {
@@ -305,6 +304,16 @@ header #navbarApp {
 }
 #homePage .homeCrAreas .crAreaBox:hover {
   cursor: pointer;
+}
+#homePage .homePacks {
+  width: 100vw;
+}
+#homePage .homePacks .bgvid {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  width: 100%;
+  z-index: 1;
 }
 #homePage #albano {
   background-image: url(../../public/assets/imgs/StemmiComunali/albano_laziale.png) !important;
@@ -361,16 +370,6 @@ header #navbarApp {
   box-shadow: 0px 0px 16px 8px;
   transition: all 0.4s;
   border-radius: 30%;
-}
-#homePage .homePacks {
-  width: 100vw;
-}
-#homePage .homePacks .bgvid {
-  -o-object-fit: cover;
-     object-fit: cover;
-  position: relative;
-  width: 100%;
-  z-index: 1;
 }
 
 .registerForm {
@@ -499,7 +498,8 @@ header #navbarApp {
   background-color: rgba(14, 17, 17, 0.1882352941);
   border-radius: 18px;
 }
-#profilePage .profileHead .banner {
+
+.profileHead .banner {
   background-image: linear-gradient(rgba(255, 255, 255, 0), #e3eaed, #e3eaed), radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(227, 234, 237, 0.1882352941), rgba(14, 17, 17, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(14, 17, 17, 0.1882352941));
   border-top: solid 3px rgba(255, 255, 255, 0.25);
   border-left: solid 3px rgba(0, 0, 0, 0.25);
@@ -508,61 +508,36 @@ header #navbarApp {
   border-radius: 24px;
   background-color: rgba(227, 234, 237, 0.5019607843);
   flex-wrap: wrap;
-  justify-content: center;
 }
 @media (min-width: 768px) {
-  #profilePage .profileHead .banner {
+  .profileHead .banner {
     justify-content: start;
     flex-wrap: nowrap;
   }
 }
-#profilePage .profileHead .banner .profileImg {
+.profileHead .banner .profileImg {
   max-width: 275px;
   border-radius: 50%;
-  position: relative;
-  top: -30%;
-  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(14, 17, 17, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
-  border-top: solid 3px rgba(255, 255, 255, 0.25);
-  border-left: solid 3px rgba(0, 0, 0, 0.25);
-  border-right: solid 3px rgba(255, 255, 255, 0.25);
-  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
   box-shadow: -8px 8px 24px 0px rgba(14, 17, 17, 0.1882352941);
   background-position: center;
   background-size: cover;
 }
-#profilePage .profileHead .banner .infoBox {
+.profileHead .banner .infoBox {
   font-weight: 600;
   font-size: larger;
   flex-wrap: wrap;
 }
-#profilePage .profileHead .banner .upText {
+.profileHead .banner .upText {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
-  #profilePage .profileHead .banner .upText {
+  .profileHead .banner .upText {
     justify-content: space-between;
   }
 }
-#profilePage .profileHead .banner .textBox {
-  padding: 1em 1.2em !important;
-}
-#profilePage .profileHead .banner .profileBtnLine {
-  margin: auto !important;
-  width: 100%;
-}
-@media (min-width: 768px) {
-  #profilePage .profileHead .banner .profileBtnLine {
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-}
-#profilePage .profileHead .banner .profileBtnLine .fa,
-#profilePage .profileHead .banner .profileBtnLine .far {
-  background-color: #e3eaed;
-}
-#profilePage .profileHead .banner .btnProfileConf {
+.profileHead .banner .btnProfileConf {
   width: 48px;
   height: 48px;
   background-image: radial-gradient(#e3eaed, #fffdd0, rgba(227, 234, 237, 0.5019607843));
@@ -577,30 +552,14 @@ header #navbarApp {
 .postCard {
   border-top: 2px solid white;
   margin: 0.8em auto !important;
-  background-color: #e3eaed;
   background-image: linear-gradient(-135deg, rgba(0, 0, 0, 0.1), #e3eaed, #e3eaed);
-  border-radius: 8px;
   box-shadow: 2px 4px 6px 3px rgba(14, 17, 17, 0.1882352941);
-}
-.postCard .inShad {
-  box-shadow: inset 0px 0px 8px 4px rgba(14, 17, 17, 0.1882352941);
-  width: -moz-fit-content;
-  width: fit-content;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
 }
 .postCard a {
   text-decoration: none !important;
   color: #0e1111;
   font-size: 1.2em;
   padding: 0.2em !important;
-}
-.postCard .userInfo {
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background-image: linear-gradient(155deg, #e3eaed, #e3eaed, rgba(227, 234, 237, 0.5019607843), rgba(227, 234, 237, 0.5019607843), rgba(255, 255, 255, 0)), linear-gradient(white, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-  color: rgb(0, 0, 0);
-  position: absolute;
 }
 .postCard .miniUserImg {
   width: 54px;
@@ -628,114 +587,19 @@ header #navbarApp {
     width: 100%;
   }
 }
-.postCard .postText {
-  width: 100%;
-  border-top-right-radius: 48px;
-  border-top-left-radius: 12px;
-}
 .postCard .postText p {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Numero di righe da visualizzare */
   -webkit-box-orient: vertical;
   overflow: scroll;
   text-overflow: unset;
-  padding: 0.4em !important;
-  padding-top: 0.6em !important;
-  text-shadow: 0px 0px 6px white;
   height: 80px;
   transition: all 0.4s;
 }
 .postCard .postText p:hover {
+  -webkit-line-clamp: 5; /* Numero di righe da visualizzare */
   height: 160px;
   transition: all 0.6s;
-}
-.postCard .postText .postContent {
-  position: relative;
-  background-color: #e3eaed;
-  border-radius: 24px;
-}
-.postCard .postText .postContent:hover .postText {
-  background-color: #e3eaed;
-  transition: all 0.4s;
-}
-
-#feedPage .row {
-  justify-content: center;
-  border: none;
-}
-#feedPage .postMaker .postTextArea {
-  resize: vertical;
-  width: 100%;
-  display: block;
-}
-
-.CrAreaHead {
-  background-color: rgba(255, 255, 255, 0.5);
-  position: relative;
-  z-index: -2;
-}
-.CrAreaHead .profileBanner {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  bottom: -50px;
-  z-index: -1;
-}
-.CrAreaHead .underBanner {
-  padding-left: 2em !important;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), #e3eaed, #e3eaed), radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(227, 234, 237, 0.1882352941), rgba(14, 17, 17, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%), radial-gradient(rgba(0, 0, 0, 0), rgba(14, 17, 17, 0.1882352941));
-  border-top: solid 3px rgba(255, 255, 255, 0.25);
-  border-left: solid 3px rgba(0, 0, 0, 0.25);
-  border-right: solid 3px rgba(255, 255, 255, 0.25);
-  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-}
-.CrAreaHead .underBanner .profileImg {
-  max-width: 275px;
-  border-radius: 50%;
-  position: relative;
-  top: -30%;
-  background-image: radial-gradient(rgba(227, 234, 237, 0.1882352941), rgba(14, 17, 17, 0.1882352941)), linear-gradient(45deg, rgba(255, 255, 255, 0) 0% 6%, #74d64a 6% 34%, rgba(255, 255, 255, 0) 34% 40%, #5cc1e6 40% 65%, rgba(255, 255, 255, 0) 65% 69%, #ffda59 65% 92%, rgba(255, 255, 255, 0) 92% 100%);
-  border-top: solid 3px rgba(255, 255, 255, 0.25);
-  border-left: solid 3px rgba(0, 0, 0, 0.25);
-  border-right: solid 3px rgba(255, 255, 255, 0.25);
-  border-bottom: solid 3px rgba(0, 0, 0, 0.25);
-  box-shadow: -8px 8px 24px 0px rgba(14, 17, 17, 0.1882352941);
-}
-.CrAreaHead .underBanner .infoBox {
-  font-weight: 600;
-  font-size: larger;
-}
-.CrAreaHead .underBanner .textBox {
-  padding: 1em 1.2em !important;
-}
-.CrAreaHead .underBanner .profileBtnLine > * {
-  box-shadow: 2px 2px 4px 1px rgba(14, 17, 17, 0.5019607843);
-  border-top-left-radius: 48%;
-  border-bottom-right-radius: 26%;
-  padding: 0.8em !important;
-  background-color: #e3eaed;
-  position: relative;
-  z-index: 1;
-}
-.CrAreaHead .underBanner .profileBtnLine > *:hover {
-  box-shadow: inset 2px 4px 12px 0px rgba(14, 17, 17, 0.5019607843);
-  transition: all 0.4s;
-}
-
-#profilePicModal {
-  background-color: black;
-}
-
-#profileSettings form {
-  background-color: black;
-  padding: 1em !important;
-  color: white;
-}
-#profileSettings form .form-label,
-#profileSettings form .form-control {
-  padding: 0.6em !important;
 }
 
 .navUi {
@@ -803,27 +667,8 @@ header #navbarApp {
   background-color: rgba(14, 17, 17, 0.1882352941);
 }
 
-.mySoftBtn, .navUi > * {
-  box-shadow: 2px -2px 2px 2px rgba(14, 17, 17, 0.1882352941);
-  border-left: 1px solid white;
-  border-bottom: 1px solid white;
-  border-radius: 38%;
-  font-size: 1.6em;
-}
-
 .userLink {
   font-weight: bold;
-}
-
-.vw100 {
-  width: 100vw;
-  align-self: center;
-  justify-self: center;
-}
-
-.vh100scroll {
-  height: 100vh;
-  overflow-y: scroll;
 }
 
 .dropProfile {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const HomeCrAreas = () => {
   const navigate = useNavigate();
   return (
-    <div className="homeCrAreas w-100">
+    <div className="homeCrAreas w-100  d-flex align-items-center">
       {/* <p>Esplora ogni zona!</p> */}
       <div className="areaBoxDiv w-100">
         <div className="areaDiv">

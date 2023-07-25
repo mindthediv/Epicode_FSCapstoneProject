@@ -14,7 +14,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <Col className="homeSection discoverSection" xs={12} md={4}>
+        <Col xs={12} md={4}>
           <HomeSec
             title="Scopri la bellezza"
             img="assets/imgs/Ariccia.jpg"
@@ -26,7 +26,7 @@ const Home = () => {
                 Festività, sagre, eventi, divertimento, cucina, relax ed avventura, un'esperienza tutta da scoprire!"
           />
         </Col>
-        <Col className="homeSection communitySection" xs={12} md={4}>
+        <Col xs={12} md={4}>
           <HomeSec
             title="Incontra la comunità"
             img="assets/imgs/prodotti.jpg"
@@ -37,7 +37,7 @@ const Home = () => {
               Resta aggiornato sulle novità della zona, crea nuovi contatti ed esplora ogni giorno ciò che stai cercando!"
           />
         </Col>
-        <Col className="homeSection travelSection" xs={12} md={4}>
+        <Col xs={12} md={4}>
           <HomeSec
             title="Crea il tuo viaggio"
             img="assets/imgs/montePorzio.jpg"

@@ -120,27 +120,6 @@ const PostCard = (post) => {
     }
   };
 
-  //GET POST LIKES
-  const getLikes = async () => {
-    try {
-      const response = await fetch(API_POSTS + "/likes/" + p.id, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + logged.auth,
-        },
-      });
-
-      if (response.ok) {
-        const postLikes = await response.json();
-        setLikes(postLikes);
-      } else {
-        console.log("Errore nel caricare i like");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // USER LINK HANDLER
   const userLink = async () => {
     let u = await getUserViaProp(p.userId);
@@ -148,17 +127,32 @@ const PostCard = (post) => {
     navigate("/users/" + p.userId);
   };
 
-  // LIKES HANDLER
+  // HANDLE LIKE
   const handleLike = async () => {
-    getLikes();
     dispatch(putLike(p.id));
-
+    if (likes.includes(logged.id)) {
+      setLikes(p.likes.filter((id) => id !== logged.id));
+    } else {
+      setLikes([logged.id, ...p.likes]);
+    }
     if (likeBtn.current) {
       likes.includes(logged.id)
         ? likeBtn.current.classList.add("hoLike")
         : likeBtn.current.classList.remove("hoLike");
     }
   };
+
+  // LIKE FX
+  useEffect(() => {
+    const hfx = async () => {
+      if (likeBtn.current) {
+        likes.includes(logged.id)
+          ? likeBtn.current.classList.add("hoLike")
+          : likeBtn.current.classList.remove("hoLike");
+      }
+    };
+    hfx();
+  }, [likes]);
 
   // INIT FX
   useEffect(() => {
@@ -175,12 +169,16 @@ const PostCard = (post) => {
           if (p.filePath) {
             getPostImg();
           }
+          if (p.likes) {
+            setLikes(p.likes);
+          }
         }
       };
       handleEffect();
     }
   }, []);
-  // PRFOILE PIC FX
+
+  // PROFILE PIC FX
   useEffect(() => {
     if (userState != null) {
       let handleEffect = async () => {
@@ -190,19 +188,8 @@ const PostCard = (post) => {
     }
   }, [userState]);
 
-  // LIKE BTNS IF LIKED FX
-  useEffect(() => {
-    if (likeBtn.current) {
-      p.likes.includes(logged.id)
-        ? likeBtn.current.classList.add("hoLike")
-        : likeBtn.current.classList.remove("hoLike");
-    }
-  }, []);
-
-  useEffect(() => {}, []);
-
   return (
-    <Container className="postCard ">
+    <Container className="postCard my-wbg rounded">
       {window.location.pathname == "/me" ? (
         <></>
       ) : (
@@ -243,9 +230,9 @@ const PostCard = (post) => {
                   <span className="smallTxt me-2">{p.date}</span>
                 </div>
 
-                <span className="smallTxt">
+                {/* <span className="smallTxt">
                   <i className="fas fa-map-marker-alt me-2"></i>LOCATION
-                </span>
+                </span> */}
               </div>
             ) : (
               <div className="miniInfo">
@@ -300,7 +287,7 @@ const PostCard = (post) => {
           {/* TESTO */}
           {p && (
             <div className="postText px-1">
-              <p className="fs-5">{p.text}</p>
+              <p className="fs-6 p-1 pt-2">{p.text}</p>
             </div>
           )}
         </Col>
@@ -338,11 +325,18 @@ const PostCard = (post) => {
             <div className="btnPost">
               <div className="w-100 d-flex justify-content-center">
                 <span
-                  className="btnInter interLike"
+                  className="btnInter interLike text-center "
                   onClick={() => handleLike()}
                   ref={likeBtn}
                 >
-                  <i className="far fa-heart"></i>
+                  <i
+                    className={
+                      likes.includes(logged.id)
+                        ? "far fa-heart d-block hoLike"
+                        : "far fa-heart d-block"
+                    }
+                  ></i>
+                  <span className="small">{likes.length}</span>
                 </span>
                 <span className="btnInter interComment">
                   <i className="far fa-comments "></i>

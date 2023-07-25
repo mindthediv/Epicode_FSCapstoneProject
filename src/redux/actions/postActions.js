@@ -7,7 +7,6 @@ export const ADD_POSTS = "ADD_POSTS";
 export const GET_LOGGED_POSTS = "GET_LOGGED_POSTS";
 export const GET_USER_POSTS = "GET_USER_POSTS";
 export const TRANSFILE = "TRANSFILE";
-export const GET_LIKES = "GET_LIKES";
 
 // export const ADD_POST_TEXT = "ADD_POST_TEXT";
 
@@ -29,19 +28,7 @@ export const getAllPosts = () => {
           payload: postsData,
         });
       } else {
-        toast.error(
-          "fetchFailed: Sembra essersi verificato un errore, attendi un istante e prova a ricaricare la pagina.",
-          {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          }
-        );
+        console.log("errore post");
       }
     } catch (error) {
       console.log(error);
@@ -113,19 +100,7 @@ export const getLoggedPosts = (id) => {
           // .slice(0, 100).reverse(),
         });
       } else {
-        toast.error(
-          "Errore nel caricamento dei post. Prova a ricaricare la pagina.",
-          {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          }
-        );
+        console.log("errore post");
       }
     } catch (error) {
       console.log(error);
@@ -216,6 +191,27 @@ export const putLike = (id) => {
         body: JSON.stringify({
           lk: getState().logged.loggedUser.id,
         }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+//LIKES GET
+export const getLikes = (postId) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await fetch(API_POSTS + "/likes/" + postId, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + getState().logged.loggedUser.auth,
+        },
       });
       if (response.ok) {
         const data = await response.json();

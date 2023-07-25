@@ -97,8 +97,8 @@ const PostMaker = () => {
   // HANDLER DEL SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let posted = false;
-    await postAPost();
+
+    postAPost();
 
     dispatch(getAllPosts());
     toast.success("Nuovo Post Creato!", {

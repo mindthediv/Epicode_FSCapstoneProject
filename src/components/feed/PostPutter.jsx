@@ -102,7 +102,7 @@ const PostPutter = ({ post }) => {
   // HANDLER DEL SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let posted = false;
+
     putPost();
 
     dispatch(getAllPosts());

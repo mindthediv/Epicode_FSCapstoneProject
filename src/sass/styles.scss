@@ -2,7 +2,7 @@
 @import "mixin.scss";
 @import url("https://fonts.googleapis.com/css2?family=Robotot&display=swap");
 
-// ********** GLOBALI ************
+// GLOBALI **********************************************************************************
 html,
 body {
   height: 100vh;
@@ -35,7 +35,7 @@ body {
 }
 
 .onTopLayer {
-  z-index: initial;
+  z-index: 100;
 }
 
 .hidden {
@@ -47,11 +47,28 @@ body {
     cursor: pointer;
   }
 }
-//********** FINE GLOBALI***************
+
+.vw100 {
+  width: 100vw;
+  align-self: center;
+  justify-self: center;
+}
+
+.vh100scroll {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.imgPreview {
+  width: 100%;
+}
+
+.spinner-border {
+  color: $myPrime;
+  border: $myPrime;
+}
+// MODAL----------
 .masterModal {
-  // width: fit-content;
-  // height: fit-content;
-  // position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,21 +77,26 @@ body {
   margin: auto !important;
 }
 
-.imgPreview {
-  width: 100%;
-}
-// SOME BUTTONS
-// underpost
+// FINE GLOBALI ****************************************************************************
+//  BUTTONS ********************************************************************************
 
+.mySoftBtn {
+  box-shadow: 2px -2px 2px 2px $myBlack25;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  border-radius: 38%;
+  font-size: 1.6em;
+  @extend .hoPoint;
+}
+
+// ----- INTERACTIONS BTNS------------
 .btnInterDark {
   font-size: 1.4em;
   padding: 0.8em;
   border: none;
   color: $myWhite;
-
   border-left: 2px solid $myBlack25;
   border-bottom: 2px solid $myBlack25;
-
   .far,
   .fa {
     box-shadow: 2px -2px 2px 2px $myBlack25;
@@ -84,12 +106,6 @@ body {
     border-bottom: 3px solid $myBlack25;
     transition: all 0.4s;
     background-color: $myWhite !important;
-    // &:hover {
-    //   box-shadow: inset 2px -3px 3px 2px $myBlack25;
-    //   color: $myBlack50;
-    //   cursor: pointer;
-    //   transition: all 0.4s;
-    // }
   }
 }
 .btnInter {
@@ -97,7 +113,6 @@ body {
   padding: 0.8em !important;
   border: none !important;
   color: $myBlack50 !important;
-  // background-color: $myWhite50;
   border-left: 2px solid white;
   border-bottom: 2px solid white;
   @extend .hoPoint;
@@ -106,18 +121,12 @@ body {
     box-shadow: 2px -2px 2px 2px $myBlack25;
     padding: 0.8em !important;
     border-radius: 38%;
-
     border-left: 2px solid white;
     border-bottom: 2px solid white;
     transition: all 0.4s;
-    // &:hover {
-    //   box-shadow: inset 2px -3px 3px 2px $myBlack25;
-
-    //   cursor: pointer;
-    //   transition: all 0.4s;
-    // }
   }
 }
+// (like/follow)
 .interLike {
   color: $myPrime !important;
 }
@@ -131,9 +140,11 @@ body {
     transition: all 0.4s;
   }
 }
+//(comment/message)
 .interComment {
   color: $myAux !important;
 }
+//(save)
 .interSave {
   color: $myBlack25 !important;
 
@@ -141,7 +152,7 @@ body {
     color: $myBlack50;
   }
 }
-
+//(modal confirm)
 .btnConfirm {
   width: 100%;
   height: 100%;
@@ -153,15 +164,13 @@ body {
   color: $myBlack50;
   background-color: $myGolden !important;
 }
-
-// postmaker
+// ---- POSTMAKER BTNS------------
 .btnPmaker {
   padding: 0.6em !important;
   font-size: 1.8em !important;
   @extend .hoPoint;
   color: white;
 }
-
 .btnAddPostPic {
   background-color: $myPrime;
 }
@@ -178,23 +187,7 @@ body {
   border: solid 5px $myPrime !important;
   padding: 0.3em 0.5em !important;
 }
-
-//******* HEADER/ FOOTER *********
-header {
-  box-shadow: 0px 8px 24px 0px $myBlack25;
-  #navbarApp {
-    background-color: $myWhite !important;
-    box-shadow: inset 0px 8px 24px 0px $myPrime25;
-  }
-}
-
-#footerApp {
-  background-color: black;
-  color: white;
-}
-// ******* FINE H/F *********
-
-// ******* MAIN **********
+// END BUTTONS ************************************************************************************
 
 //HOME------------
 #homePage {
@@ -206,11 +199,6 @@ header {
     scroll-behavior: smooth !important;
   }
   overflow-y: scroll;
-
-  // .row:first-child {
-  //   margin-bottom: 3em !important;
-  // }
-
   .homeJumbo {
     background-image: url(../../public/assets/imgs/LagoDiNemi.jpg);
     background-size: cover;
@@ -266,10 +254,7 @@ header {
       box-shadow: 0px 2px 4px 2px $myBlack25;
     }
     h2 {
-      padding: 0.2em 0.8em !important;
-      text-align: center;
       font-weight: 600;
-      color: white;
       text-shadow: 0px 0px 8px $myBlack;
       background-color: $myBlack50;
     }
@@ -280,17 +265,9 @@ header {
         $myWhite,
         $myWhite50
       );
-
-      padding: 1em !important;
       overflow-y: scroll;
       font-size: large;
     }
-  }
-
-  .homeSection {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   .mapRow {
@@ -306,9 +283,6 @@ header {
   }
 
   .homeCrAreas {
-    display: flex;
-    align-items: center;
-    color: white;
     background-image: radial-gradient(
       $myWhite50,
       $myWhite50,
@@ -336,6 +310,16 @@ header {
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+
+  .homePacks {
+    width: 100vw;
+    .bgvid {
+      object-fit: cover;
+      position: relative;
+      width: 100%;
+      z-index: 1;
     }
   }
 
@@ -396,18 +380,7 @@ header {
       border-radius: 30%;
     }
   }
-
-  .homePacks {
-    width: 100vw;
-    .bgvid {
-      object-fit: cover;
-      position: relative;
-      width: 100%;
-      z-index: 1;
-    }
-  }
 }
-
 //REGISTER/LOGIN-------------
 .registerForm {
   display: flex;
@@ -429,7 +402,6 @@ header {
     }
   }
 }
-
 .loginForm {
   h3 {
     text-shadow: 0px 0px 16px $myBlack;
@@ -462,7 +434,6 @@ header {
     color: $myBlack;
   }
 }
-
 .registerForm,
 .loginForm {
   @media (min-width: 768px) {
@@ -471,7 +442,6 @@ header {
   border-radius: 18px;
   box-shadow: 0px 0px 8px 2px $myBlack25;
 }
-
 #registerPage {
   background-image: url(../../public/assets/imgs/LagoDiNemi.jpg);
   background-size: cover;
@@ -506,104 +476,76 @@ header {
   }
 }
 //PROFILE PAGE---------------
-
 #profilePage {
   top: -50px;
   height: 100vh;
   overflow-y: scroll;
   padding-bottom: 80px !important;
   @include myBackground();
+
   .bgGrid {
     background-color: $myBlack25;
     border-radius: 18px;
   }
-  .profileHead {
-    .banner {
-      @include myBgLight();
-      border-radius: 24px;
-      background-color: $myWhite50;
+}
+.profileHead {
+  .banner {
+    @include myBgLight();
+    border-radius: 24px;
+    background-color: $myWhite50;
+    flex-wrap: wrap;
+    @media (min-width: 768px) {
+      justify-content: start;
+      flex-wrap: nowrap;
+    }
+    .profileImg {
+      max-width: 275px;
+      border-radius: 50%;
+
+      box-shadow: -8px 8px 24px 0px $myBlack25;
+      background-position: center;
+      background-size: cover;
+    }
+    .infoBox {
+      font-weight: 600;
+      font-size: larger;
       flex-wrap: wrap;
+    }
+
+    .upText {
+      display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       @media (min-width: 768px) {
-        justify-content: start;
-        flex-wrap: nowrap;
+        justify-content: space-between;
       }
-      .profileImg {
-        max-width: 275px;
-        border-radius: 50%;
-        position: relative;
-        top: -30%;
-        @include myBackground();
-        box-shadow: -8px 8px 24px 0px $myBlack25;
-        background-position: center;
-        background-size: cover;
-      }
-      .infoBox {
-        font-weight: 600;
-        font-size: larger;
-        flex-wrap: wrap;
-      }
+    }
 
-      .upText {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        @media (min-width: 768px) {
-          justify-content: space-between;
-        }
-      }
-
-      .textBox {
-        padding: 1em 1.2em !important;
-      }
-
-      .profileBtnLine {
-        margin: auto !important;
-        width: 100%;
-        @media (min-width: 768px) {
-          width: fit-content;
-        }
-        .fa,
-        .far {
-          background-color: $myWhite;
-        }
-      }
-
-      .btnProfileConf {
-        width: 48px;
-        height: 48px;
-        background-image: radial-gradient($myWhite, $myLux, $myWhite50);
-        color: rgb(24, 24, 24);
-        font-size: 2em;
-        border-radius: 8px;
-        box-shadow: 0px 0px 24px 4px $myLux;
-        background-color: transparent;
-        border: none;
-      }
+    .btnProfileConf {
+      width: 48px;
+      height: 48px;
+      background-image: radial-gradient($myWhite, $myLux, $myWhite50);
+      color: rgb(24, 24, 24);
+      font-size: 2em;
+      border-radius: 8px;
+      box-shadow: 0px 0px 24px 4px $myLux;
+      background-color: transparent;
+      border: none;
     }
   }
 }
 
-//FEED ---------------
+//POSTCARD---------------
 .postCard {
   border-top: 2px solid white;
   margin: 0.8em auto !important;
-  background-color: $myWhite;
   background-image: linear-gradient(
     -135deg,
     rgba(0, 0, 0, 0.1),
     $myWhite,
     $myWhite
   );
-  border-radius: 8px;
   box-shadow: 2px 4px 6px 3px $myBlack25;
-
-  .inShad {
-    box-shadow: inset 0px 0px 8px 4px $myBlack25;
-    width: fit-content;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
-  }
 
   a {
     text-decoration: none !important;
@@ -611,25 +553,12 @@ header {
     font-size: 1.2em;
     padding: 0.2em !important;
   }
-  .userInfo {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background-image: linear-gradient(
-        155deg,
-        $myWhite,
-        $myWhite,
-        $myWhite50,
-        $myWhite50,
-        rgba(255, 255, 255, 0)
-      ),
-      linear-gradient(white, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-    color: rgb(0, 0, 0);
-    position: absolute;
-  }
+
   .miniUserImg {
     width: 54px;
     height: 54px;
   }
+
   .miniInfo {
     line-height: 1em;
     font-size: 0.9em;
@@ -642,7 +571,6 @@ header {
     }
   }
   .postImgWrapper {
-    // width: 100vw;
     width: 100%;
     @media (min-width: 576px) {
       width: 100%;
@@ -653,125 +581,19 @@ header {
     background-repeat: no-repeat;
   }
   .postText {
-    width: 100%;
-    border-top-right-radius: 48px;
-    border-top-left-radius: 12px;
-
     p {
       display: -webkit-box;
       -webkit-line-clamp: 2; /* Numero di righe da visualizzare */
       -webkit-box-orient: vertical;
       overflow: scroll;
       text-overflow: unset;
-
-      padding: 0.4em !important;
-      padding-top: 0.6em !important;
-      text-shadow: 0px 0px 6px white;
       height: 80px;
       transition: all 0.4s;
       &:hover {
-        // -webkit-line-clamp: 5; /* Numero di righe da visualizzare */
+        -webkit-line-clamp: 5; /* Numero di righe da visualizzare */
         height: 160px;
         transition: all 0.6s;
       }
-    }
-    .postContent {
-      position: relative;
-      background-color: $myWhite;
-      border-radius: 24px;
-
-      &:hover {
-        .postText {
-          background-color: $myWhite;
-          transition: all 0.4s;
-        }
-      }
-    }
-  }
-}
-
-#feedPage {
-  .row {
-    justify-content: center;
-    border: none;
-  }
-
-  .postMaker {
-    .postTextArea {
-      resize: vertical;
-      width: 100%;
-      display: block;
-    }
-  }
-}
-// CR AREA --------------------
-
-.CrAreaHead {
-  background-color: rgba(255, 255, 255, 0.5);
-  position: relative;
-  z-index: -2;
-  .profileBanner {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    bottom: -50px;
-    z-index: -1;
-  }
-  .underBanner {
-    padding-left: 2em !important;
-    @include myBgLight();
-    border-radius: 24px;
-
-    .profileImg {
-      max-width: 275px;
-      border-radius: 50%;
-      position: relative;
-      top: -30%;
-      @include myBackground();
-      // border: 4px solid rgba(255, 255, 255, 0);
-      box-shadow: -8px 8px 24px 0px $myBlack25;
-    }
-
-    .infoBox {
-      font-weight: 600;
-      font-size: larger;
-    }
-
-    .textBox {
-      padding: 1em 1.2em !important;
-    }
-
-    .profileBtnLine {
-      & > * {
-        box-shadow: 2px 2px 4px 1px $myBlack50;
-        border-top-left-radius: 48%;
-        border-bottom-right-radius: 26%;
-        padding: 0.8em !important;
-        background-color: $myWhite;
-        position: relative;
-        z-index: 1;
-        &:hover {
-          box-shadow: inset 2px 4px 12px 0px $myBlack50;
-          transition: all 0.4s;
-        }
-      }
-    }
-  }
-}
-
-//PROFILE SETTINGS ----------------------------
-#profilePicModal {
-  background-color: black;
-}
-#profileSettings {
-  form {
-    background-color: black;
-    padding: 1em !important;
-    color: white;
-    .form-label,
-    .form-control {
-      padding: 0.6em !important;
     }
   }
 }
@@ -823,6 +645,8 @@ header {
   height: 100vh;
   padding-bottom: 80px !important; //per via della navUi
 }
+
+//BGs
 .myBg {
   @include myBackground();
 }
@@ -836,27 +660,10 @@ header {
   background-color: $myBlack25;
 }
 
-.mySoftBtn {
-  box-shadow: 2px -2px 2px 2px $myBlack25;
-  border-left: 1px solid white;
-  border-bottom: 1px solid white;
-  border-radius: 38%;
-  font-size: 1.6em;
-  @extend .hoPoint;
-}
-
 .userLink {
   font-weight: bold;
 }
-.vw100 {
-  width: 100vw;
-  align-self: center;
-  justify-self: center;
-}
-.vh100scroll {
-  height: 100vh;
-  overflow-y: scroll;
-}
+
 .dropProfile {
   background-color: $myWhite !important;
 
@@ -865,6 +672,7 @@ header {
     border: 1px solid $myWhite25;
   }
 }
+
 #searchPage {
   @include myBgLightRev();
 }

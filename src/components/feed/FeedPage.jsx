@@ -16,12 +16,12 @@ const FeedPage = () => {
   return (
     <Container fluid id="feedPage">
       {/* I TUOI CONTATTI  */}
-      <Row>
+      <Row className=" justify-content-center">
         <Col>
           <FeedGrid />
         </Col>
       </Row>
-      <Row>
+      <Row className=" justify-content-center">
         <Col>
           <NavUI />
         </Col>

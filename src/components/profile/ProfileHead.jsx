@@ -23,7 +23,7 @@ const ProfileHead = ({ user, profileImg, bio }) => {
   return (
     <div className="profileHead">
       {user && (
-        <div className="d-flex banner p-4">
+        <div className="d-flex banner   justify-content-center p-4">
           {/* FOTO PROFILO ? URL FP : FP PLACEHOLDER */}
           {profileImg ? (
             <div
@@ -77,35 +77,34 @@ const ProfileHead = ({ user, profileImg, bio }) => {
           )}
 
           <div className="infoBox w-100">
-            <div className="textBox">
-              <div className="upText ">
-                <div className="text-center mb-3">
-                  <h2>{user.username}</h2>
+            <div className="px-3 py-4 upText">
+              <div className="text-center mb-3">
+                <h2>{user.username}</h2>
 
-                  <h5>{user.firstName + " " + user.lastName}</h5>
+                <h5>{user.firstName + " " + user.lastName}</h5>
 
-                  {/* <span className="d-block">
-                    <i className="fas fa-map-marker-alt me-2"></i>LUOGO
+                {/* <span className="d-block">
+                    <i className="fas fa-map-marker-alt me-2"></i>LOCATION
                   </span> */}
-                </div>
-                <div>
-                  {logged.follower != null ? (
-                    <span className="text-muted small">
-                      follower: {user.follower.length}{" "}
-                    </span>
-                  ) : (
-                    <span className="text-muted small">follower: 0 </span>
-                  )}
-                  {logged.followed != null ? (
-                    <span className="text-muted small">
-                      followed: {user.followed.length}{" "}
-                    </span>
-                  ) : (
-                    <span className="text-muted small">followed: 0 </span>
-                  )}
-                </div>
+              </div>
+              <div>
+                {logged.follower != null ? (
+                  <span className="text-muted small">
+                    follower: {user.follower.length}{" "}
+                  </span>
+                ) : (
+                  <span className="text-muted small">follower: 0 </span>
+                )}
+                {logged.followed != null ? (
+                  <span className="text-muted small">
+                    followed: {user.followed.length}{" "}
+                  </span>
+                ) : (
+                  <span className="text-muted small">followed: 0 </span>
+                )}
               </div>
             </div>
+
             {bio ? (
               <>
                 <p>{bio}</p>
