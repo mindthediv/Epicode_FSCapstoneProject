@@ -18,7 +18,7 @@ Front-end  | Back-end
 Current V. 1.0.0 (Social Network Setup)
  - [x] Landing Page, Register/Login feat.
  - [x] Embed Google Maps API.
- - [x] Pages layout.
+ - [x] Mobile pages layout.
  - [x] Images handling, images transfer, images storing.
  - [x] Posts/Feed feat.
  - [x] Entities CRUD.
@@ -27,6 +27,7 @@ Current V. 1.0.0 (Social Network Setup)
  - [x] Users follow-system feat.
 
 Upcoming V. 2.0.0 (Commercial Setup)
+ - [ ] Medium/large-screen style.
  - [ ] Commercial profiles, Tourism profiles.
  - [ ] Embed public transport services and geolocation API.
  - [ ] Upcoming features...
